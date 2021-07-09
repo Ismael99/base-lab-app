@@ -3,10 +3,10 @@ import { NavbarCompanyInfo } from './NavbarCompanyInfo'
 import { NavbarButtons } from './NavbarButtons'
 import { LoginIcon, MenuIcon } from '@heroicons/react/outline'
 
-export const Navbar = ({ logo, companyName }) => {
+export const Navbar = ({ logo, companyName, company_name_img }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const NavbarMain = ({ children }) => (
-    <nav className="relative flex flex-wrap items-center justify-between px-4 py-3">
+    <nav className="relative bg-gradient-to-r from-white to-black flex flex-wrap items-center justify-between px-4 py-1">
       {children}
     </nav>
   )
@@ -18,9 +18,9 @@ export const Navbar = ({ logo, companyName }) => {
   return (
     <NavbarMain>
       <NavbarCompany>
-        <NavbarCompanyInfo logo={logo} companyName={companyName} />
+        <NavbarCompanyInfo logo={logo} company_name_img={company_name_img} />
         <button
-          className="block w-12 px-3 py-1 text-xl leading-none text-black bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
+          className="block w-12 px-3 py-1 text-xl text-white hover:scale-110 hover:opacity-60 transform leading-none text-black bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none"
           type="button"
           onClick={() => setNavbarOpen(!navbarOpen)}
         >

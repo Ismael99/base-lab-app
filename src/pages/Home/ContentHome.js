@@ -4,8 +4,8 @@ import Login from './Login'
 
 export const ContentHome = () => {
   const ContentHomeMain = ({ children }) => (
-    <div className="w-full h-full mb-auto bg-center bg-cover h-128 banner">
-      <div className="flex justify-center h-full bg-gray-900 bg-opacity-50">
+    <div className="w-full h-full mb-auto bg-center bg-cover h-128 banner ">
+      <div className="flex justify-center h-full bg-gray-900 bg-opacity-50 ">
         <div className="flex flex-col items-center py-6 md:h-128 md:flex-row">
           {children}
         </div>

@@ -51,9 +51,9 @@ const Login = (props) => {
             setSubmitting(false)
           }
         }}
-        className="flex mt-8 md:w-1/2 md:justify-end md:mt-0"
+        className="flex mt-8 md:w-full md:justify-end md:mt-0"
       >
-        <div className="max-w-sm bg-white rounded-lg dark:bg-gray-800">
+        <div className="max-w-sm bg-white rounded-lg dark:bg-gray-800 w-full bg-opacity-60">
           <div className="p-5 text-center">
             <h2 className="text-2xl font-semibold text-gray-700 dark:text-white fo">
               Iniciar Sesión
@@ -67,7 +67,7 @@ const Login = (props) => {
                   name="user_username"
                   placeholder="Username"
                 />
-                <div className="w-3/4 h-6 mt-3 -mb-3 text-xs text-red-500 xl:w-1/2">
+                <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_username" />
                 </div>
                 <Field
@@ -76,14 +76,14 @@ const Login = (props) => {
                   name="user_password"
                   placeholder="Password"
                 />
-                <div className="w-3/4 h-6 mt-3 -mb-3 text-xs text-red-500 xl:w-1/2">
+                <div className="w-3/4 text-left h-6 mt-3 mb-3 text-xs text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_password" />
                 </div>
               </div>
               <div className="flex items-center justify-center -mt-3">
                 <button
                   type="submit"
-                  className="px-8 py-2 font-semibold text-white bg-gray-900 transition-colors duration-200 transform rounded-md hover:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
+                  className="px-8 transform hover:translate-x-px hover:-translate-y-px py-2 font-semibold text-white bg-gray-900 transition-colors duration-200 transform rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
                 >
                   Aceptar
                 </button>

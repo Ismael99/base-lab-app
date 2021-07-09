@@ -5,14 +5,15 @@ import PropTypes from 'prop-types'
 export const NavbarButtons = ({ navbarOpen, LoginIcon }) => (
   <div
     className={
-      'lg:flex flex-grow items-center ' + (navbarOpen ? ' flex' : ' hidden')
+      'lg:flex flex-grow items-center justify-center' +
+      (navbarOpen ? ' flex' : ' hidden')
     }
     id="example-navbar-danger"
   >
     <ul className="flex flex-col list-none lg:flex-row lg:ml-auto">
       <li className="nav-item">
         <Link
-          className="flex items-center px-3 py-2 text-xs font-bold leading-snug text-gray-800 uppercase hover:opacity-75"
+          className="flex border-b lg:border-0 border-gray-500 pb-0 transform hover:translate-x-px hover:-translate-y-px items-center px-3 py-2 text-xs font-bold leading-snug text-black lg:text-white uppercase hover:opacity-75"
           to="/"
         >
           <LoginIcon className="w-5" alt="login-logo" />{' '}
