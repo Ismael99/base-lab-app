@@ -10,10 +10,10 @@ export const DashboardMenuItem = ({ title, path, links }) => {
   return (
     <>
       <Link
-        className={`flex items-center divide-x divide-gray-400 p-2 text-gray-500 hover:text-black transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 ${openClasses}`}
+        className={`flex items-center divide-x divide-gray-400 p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 ${openClasses}`}
         to={path}
       >
-        <Link to={path} className="flex flex-row">
+        <Link to={path} className="flex flex-row hover:text-black">
           {/* Module icon*/}
           <span>
             {' '}
@@ -22,9 +22,9 @@ export const DashboardMenuItem = ({ title, path, links }) => {
           <span className="ml-2 text-sm">{title}</span>
         </Link>
 
-        <span className=" ml-auto pl-1 transform" onClick={onClickDropdown}>
+        <span className=" ml-auto pl-1" onClick={onClickDropdown}>
           {' '}
-          <ChevronDownIcon className="w-5 h-5 transform hover:scale-125" />{' '}
+          <ChevronDownIcon className="w-5 h-5 transform hover:scale-125 hover:text-black" />{' '}
         </span>
       </Link>
       {isDropdownOPen && (
