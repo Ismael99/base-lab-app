@@ -51,9 +51,8 @@ const Login = (props) => {
             setSubmitting(false)
           }
         }}
-        className="flex mt-8 md:w-full md:justify-end md:mt-0"
       >
-        <div className="max-w-sm bg-white rounded-lg dark:bg-gray-800 w-full bg-opacity-60">
+        <div className="max-w-md bg-white shadow-lg rounded-lg dark:bg-gray-800 w-full bg-opacity-60">
           <div className="p-5 text-center">
             <h2 className="text-2xl font-semibold text-gray-700 dark:text-white fo">
               Iniciar Sesión
@@ -65,7 +64,7 @@ const Login = (props) => {
                   className="block w-full px-4 py-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                   type="text"
                   name="user_username"
-                  placeholder="Username"
+                  placeholder="Username..."
                 />
                 <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_username" />
@@ -74,7 +73,7 @@ const Login = (props) => {
                   className="block w-full px-4 py-2 mt-4 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
                   type="password"
                   name="user_password"
-                  placeholder="Password"
+                  placeholder="Password..."
                 />
                 <div className="w-3/4 text-left h-6 mt-3 mb-3 text-xs text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_password" />
