@@ -25,5 +25,5 @@ export const NavbarButtons = ({ navbarOpen, LoginIcon }) => (
 )
 NavbarButtons.propTypes = {
   navbarOpen: PropTypes.bool.isRequired,
-  login: PropTypes.string.isRequired
+  LoginIcon: PropTypes.func.isRequired
 }

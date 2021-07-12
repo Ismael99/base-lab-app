@@ -7,6 +7,7 @@ import { MobileSubMenuButton } from './MobileSubMenuButton'
 import { useIsOpen } from '../../hooks/useIsOpen'
 import { MobileMenu } from './MobileMenu'
 import { MobileSubMenu } from './MobileSubMenu'
+import { infoCompanyData } from '../../data_test/company_info'
 
 export const DashboardNav = () => {
   const [isMenuOpen, handleIsMenuOpen] = useIsOpen(false)
@@ -16,7 +17,7 @@ export const DashboardNav = () => {
     <header className="relative bg-white dark:bg-darker">
       <Nav>
         <MobileMenuButton onClickMenu={handleIsMenuOpen} />
-        <Brand title="base-react-app" />
+        <Brand {...infoCompanyData} />
         <MobileSubMenuButton onClickSubMenu={handleIsSubMenuOpen} />
         <SubMenu />
       </Nav>

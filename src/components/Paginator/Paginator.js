@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import PropTypes from 'prop-types'
 import './Paginator.css'
 
 export const Paginator = ({ data, PER_PAGE, tableHeaders, keysData }) => {
@@ -61,4 +62,10 @@ export const Paginator = ({ data, PER_PAGE, tableHeaders, keysData }) => {
       />
     </>
   )
+}
+Paginator.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  PER_PAGE: PropTypes.number,
+  tableHeaders: PropTypes.array.isRequired,
+  keysData: PropTypes.array.isRequired
 }

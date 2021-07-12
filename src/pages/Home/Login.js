@@ -19,6 +19,7 @@ const Login = (props) => {
         validationSchema={LoginSchema.validations}
         onSubmit={async (values, { setSubmitting }) => {
           setLoading(true)
+          console.log(JSON.stringify({ ...values, isTokenRequired: true }))
           try {
             const config = {
               method: 'POST',
@@ -34,6 +35,7 @@ const Login = (props) => {
               config
             )
             const data = await res.json()
+            console.log(config)
             if (data.status_code === 200) {
               await setStoredValue(data.result.token)
               props.setTokenAction(storedValue)

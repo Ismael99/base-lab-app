@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import PropTypes from 'prop-types'
 import { TableBody } from './TableBody'
 import { TableHeaders } from './TableHeaders'
 import { TableActions } from './TableActions'
@@ -91,4 +92,12 @@ export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
       />
     </>
   )
+}
+
+Table.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  PER_PAGE: PropTypes.number,
+  headers: PropTypes.array.isRequired,
+  keys: PropTypes.array.isRequired,
+  idKey: PropTypes.string.isRequired
 }

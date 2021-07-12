@@ -14,5 +14,5 @@ export const NavbarCompanyInfo = ({ logo, company_name_img }) => (
 
 NavbarCompanyInfo.propTypes = {
   logo: PropTypes.string.isRequired,
-  companyName: PropTypes.isRequired
+  company_name_img: PropTypes.string.isRequired
 }
