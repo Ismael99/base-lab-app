@@ -10,7 +10,7 @@ export const DashboardMenuItem = ({ title, path, links }) => {
   return (
     <>
       <Link
-        className={`flex items-center divide-x divide-gray-400 p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-100 dark:hover:bg-blue-600 ${openClasses}`}
+        className={`flex items-center divide-x divide-gray-400 p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-200 dark:hover:bg-blue-600 ${openClasses}`}
         to={path}
       >
         <Link to={path} className="flex flex-row hover:text-black">
@@ -37,7 +37,7 @@ export const DashboardMenuItem = ({ title, path, links }) => {
             <Link
               key={index}
               to={link.path}
-              className="block py-1 px-2 transform border-transparent hover:border-gray-200 hover:shadow-lg border-b-2 hover:scale-105 duration-300 ease-in-out text-sm text-gray-500 transition-colors rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
+              className="block py-1 px-2 transform border-transparent hover:bg-gray-100 hover:border-gray-200 hover:shadow-lg border-b-2 hover:scale-105 duration-300 ease-in-out text-sm text-gray-500 transition-colors rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
             >
               {link.title}
             </Link>
