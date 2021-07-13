@@ -3,22 +3,22 @@ import './index.css'
 
 export const LoadLab = () => {
   return (
-    <div class="container-load">
+    <div className="container-load">
       <figure>
-        <div class="dotwrap dotwrap1">
-          <div class="dot dot1"></div>
+        <div className="dotwrap dotwrap1">
+          <div className="dot dot1"></div>
         </div>
-        <div class="dotwrap dotwrap2">
-          <div class="dot dot2"></div>
+        <div className="dotwrap dotwrap2">
+          <div className="dot dot2"></div>
         </div>
-        <div class="dotwrap dotwrap3">
-          <div class="dot dot3"></div>
+        <div className="dotwrap dotwrap3">
+          <div className="dot dot3"></div>
         </div>
-        <div class="dotwrap dotwrap4">
-          <div class="dot dot4"></div>
+        <div className="dotwrap dotwrap4">
+          <div className="dot dot4"></div>
         </div>
-        <div class="dotwrap dotwrap5">
-          <div class="dot dot5"></div>
+        <div className="dotwrap dotwrap5">
+          <div className="dot dot5"></div>
         </div>
       </figure>
     </div>

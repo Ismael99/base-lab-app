@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Formik, Form, ErrorMessage, Field } from 'formik'
 import { LoginSchema } from '../../schema'
-import { Loader } from '../../components/Loader'
 import { LoadLab } from '../../components/Loader/LoadLab'
 import { navigate } from '@reach/router'
 import { useLocalStorage } from '../../hooks/useLocalStorage'

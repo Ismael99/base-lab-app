@@ -17,14 +17,14 @@ export const DashboardMenuItem = ({ title, path, links }) => {
         className={`flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-200 dark:hover:bg-blue-600 ${openClasses}`}
         to={path}
       >
-        <Link to={path} className="flex flex-row hover:text-black">
+        <span className="flex flex-row hover:text-black">
           {/* Module icon*/}
           <span>
             {' '}
             <HomeIcon className="w-5 h-5" />{' '}
           </span>
           <span className="ml-2 text-sm">{title}</span>
-        </Link>
+        </span>
 
         <span className="pl-1 ml-auto text-center" onClick={onClickDropdown}>
           {' '}
