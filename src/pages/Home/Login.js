@@ -36,6 +36,7 @@ const Login = (props) => {
             )
             const data = await res.json()
             console.log(config)
+            console.log(data)
             if (data.status_code === 200) {
               await setStoredValue(data.result.token)
               props.setTokenAction(storedValue)
@@ -54,9 +55,9 @@ const Login = (props) => {
           }
         }}
       >
-        <div className="max-w-md bg-white shadow-lg rounded-lg dark:bg-gray-800 w-full bg-opacity-60">
+        <div className="max-w-md bg-white shadow-lg rounded-lg dark:bg-gray-800 w-full bg-opacity-40">
           <div className="p-5 text-center">
-            <h2 className="text-2xl font-semibold text-gray-700 dark:text-white fo">
+            <h2 className="text-2xl border-b border-gray-400 font-semibold text-gray-700 dark:text-white fo">
               Iniciar Sesión
             </h2>
 
@@ -84,7 +85,7 @@ const Login = (props) => {
               <div className="flex items-center justify-center -mt-3">
                 <button
                   type="submit"
-                  className="px-8 transform hover:translate-x-px hover:-translate-y-px py-2 font-semibold text-white bg-gray-900 transition-colors duration-200 transform rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
+                  className="px-8 transform hover:translate-x-px hover:-translate-y-px py-2 font-semibold text-white bg-black transition-colors duration-200 transform rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
                 >
                   Aceptar
                 </button>

@@ -6,7 +6,7 @@ import { LoginIcon, MenuIcon } from '@heroicons/react/outline'
 export const Navbar = ({ logo, companyName, company_name_img }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const NavbarMain = ({ children }) => (
-    <nav className="relative bg-gradient-to-r from-white to-black flex flex-wrap items-center justify-between px-4">
+    <nav className="relative bg-gradient-to-r from-gray-200 to-black flex flex-wrap items-center justify-between px-4">
       {children}
     </nav>
   )
