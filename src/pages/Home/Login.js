@@ -103,7 +103,7 @@ const Login = (props) => {
             </Form>
           </div>
           {loading && (
-            <div className="flex items-center justify-center pb-6">
+            <div className="flex items-center justify-center h-10 mb-3">
               <LoadLab />
             </div>
           )}
