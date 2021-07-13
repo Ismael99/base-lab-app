@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Formik, Form, ErrorMessage, Field } from 'formik'
 import { LoginSchema } from '../../schema'
 import { Loader } from '../../components/Loader'
+import { LoadLab } from '../../components/Loader/LoadLab'
 import { navigate } from '@reach/router'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { connect } from 'react-redux'
 import { setToken } from '../../redux/actions/usersActions'
 import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/outline'
+import login_icon from '../../assets/login_icon1.png'
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false)
@@ -56,12 +58,13 @@ const Login = (props) => {
           }
         }}
       >
-        <div className="w-full max-w-md bg-white rounded-lg dark:bg-gray-800 bg-opacity-0">
+        <div className="w-full max-w-md bg-white shadow-md rounded-lg dark:bg-gray-800 bg-opacity-0">
           <div className="p-5 text-center">
-            <h2 className="text-2xl font-semibold text-white border-b border-gray-400 dark:text-white fo">
-              Iniciar Sesión
-            </h2>
-
+            <img
+              src={login_icon}
+              alt="login-icon"
+              className="w-28 mx-auto rounded-full border border-gray-400 p-3 bg-white bg-opacity-20"
+            />
             <Form>
               <div className="my-5">
                 <span className="flex flex-row items-center ">
@@ -92,16 +95,16 @@ const Login = (props) => {
               <div className="flex items-center justify-center -mt-3">
                 <button
                   type="submit"
-                  className="px-8 py-2 font-semibold text-white bg-black transform hover:translate-x-px hover:-translate-y-px transition-colors duration-200 rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
+                  className="px-8 py-2 font-semibold text-white w-full bg-black hover:border-transparent transform transition-colors duration-200 hover:bg-opacity-60 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
                 >
-                  Aceptar
+                  Iniciar Sesión
                 </button>
               </div>
             </Form>
           </div>
           {loading && (
             <div className="flex items-center justify-center pb-6">
-              <Loader />
+              <LoadLab />
             </div>
           )}
           {error && (
