@@ -6,6 +6,7 @@ import { navigate } from '@reach/router'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { connect } from 'react-redux'
 import { setToken } from '../../redux/actions/usersActions'
+import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/outline'
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false)
@@ -55,37 +56,43 @@ const Login = (props) => {
           }
         }}
       >
-        <div className="max-w-md bg-white shadow-lg rounded-lg dark:bg-gray-800 w-full bg-opacity-40">
+        <div className="w-full max-w-md bg-white rounded-lg dark:bg-gray-800 bg-opacity-0">
           <div className="p-5 text-center">
-            <h2 className="text-2xl border-b border-gray-400 font-semibold text-gray-700 dark:text-white fo">
+            <h2 className="text-2xl font-semibold text-white border-b border-gray-400 dark:text-white fo">
               Iniciar Sesión
             </h2>
 
             <Form>
               <div className="my-5">
-                <Field
-                  className="block w-full px-4 py-2 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                  type="text"
-                  name="user_username"
-                  placeholder="Username..."
-                />
+                <span className="flex flex-row items-center ">
+                  <UserCircleIcon className="w-6 absolute ml-2 text-gray-400" />
+                  <Field
+                    className="block w-full pl-10 px-4 py-2 text-white placeholder-white bg-white border border-gray-800 rounded-full focus:border-white bg-opacity-10 border-opacity-50 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none"
+                    type="text"
+                    name="user_username"
+                    placeholder="Username..."
+                  />
+                </span>
                 <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_username" />
                 </div>
-                <Field
-                  className="block w-full px-4 py-2 mt-4 text-gray-700 placeholder-gray-500 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
-                  type="password"
-                  name="user_password"
-                  placeholder="Password..."
-                />
-                <div className="w-3/4 text-left h-6 mt-3 mb-3 text-xs text-red-500 xl:w-1/2">
+                <span className="flex flex-row items-center">
+                  <LockClosedIcon className="w-6 absolute ml-2 text-gray-400" />
+                  <Field
+                    className="block w-full pl-10 px-4 py-2 text-white placeholder-white bg-white border border-gray-800 rounded-full focus:border-white bg-opacity-10 border-opacity-50 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none"
+                    type="password"
+                    name="user_password"
+                    placeholder="Password..."
+                  />
+                </span>
+                <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
                   <ErrorMessage name="user_password" />
                 </div>
               </div>
               <div className="flex items-center justify-center -mt-3">
                 <button
                   type="submit"
-                  className="px-8 transform hover:translate-x-px hover:-translate-y-px py-2 font-semibold text-white bg-black transition-colors duration-200 transform rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
+                  className="px-8 py-2 font-semibold text-white bg-black transform hover:translate-x-px hover:-translate-y-px transition-colors duration-200 rounded-md hover:opacity-80 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
                 >
                   Aceptar
                 </button>
