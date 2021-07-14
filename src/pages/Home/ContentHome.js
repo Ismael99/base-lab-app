@@ -7,7 +7,7 @@ export const ContentHome = () => {
   const { logo, company_name_img } = infoCompanyData
   const HeadLogin = () => (
     <div className="z-40 flex flex-col justify-center items-start lg:absolute w-full">
-      <div className="px-5 py-5 bg-white bg-opacity-20 rounded-br-lg flex justify-center items-center flex-col">
+      <div className="px-5 py-5 bg-white bg-opacity-10 rounded-br-lg flex justify-center items-center flex-col">
         <img src={logo} alt="logo" className="md:w-16 w-8" />
         <img src={company_name_img} alt="name-logo" className="md:w-32 w-16" />
       </div>
