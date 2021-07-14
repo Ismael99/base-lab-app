@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import { Login } from './Login'
+import { Login } from '../../components/Login'
 import { infoCompanyData } from '../../data_test/company_info'
 
 export const ContentHome = () => {
