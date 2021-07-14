@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Router } from '@reach/router'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
@@ -24,7 +24,8 @@ const usersSelector = createSelector(
 )
 
 export const Users = () => {
-  const users = useSelector(usersSelector)
+  
+    const users = useSelector(usersSelector)
 
   return (
     <DashboardSection>
