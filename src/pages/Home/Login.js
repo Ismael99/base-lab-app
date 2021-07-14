@@ -4,15 +4,17 @@ import { LoginSchema } from '../../schema'
 import { LoadLab } from '../../components/Loader/LoadLab'
 import { navigate } from '@reach/router'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setToken } from '../../redux/actions/usersActions'
+
 import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/outline'
 import login_icon from '../../assets/login_icon3.png'
 
-const Login = (props) => {
+export const Login = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(undefined)
   const [storedValue, setStoredValue] = useLocalStorage('token', 'token')
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -38,7 +40,7 @@ const Login = (props) => {
             const data = await res.json()
             if (data.status_code === 200) {
               await setStoredValue(data.result.token)
-              props.setTokenAction(storedValue)
+              dispatch(setToken(storedValue))
               setLoading(false)
               setSubmitting(false)
               navigate('/dashboard')
@@ -118,14 +120,3 @@ const Login = (props) => {
     </>
   )
 }
-
-const mapStateToProps = (state) => ({
-  ...state
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  setTokenAction: (payload) => dispatch(setToken(payload))
-})
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Login);
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
