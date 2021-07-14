@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Router } from '@reach/router'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
@@ -23,10 +23,12 @@ const usersSelector = createSelector(
   (data) => data.filter((user) => user.user_status !== 2)
 )
 
-export const Users = () => {
-  
-    const users = useSelector(usersSelector)
+//const tokenSelector = createSelector((state) => state.users.token)
 
+export const Users = () => {
+  const users = useSelector(usersSelector)
+  //const token = useSelector(tokenSelector)
+  //console.log(token)
   return (
     <DashboardSection>
       <DashboardSectionTitle title="Usuarios" />

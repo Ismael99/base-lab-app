@@ -21,7 +21,6 @@ const Login = (props) => {
         validationSchema={LoginSchema.validations}
         onSubmit={async (values, { setSubmitting }) => {
           setLoading(true)
-          console.log(JSON.stringify({ ...values, isTokenRequired: true }))
           try {
             const config = {
               method: 'POST',
@@ -37,8 +36,6 @@ const Login = (props) => {
               config
             )
             const data = await res.json()
-            console.log(config)
-            console.log(data)
             if (data.status_code === 200) {
               await setStoredValue(data.result.token)
               props.setTokenAction(storedValue)
@@ -73,6 +70,7 @@ const Login = (props) => {
                     type="text"
                     name="user_username"
                     placeholder="Username..."
+                    disabled={loading}
                   />
                 </span>
                 <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
@@ -85,6 +83,7 @@ const Login = (props) => {
                     type="password"
                     name="user_password"
                     placeholder="Password..."
+                    disabled={loading}
                   />
                 </span>
                 <div className="w-3/4 h-6 mt-3 mb-3 text-xs text-left text-red-500 xl:w-1/2">
@@ -93,6 +92,7 @@ const Login = (props) => {
               </div>
               <div className="flex items-center justify-center -mt-3">
                 <button
+                  disabled={loading}
                   type="submit"
                   className="px-8 py-2 font-semibold text-white w-full md:w-1/2 rounded-md bg-black hover:border-transparent hover:bg-opacity-60 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
                 >

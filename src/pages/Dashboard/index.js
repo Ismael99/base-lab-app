@@ -10,7 +10,6 @@ import { Test } from './DashboardPages/Test'
 import { Users } from './DashboardPages/Users'
 import { Home } from './DashboardPages/Home'
 import { thunkFecthUsers } from '../../redux/actions/usersActions'
-import { WobblingLoader } from '../../components/Loader/WobblingLoader'
 import { LoaderPage } from '../../components/Loader/LoaderPage'
 import { useDispatch } from 'react-redux'
 
