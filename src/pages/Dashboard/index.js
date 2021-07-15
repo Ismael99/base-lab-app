@@ -12,7 +12,7 @@ import { Home } from './DashboardPages/Home'
 import { thunkFecthUsers } from '../../redux/actions/usersActions'
 import { LoaderPage } from '../../components/Loader/LoaderPage'
 import { useDispatch } from 'react-redux'
-
+import { NotFound } from '../SiteStatus/NotFound'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
     <h1 className="text-2xl">{title}</h1>
@@ -50,7 +50,7 @@ export const Dashboard = () => {
             <Home path="/" />
             <Users path="users/*" />
             <Test path="test" />
-            <Section title="Not found" default />
+            <NotFound default />
           </Router>
         </DashboardMainContent>
       </DashboardContent>

@@ -10,6 +10,7 @@ import { UserNew } from './UserNew'
 import { UserEdit } from './UserEdit'
 import { UserDelete } from './UserDelete'
 import { UserDetail } from './UsersDetail'
+import { NotFound } from '../../../SiteStatus/NotFound'
 import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
 
 const Section = ({ title }) => (
@@ -44,7 +45,7 @@ export const Users = () => {
           />
           <UserDelete path="delete/:id" users={users} />
           <UserDetail path="view/:id" users={users} />
-          <Section default title="Not found" />
+          <NotFound default />
         </Router>
       </DashboardSectionContent>
     </DashboardSection>

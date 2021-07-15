@@ -2,13 +2,13 @@ import React from 'react'
 import { Router } from '@reach/router'
 import { Dashboard } from './pages/Dashboard'
 import { Home } from './pages/Home'
-import SiteStatus from './pages/SiteStatus'
+import { NotFound2 } from './pages/SiteStatus/NotFound2'
 
 const App = () => (
   <Router>
     <Home path="/" />
     <Dashboard path="dashboard/*" />
-    <SiteStatus default />
+    <NotFound2 default />
   </Router>
 )
 
