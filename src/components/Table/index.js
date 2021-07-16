@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
 import PropTypes from 'prop-types'
 import { TableBody } from './TableBody'
@@ -9,11 +9,17 @@ import { useTableSearch } from '../../hooks/useTableSearch'
 import './index.css'
 
 export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
+  // table search state
+  const [searchResult, setData, search, handleSearchResult] = useTableSearch(
+    data
+  )
+  useEffect(() => {
+    setData(data)
+  }, [data])
   // paginator state
   const [currentPage, setCurrentPage] = useState(0)
-  // table search state
-  const [searchResult, search, handleSearchResult] = useTableSearch(data)
-
+  console.log(data)
+  console.log(searchResult)
   // Paginator handler
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage)

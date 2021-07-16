@@ -3,7 +3,10 @@ import { useState } from 'react'
 export const useTableSearch = (initialData = []) => {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(initialData)
-
+  console.log('Print from usetableSeaech')
+  console.log(initialData)
+  console.log('Data')
+  console.log(data)
   /* const checkIfContains = (object, searchValue) => {
     //  Object.values(object).map(value => value.indexOf(searchValue) !== -1)
     let founded = false 
@@ -19,7 +22,6 @@ export const useTableSearch = (initialData = []) => {
     const { value } = target
     console.log('value search: ' + value)
     setSearch(value)
-    if (value === '') setData(initialData)
     if (value.length > 0) {
       const sValue = value
       const fieldsInvalid = []
@@ -51,6 +53,7 @@ export const useTableSearch = (initialData = []) => {
       else setData([])
     }
   }
-
-  return [data, search, handleTableSearch]
+  console.log('End')
+  console.log(data)
+  return [data, setData, search, handleTableSearch]
 }
