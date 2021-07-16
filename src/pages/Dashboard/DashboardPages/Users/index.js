@@ -13,12 +13,6 @@ import { UserDetail } from './UsersDetail'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
 
-const Section = ({ title }) => (
-  <div className="h-full bg-gray-50">
-    <h1 className="text-2xl">{title}</h1>
-  </div>
-)
-
 const usersSelector = createSelector(
   (state) => state.users.data,
   (data) => data.filter((user) => user.user_status !== 2)
