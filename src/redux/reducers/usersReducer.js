@@ -25,8 +25,8 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
           user.user_id === action.payload.user_id ? action.payload : user
         )
       }
-    case USER_ACTIONS.DELETE_USER:
-      console.log(action.payload)
+    case USER_ACTIONS.DELETE_USER: {
+      console.log(action.payload.user_id)
       return {
         ...state,
         data: state.data.map((user) =>
@@ -35,6 +35,7 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
             : user
         )
       }
+    }
     default:
       return { ...state }
   }

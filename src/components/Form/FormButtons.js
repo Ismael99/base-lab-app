@@ -1,5 +1,6 @@
 import { Link } from '@reach/router'
 import React from 'react'
+import { SaveIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 
 export const FormButtons = ({ moduleName, interfaceView }) => (
   <div className="w-full">
@@ -8,9 +9,11 @@ export const FormButtons = ({ moduleName, interfaceView }) => (
         {!interfaceView && (
           <button
             type="submit"
-            className="w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white bg-blue-400 border-black rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
+            className="hover:bg-blue-100 w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white text-blue-400 bg-transparent border border-blue-400 rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
           >
-            Guardar usuario
+            <span className="flex flex-row justify-center">
+              <SaveIcon className="w-5 mr-2" /> Guardar
+            </span>
           </button>
         )}
       </div>
@@ -20,9 +23,11 @@ export const FormButtons = ({ moduleName, interfaceView }) => (
       >
         <button
           type="button"
-          className="w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white bg-red-400 border-black rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
+          className="hover:bg-red-100 w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white bg-transparent border text-red-400 border-red-400 rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
         >
-          Cancelar
+          <span className="flex flex-row justify-center">
+            <ChevronLeftIcon className="w-5 mr-2" /> Atras
+          </span>
         </button>
       </Link>
     </div>
