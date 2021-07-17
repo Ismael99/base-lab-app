@@ -37,6 +37,7 @@ export const Form = ({
             placeholder={field.placeholder}
             type={field.type}
             name={field.name}
+            icon={field.icon}
           />
         ))}
         <FormButtons moduleName="users" interfaceView={interfaceView} />
