@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export const useTableSearch = (initialData = []) => {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(initialData)
-  console.log('Print from usetableSeaech')
-  console.log(initialData)
-  console.log('Data')
-  console.log(data)
+  //Actualiza el estado cuando detecta mofificaciones en initialData (Actualizaciones de registros,
+  //etc)
+  useEffect(() => {
+    setData(initialData)
+  }, [initialData])
   /* const checkIfContains = (object, searchValue) => {
     //  Object.values(object).map(value => value.indexOf(searchValue) !== -1)
     let founded = false 
@@ -20,12 +21,14 @@ export const useTableSearch = (initialData = []) => {
 
   const handleTableSearch = ({ target }) => {
     const { value } = target
-    console.log('value search: ' + value)
     setSearch(value)
+    if (value === '') setData(initialData)
     if (value.length > 0) {
       const sValue = value
       const fieldsInvalid = []
       const isFieldInvalid = (attribute) => {
+        //Solo campos que no vayan a estar en algun formulario
+        //ni en la tabla
         if (
           attribute.includes('updated_at') ||
           attribute.includes('created_at') ||
@@ -44,16 +47,14 @@ export const useTableSearch = (initialData = []) => {
       initialData.forEach((object) => {
         fieldsInvalid.forEach((field) => {
           delete object[field]
+          console.log('Delete attr')
+          console.log(object)
         })
         if (Object.values(object).some(isSubString)) result.push(object)
       })
-      console.log('Data: ')
-      console.log(result)
       if (result.length > 0) setData(result)
       else setData([])
     }
   }
-  console.log('End')
-  console.log(data)
-  return [data, setData, search, handleTableSearch]
+  return [data, search, handleTableSearch]
 }

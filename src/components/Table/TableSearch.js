@@ -7,7 +7,7 @@ export const TableSearch = ({ value, onChange }) => (
       type="search"
       value={value}
       onChange={onChange}
-      name="serch"
+      name="search"
       placeholder="Search"
       className="bg-white h-10 px-5 pr-10 rounded-md text-sm focus:outline-none"
     />

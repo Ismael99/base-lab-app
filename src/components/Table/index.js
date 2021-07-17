@@ -10,12 +10,7 @@ import './index.css'
 
 export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
   // table search state
-  const [searchResult, setData, search, handleSearchResult] = useTableSearch(
-    data
-  )
-  useEffect(() => {
-    setData(data)
-  }, [data])
+  const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
   const [currentPage, setCurrentPage] = useState(0)
   console.log(data)

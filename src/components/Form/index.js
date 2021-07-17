@@ -18,6 +18,7 @@ export const Form = ({ initialValues, schema, toDispatch, setCurrent }) => {
         dispatch(setCurrent(values))
         dispatch(toDispatch)
         setSubmitting(false)
+        console.log('Submiting...')
         navigate('../', { replace: true })
       }}
       className="flex flex-col justify-center min-h-screen px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32"
