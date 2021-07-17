@@ -5,7 +5,13 @@ import { Input } from './Input'
 import { useDispatch } from 'react-redux'
 import { navigate } from '@reach/router'
 
-export const Form = ({ initialValues, schema, toDispatch, setCurrent }) => {
+export const Form = ({
+  initialValues,
+  schema,
+  toDispatch,
+  setCurrent,
+  interfaceView
+}) => {
   const dispatch = useDispatch()
 
   return (
@@ -33,7 +39,7 @@ export const Form = ({ initialValues, schema, toDispatch, setCurrent }) => {
             name={field.name}
           />
         ))}
-        <FormButtons moduleName="users" />
+        <FormButtons moduleName="users" interfaceView={interfaceView} />
       </Formk>
     </Formik>
   )

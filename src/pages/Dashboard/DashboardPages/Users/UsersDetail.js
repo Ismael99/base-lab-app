@@ -6,5 +6,5 @@ export const UserDetail = ({ id, users }) => {
     user.user_id.toString() === id ? user : undefined
   )
 
-  return <UsersForm user={userToView} />
+  return <UsersForm user={userToView} interfaceView={true} />
 }
