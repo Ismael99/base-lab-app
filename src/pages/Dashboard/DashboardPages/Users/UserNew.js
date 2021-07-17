@@ -1,4 +1,6 @@
 import React from 'react'
 import { UsersForm } from './UsersForm'
 
-export const UserNew = (props) => <UsersForm {...props} interfaceView={false} />
+export const UserNew = (props) => (
+  <UsersForm {...props} isInterfaceView={false} />
+)

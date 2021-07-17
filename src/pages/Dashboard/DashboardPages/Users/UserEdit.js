@@ -8,5 +8,5 @@ export const UserEdit = ({ id, users, ...props }) => {
     ? users.find((user) => (user.user_id.toString() === id ? user : undefined))
     : UserSchema.initialValues
 
-  return <UsersForm user={userToEdit} interfaceView={false} {...props} />
+  return <UsersForm user={userToEdit} isInterfaceView={false} {...props} />
 }

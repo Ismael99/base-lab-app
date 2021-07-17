@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import { Field, ErrorMessage } from 'formik'
 import { InformationCircleIcon } from '@heroicons/react/outline'
 
-export const Input = ({ label, placeholder, type, name, icon }) => {
+export const Input = ({
+  label,
+  placeholder,
+  type,
+  name,
+  icon,
+  isInterfaceView
+}) => {
   const Icon = icon ? icon : InformationCircleIcon
 
   return (
@@ -19,6 +26,7 @@ export const Input = ({ label, placeholder, type, name, icon }) => {
             placeholder={placeholder}
             type={type}
             className="w-full p-1 px-2 pl-9 text-gray-800 outline-none appearance-none"
+            disabled={isInterfaceView}
           />
         </span>
       </div>

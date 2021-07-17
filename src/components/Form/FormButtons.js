@@ -2,11 +2,11 @@ import { Link } from '@reach/router'
 import React from 'react'
 import { SaveIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 
-export const FormButtons = ({ moduleName, interfaceView }) => (
+export const FormButtons = ({ moduleName, isInterfaceView }) => (
   <div className="w-full">
     <div className="flex flex-col items-center justify-center w-1/2 mx-auto lg:flex-row">
       <div className="flex items-center justify-center w-full lg:w-1/2">
-        {!interfaceView && (
+        {!isInterfaceView && (
           <button
             type="submit"
             className="hover:bg-blue-100 w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white text-blue-400 bg-transparent border border-blue-400 rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"

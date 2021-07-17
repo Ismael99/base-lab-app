@@ -10,7 +10,7 @@ export const Form = ({
   schema,
   toDispatch,
   setCurrent,
-  interfaceView
+  isInterfaceView
 }) => {
   const dispatch = useDispatch()
 
@@ -38,9 +38,10 @@ export const Form = ({
             type={field.type}
             name={field.name}
             icon={field.icon}
+            isInterfaceView={isInterfaceView}
           />
         ))}
-        <FormButtons moduleName="users" interfaceView={interfaceView} />
+        <FormButtons moduleName="users" isInterfaceView={isInterfaceView} />
       </Formk>
     </Formik>
   )

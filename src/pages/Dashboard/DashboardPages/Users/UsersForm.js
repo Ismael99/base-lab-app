@@ -3,9 +3,9 @@ import { Form } from '../../../../components/Form'
 import { UserSchema } from '../../../../schema'
 import { setCurrentUser } from '../../../../redux/actions/usersActions'
 
-export const UsersForm = ({ user, interfaceView, ...props }) => (
+export const UsersForm = ({ user, isInterfaceView, ...props }) => (
   <Form
-    interfaceView={interfaceView}
+    isInterfaceView={isInterfaceView}
     initialValues={user}
     schema={UserSchema}
     setCurrent={setCurrentUser}
