@@ -12,7 +12,9 @@ export const Input = ({
   isInterfaceView
 }) => {
   const Icon = icon ? icon : InformationCircleIcon
-
+  const classDisbled = isInterfaceView
+    ? ' bg-white text-gray-400 opacity-800'
+    : ' bg-white text-gray-800 '
   return (
     <div className="w-full">
       <div className="w-3/4 h-6 mx-auto mt-3 text-xs font-bold text-gray-600 uppercase xl:w-1/2 leading-8">
@@ -25,7 +27,7 @@ export const Input = ({
             name={name}
             placeholder={placeholder}
             type={type}
-            className="w-full p-1 px-2 pl-9 text-gray-800 outline-none appearance-none"
+            className={`w-full p-1 px-2 pl-9 outline-none appearance-none ${classDisbled}`}
             disabled={isInterfaceView}
           />
         </span>
