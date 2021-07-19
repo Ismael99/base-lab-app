@@ -32,8 +32,14 @@ export const user = (Yup) => ({
     {
       label: 'Estado',
       placeholder: 'Estado',
-      type: 'text',
-      name: 'user_status'
+      type: 'select',
+      name: 'user_status',
+      options: [
+        { record_status_id: 1, record_status_name: 'Activo' },
+        { record_status_id: 2, record_status_name: 'Inactivo' }
+      ],
+      id: 'record_status_id',
+      value: 'record_status_name'
     }
   ]
 })

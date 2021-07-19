@@ -37,7 +37,7 @@ export const Dashboard = () => {
 
     fetch()
   }, [dispatch])
-
+  console.log(loading)
   if (loading) return <LoaderPage />
 
   return (
