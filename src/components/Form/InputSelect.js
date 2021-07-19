@@ -11,7 +11,7 @@ export const InputSelect = ({
   id,
   value
 }) => {
-  console.log(id)
+  console.log(options[0][id])
   return (
     <Field
       name={name}
@@ -21,7 +21,9 @@ export const InputSelect = ({
       className={`w-full p-1 px-2 pl-9 outline-none appearance-none ${classDisabled}`}
     >
       {options.map((option) => (
-        <option key={option[id]}>{option[value]}</option>
+        <option key={option[id]} value={option[id]}>
+          {option[value]}
+        </option>
       ))}
     </Field>
   )
