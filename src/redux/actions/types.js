@@ -6,3 +6,7 @@ export const USER_ACTIONS = {
   UPDATE_USER: 'update_user',
   SET_CURRENT_USER: 'set_current_user'
 }
+
+export const RECORD_STATUS_ACTIONS = {
+  FETCH_RECORD_STATUS: 'fetch_record_status'
+}

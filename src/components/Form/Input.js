@@ -4,6 +4,7 @@ import { InputText } from './InputText'
 import { InputSelect } from './InputSelect'
 import { InformationCircleIcon } from '@heroicons/react/outline'
 import PropTypes from 'prop-types'
+
 export const Input = (props) => {
   const { isInterfaceView, label, icon, type, name } = props
   const Icon = icon ? icon : InformationCircleIcon
@@ -33,5 +34,6 @@ export const Input = (props) => {
 }
 
 Input.propTypes = {
-  icon: PropTypes.func
+  icon: PropTypes.func,
+  label: PropTypes.string.isRequired
 }
