@@ -9,7 +9,8 @@ export const Form = ({
   schema,
   toDispatch,
   setCurrent,
-  isInterfaceView
+  isInterfaceView,
+  recordsStatus
 }) => {
   const dispatch = useDispatch()
   return (
@@ -29,7 +30,12 @@ export const Form = ({
     >
       <Formk className="flex flex-col pt-3 md:pt-2">
         {schema.fields.map((field, key) => (
-          <Input {...field} key={key} isInterfaceView={isInterfaceView} />
+          <Input
+            {...field}
+            key={key}
+            isInterfaceView={isInterfaceView}
+            selectData={recordsStatus}
+          />
         ))}
         <FormButtons moduleName="users" isInterfaceView={isInterfaceView} />
       </Formk>

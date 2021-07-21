@@ -1,8 +1,8 @@
 import { UserIcon, BriefcaseIcon } from '@heroicons/react/outline'
 import { configureStore } from '../redux'
-const store = configureStore()
-const status = store.getState()
-console.log(status.recordsStatus.state.data)
+
+const status = configureStore().getState()
+
 export const user = (Yup) => ({
   validations: Yup.object({
     user_name: Yup.string().min(3, 'Caracteres minimos 5').required('Required'),
@@ -37,9 +37,10 @@ export const user = (Yup) => ({
       placeholder: 'Estado',
       type: 'select',
       name: 'user_status',
-      options: status.recordsStatus.state.data,
+      options: [],
       id: 'record_status_id',
-      value: 'record_status_name'
+      value: 'record_status_name',
+      module: 'records_status'
     }
   ]
 })

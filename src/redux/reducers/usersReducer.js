@@ -12,13 +12,10 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
       return { ...state, data: action.payload }
     case USER_ACTIONS.SAVE_USER:
       const newUsersData = [...state.data, action.payload]
-      console.log(newUsersData)
       return { ...state, data: [...state.data, action.payload] }
     case USER_ACTIONS.SET_CURRENT_USER:
-      console.log(action.payload)
       return { ...state, current: action.payload }
     case USER_ACTIONS.UPDATE_USER:
-      console.log(action.payload)
       return {
         ...state,
         data: state.data.map((user) =>
@@ -26,7 +23,6 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
         )
       }
     case USER_ACTIONS.DELETE_USER: {
-      console.log(action.payload.user_id)
       return {
         ...state,
         data: state.data.map((user) =>

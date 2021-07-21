@@ -13,8 +13,6 @@ export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
   const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
   const [currentPage, setCurrentPage] = useState(0)
-  console.log(data)
-  console.log(searchResult)
   // Paginator handler
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage)
