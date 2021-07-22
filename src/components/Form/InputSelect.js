@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'formik'
 import { useSelector } from 'react-redux'
@@ -9,12 +9,10 @@ export const InputSelect = ({
   type,
   placeholder,
   isInterfaceView,
-  classDisabled,
   id,
   value,
   module
 }) => {
-  console.log(module)
   const selectDataSelector = createSelector((state) => state[module].data)
   const selectData = useSelector(selectDataSelector)
   return (
@@ -23,7 +21,7 @@ export const InputSelect = ({
       placeholder={placeholder}
       as={type}
       disabled={isInterfaceView}
-      className={`w-full p-1 px-2 pl-9 outline-none ${classDisabled}`}
+      className={`w-full p-1 px-2 pl-9 outline-none`}
     >
       {selectData &&
         selectData.map((option) => (
