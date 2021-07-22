@@ -8,9 +8,6 @@ import PropTypes from 'prop-types'
 export const Input = (props) => {
   const { isInterfaceView, label, icon, type, name } = props
   const Icon = icon ? icon : InformationCircleIcon
-  const classDisabled = isInterfaceView
-    ? ' bg-white text-gray-400 opacity-800'
-    : ' bg-white text-gray-800 '
   return (
     <div className="w-full">
       <div className="w-3/4 h-6 mx-auto mt-3 text-xs font-bold text-gray-600 uppercase xl:w-1/2 leading-8">
@@ -22,9 +19,9 @@ export const Input = (props) => {
         <span className="flex w-full flex-row items-center justify-start">
           <Icon className="absolute w-5 ml-1" />
           {type === 'select' ? (
-            <InputSelect {...props} classDisabled={classDisabled} />
+            <InputSelect {...props} />
           ) : (
-            <InputText {...props} classDisabled={classDisabled} />
+            <InputText {...props} />
           )}
         </span>
       </div>
