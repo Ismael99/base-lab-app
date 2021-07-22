@@ -26,7 +26,6 @@ Section.propTypes = {
 export const Dashboard = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-
   useEffect(() => {
     const fetch = async () => {
       console.log('fetching')
@@ -34,12 +33,10 @@ export const Dashboard = () => {
       await dispatch(thunkFecthUsers)
       setLoading(false)
     }
-
     fetch()
   }, [dispatch])
-
+  console.log(loading)
   if (loading) return <LoaderPage />
-
   return (
     <DashboardContainer>
       <DashboardSidebar />
