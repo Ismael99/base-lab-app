@@ -4,16 +4,15 @@ import { FormButtons } from './FormButtons'
 import { Input } from './Input'
 import { useDispatch } from 'react-redux'
 import { navigate } from '@reach/router'
-
 export const Form = ({
   initialValues,
   schema,
   toDispatch,
   setCurrent,
-  isInterfaceView
+  isInterfaceView,
+  recordsStatus
 }) => {
   const dispatch = useDispatch()
-
   return (
     <Formik
       initialValues={
@@ -32,13 +31,10 @@ export const Form = ({
       <Formk className="flex flex-col pt-3 md:pt-2">
         {schema.fields.map((field, key) => (
           <Input
+            {...field}
             key={key}
-            label={field.label}
-            placeholder={field.placeholder}
-            type={field.type}
-            name={field.name}
-            icon={field.icon}
             isInterfaceView={isInterfaceView}
+            selectData={recordsStatus}
           />
         ))}
         <FormButtons moduleName="users" isInterfaceView={isInterfaceView} />

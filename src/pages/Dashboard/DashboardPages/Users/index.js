@@ -17,13 +17,11 @@ const usersSelector = createSelector(
   (state) => state.users.data,
   (data) => data.filter((user) => user.user_status !== 2)
 )
-
 const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
   const users = useSelector(usersSelector)
   const token = useSelector(tokenSelector)
-  console.log(token)
   return (
     <DashboardSection>
       <DashboardSectionTitle title="Usuarios" />
