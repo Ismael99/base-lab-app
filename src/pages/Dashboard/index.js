@@ -37,7 +37,6 @@ export const Dashboard = () => {
   }, [dispatch])
   console.log(loading)
   if (loading) return <LoaderPage />
-
   return (
     <DashboardContainer>
       <DashboardSidebar />
