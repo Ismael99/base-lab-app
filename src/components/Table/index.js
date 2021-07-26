@@ -25,21 +25,12 @@ export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
     .map((row, key) => (
       <tr key={key} className="border-b border-gray-200 hover:bg-gray-100">
         {keys.map((key, keyValue) => {
-          if (keyValue < 1)
-            return (
-              <td
-                key={keyValue}
-                className="px-6 py-3 text-left whitespace-nowrap"
-              >
-                <div className="flex items-center">
-                  <span className="font-medium">{row[key]}</span>
-                </div>
-              </td>
-            )
           return (
             <td
               key={keyValue}
-              className="px-6 py-3 text-center whitespace-nowrap"
+              className={`px-6 py-3 ${
+                keyValue > 1 ? ' text-center ' : ' text-left '
+              } whitespace-nowrap`}
             >
               <div className="flex items-center justify-center">
                 <span className="font-medium">{row[key]}</span>
