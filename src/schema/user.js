@@ -3,7 +3,7 @@ import { UserIcon, BriefcaseIcon } from '@heroicons/react/outline'
 export const user = (Yup) => ({
   validations: Yup.object({
     user_name: Yup.string()
-      .min(3, 'Caracteres minimos 3')
+      .min(3, 'Caracteres mínimos 3')
       .required('Campo requerido'),
     user_role: Yup.number().required('Campo requerido'),
     user_status: Yup.number().required('Campo requerido')
