@@ -3,7 +3,7 @@ export const UserRoutes = [
   { path: './users/create', title: 'Crear usuarios' }
 ]
 
-export const TestRoutes = [
-  { path: '/', title: 'action 1' },
-  { path: '/', title: 'action 2' }
+export const PacientesRoutes = [
+  { path: './pacientes', title: 'Ver pacientes' },
+  { path: './pacientes/create', title: 'Registrar pacientes' }
 ]
