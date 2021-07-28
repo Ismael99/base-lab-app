@@ -14,7 +14,7 @@ export const user = (Yup) => ({
     user_role: '',
     user_status: ''
   },
-  tableHeaders: ['Nombre', 'Username', 'Status', 'Rol', 'Actions'],
+  tableHeaders: ['Nombre', 'Username', 'Rol', 'Status', 'Actions'],
   keys: ['user_name', 'user_username', 'user_role', 'user_status'],
   fields: [
     {
