@@ -9,7 +9,7 @@ export const fetchPacientes = (pacientes) => ({
 })
 
 export const thunkFetchPacientes = async (dispatch, _) => {
-  const pacientes = await client.get({ resouce: resource })
+  const pacientes = await client.get({ resource: resource })
   await dispatch({
     type: PACIENTES_ACTIONS.FETCH_PACIENTES,
     payload: pacientes

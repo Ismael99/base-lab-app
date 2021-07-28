@@ -8,8 +8,10 @@ import { DashboardContent } from './DashboardContent'
 import { DashboardMainContent } from './DashboardMainContent'
 import { Test } from './DashboardPages/Test'
 import { Users } from './DashboardPages/Users'
+import { Pacientes } from './DashboardPages/Pacientes'
 import { Home } from './DashboardPages/Home'
 import { thunkFecthUsers } from '../../redux/actions/usersActions'
+import { thunkFetchPacientes } from '../../redux/actions/pacientesAction'
 import { LoaderPage } from '../../components/Loader/LoaderPage'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../SiteStatus/NotFound'
@@ -30,6 +32,7 @@ export const Dashboard = () => {
     const fetch = async () => {
       console.log('fetching')
       setLoading(true)
+      await dispatch(thunkFetchPacientes)
       await dispatch(thunkFecthUsers)
       setLoading(false)
     }
@@ -46,6 +49,7 @@ export const Dashboard = () => {
           <Router className="h-full">
             <Home path="/" />
             <Users path="users/*" />
+            <Pacientes path="pacientes/*" />
             <Test path="test" />
             <NotFound default />
           </Router>

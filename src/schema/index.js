@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 import { user } from './user'
-
+import { paciente } from './paciente'
 export const LoginSchema = {
   initialValues: {
     user_username: '',
@@ -17,5 +17,5 @@ export const LoginSchema = {
       .required('Required')
   })
 }
-
+export const PacienteSchema = paciente(Yup)
 export const UserSchema = user(Yup)

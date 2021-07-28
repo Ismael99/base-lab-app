@@ -3,7 +3,6 @@ import {
   PhoneIcon,
   CalendarIcon
 } from '@heroicons/react/outline'
-import * as Yup from 'yup'
 const validationPhoneNumber = '/^[762]{1}[0-9]{3}-?[0-9]{4}$/g'
 export const paciente = (Yup) => ({
   validations: Yup.object({

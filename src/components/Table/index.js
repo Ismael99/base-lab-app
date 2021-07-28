@@ -22,23 +22,27 @@ export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
   const offset = search.length > 0 ? 0 : currentPage * PER_PAGE
   const currentPageData = searchResult
     .slice(offset, offset + PER_PAGE)
-    .map((row, key) => (
-      <tr key={key} className="border-b border-gray-200 hover:bg-gray-100">
-        {keys.map((key, keyValue) => {
+    .map((row, keyRow) => (
+      <tr key={keyRow} className="border-b border-gray-200 hover:bg-gray-100">
+        {keys.map((keyName, key) => {
           return (
             <td
-              key={keyValue}
+              key={key}
               className={`px-6 py-3 ${
-                keyValue > 1 ? ' text-center ' : ' text-left '
+                key < 1 ? ' text-center ' : ' text-center '
               } whitespace-nowrap`}
             >
-              <div className="flex items-center justify-center">
-                <span className="font-medium">{row[key]}</span>
+              <div
+                className={`flex items-center ${
+                  key < 1 ? ' justify-left ' : ' justify-center '
+                }`}
+              >
+                <span className="font-medium">{row[keyName]}</span>
               </div>
             </td>
           )
         })}
-        <TableActions key={key} data={row} idKey={idKey} />
+        <TableActions key={keyRow} data={row} idKey={idKey} />
       </tr>
     ))
 
