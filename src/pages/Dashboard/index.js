@@ -11,7 +11,6 @@ import { Users } from './DashboardPages/Users'
 import { Pacientes } from './DashboardPages/Pacientes'
 import { Home } from './DashboardPages/Home'
 import { thunkFecthUsers } from '../../redux/actions/usersActions'
-import { thunkFetchPacientes } from '../../redux/actions/pacientesAction'
 import { LoaderPage } from '../../components/Loader/LoaderPage'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../SiteStatus/NotFound'
@@ -36,7 +35,7 @@ export const Dashboard = () => {
       setLoading(false)
     }
     fetch()
-  }, [])
+  }, [dispatch])
   console.log(loading)
   if (loading) return <LoaderPage />
   return (
