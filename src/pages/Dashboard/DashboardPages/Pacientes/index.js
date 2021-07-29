@@ -1,31 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Router } from '@reach/router'
-import { createSelector } from 'selector'
-import { useSelector } from 'react-redux'
 import { DashboardSection } from '../../DashboardSection'
 import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
 import { PacientesHome } from './PacientesHome'
+import { PacienteDetail } from './PacienteDetail'
+import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
+import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
+import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import {
   savePaciente,
   updatePaciente
 } from '../../../../redux/actions/pacientesAction'
 
-const pacientesSelector = createSelector((state) => state.pacientes.state.data)
-
 export const Pacientes = () => {
-  const pacientes = useSelector(pacientesSelector)
-  console.log(pacientes)
-  return (
-    <DashboardSection>
-      <DashboardSectionTitle title="Pacientes" />
-      <DashboardSectionContent>
-        <Router>
-          <PacientesHome pacientes={pacientes} path="/" title="Ver" />
-          <NotFound default />
-        </Router>
-      </DashboardSectionContent>
-    </DashboardSection>
-  )
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    const fetch = async () => {
+      console.log('Fetching de datos')
+      setLoading(true)
+      await dispatch(thunkFetchPacientes)
+      setLoading(false)
+    }
+    fetch()
+  }, [dispatch])
+  if (loading) return <LoaderPage />
+  else {
+    return (
+      <DashboardSection>
+        <DashboardSectionTitle title="Pacientes" />
+        <DashboardSectionContent>
+          <Router>
+            <PacientesHome path="/" title="Ver" />
+            <PacienteDetail path="view/:id" />
+            <NotFound default />
+          </Router>
+        </DashboardSectionContent>
+      </DashboardSection>
+    )
+  }
 }

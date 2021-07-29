@@ -32,12 +32,11 @@ export const Dashboard = () => {
     const fetch = async () => {
       console.log('fetching')
       setLoading(true)
-      await dispatch(thunkFetchPacientes)
       await dispatch(thunkFecthUsers)
       setLoading(false)
     }
     fetch()
-  }, [dispatch])
+  }, [])
   console.log(loading)
   if (loading) return <LoaderPage />
   return (

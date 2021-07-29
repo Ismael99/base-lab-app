@@ -1,8 +1,14 @@
 import React from 'react'
 import { Table } from '../../../../components/Table'
 import { PacienteSchema } from '../../../../schema'
-
-export const PacientesHome = ({ pacientes }) => {
+import { createSelector } from 'selector'
+import { useSelector } from 'react-redux'
+const pacientesSelector = createSelector(
+  (state) => state.pacientes.data
+  //(data) => data.filter((paciente) => paciente.paciente_status !== 2)
+)
+export const PacientesHome = () => {
+  const pacientes = useSelector(pacientesSelector)
   return (
     <>
       <Table

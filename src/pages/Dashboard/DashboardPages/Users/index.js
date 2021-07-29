@@ -22,6 +22,7 @@ const tokenSelector = createSelector((state) => state.users.token)
 export const Users = () => {
   const users = useSelector(usersSelector)
   const token = useSelector(tokenSelector)
+  console.log(users)
   return (
     <DashboardSection>
       <DashboardSectionTitle title="Usuarios" />
