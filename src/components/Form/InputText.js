@@ -21,6 +21,5 @@ export const InputText = ({
 InputText.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  isInterfaceView: PropTypes.bool.isRequired,
-  classDisabled: PropTypes.string.isRequired
+  isInterfaceView: PropTypes.bool.isRequired
 }

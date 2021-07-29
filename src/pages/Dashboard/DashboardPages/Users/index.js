@@ -30,12 +30,7 @@ export const Users = () => {
         <Router>
           <UsersHome users={users} path="/" title="Ver" />
           <UserNew path="create" toDispatch={saveUser} />
-          <UserEdit
-            path="edit/:id"
-            users={users}
-            toDispatch={updateUser}
-            isUpdate={true}
-          />
+          <UserEdit path="edit/:id" users={users} toDispatch={updateUser} />
           <UserDelete path="delete/:id" users={users} />
           <UserDetail path="view/:id" users={users} />
           <NotFound default />

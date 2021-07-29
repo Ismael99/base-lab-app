@@ -5,6 +5,7 @@ import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
 import { PacientesHome } from './PacientesHome'
 import { PacienteDetail } from './PacienteDetail'
+import { PacienteEdit } from './PacienteEdit'
 import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
@@ -16,7 +17,7 @@ import {
 
 export const Pacientes = () => {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const fetch = async () => {
       console.log('Fetching de datos')
@@ -25,7 +26,7 @@ export const Pacientes = () => {
       setLoading(false)
     }
     fetch()
-  }, [dispatch])
+  }, [])
   if (loading) return <LoaderPage />
   else {
     return (
@@ -35,6 +36,7 @@ export const Pacientes = () => {
           <Router>
             <PacientesHome path="/" title="Ver" />
             <PacienteDetail path="view/:id" />
+            <PacienteEdit toDispatch={updatePaciente} path="edit/:id" />
             <NotFound default />
           </Router>
         </DashboardSectionContent>

@@ -15,6 +15,7 @@ export const InputSelect = ({
 }) => {
   const selectDataSelector = createSelector((state) => state[module].data)
   const selectData = useSelector(selectDataSelector)
+  console.log(selectData)
   return (
     <Field
       name={name}
@@ -23,11 +24,12 @@ export const InputSelect = ({
       disabled={isInterfaceView}
       className={`w-full p-1 px-2 pl-9 outline-none`}
     >
-      {selectData.map((option) => (
-        <option key={option[id]} value={option[id]}>
-          {option[value]}
-        </option>
-      ))}
+      {selectData &&
+        selectData.map((option) => (
+          <option key={option[id]} value={option[id]}>
+            {option[value]}
+          </option>
+        ))}
     </Field>
   )
 }

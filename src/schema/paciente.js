@@ -3,7 +3,7 @@ import {
   PhoneIcon,
   CalendarIcon
 } from '@heroicons/react/outline'
-const validationPhoneNumber = '/^[762]{1}[0-9]{3}-?[0-9]{4}$/g'
+const validationPhoneNumber = /^[762]{1}[0-9]{3}-?[0-9]{4}$/g
 export const paciente = (Yup) => ({
   validations: Yup.object({
     paciente_nombre: Yup.string()
@@ -22,8 +22,10 @@ export const paciente = (Yup) => ({
       .required('Campo requerido'),
     paciente_edad: Yup.number()
       .min(1, 'Dígitos mínimos 1')
-      .max(3, 'Caracteres máximos 3')
-      .required('Campo requerido'),
+      .integer()
+      .positive()
+      .required('Campo requerido')
+      .max(130, 'Edad no válida'),
     paciente_sexo: Yup.string()
       .min(1, 'Caracteres mínimos 1')
       .max(10, 'Caracteres máximos 10')

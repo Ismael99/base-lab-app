@@ -3,8 +3,6 @@ import { UserSchema } from '../../../../schema'
 import { UsersForm } from './UsersForm'
 
 export const UserEdit = ({ id, users, ...props }) => {
-  const { recordsStatus } = props
-  console.log(recordsStatus)
   console.log('UserEdit')
   console.log('id', id)
   const userToEdit = id
