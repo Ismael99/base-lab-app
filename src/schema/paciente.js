@@ -78,9 +78,18 @@ export const paciente = (Yup) => ({
     },
     {
       label: 'Sexo',
-      placeholder: 'Sexo',
-      type: 'text',
-      name: 'paciente_sexo'
+      type: 'radio',
+      name: 'paciente_sexo',
+      options: [
+        {
+          value: 'M',
+          text: 'Masculino'
+        },
+        {
+          value: 'F',
+          text: 'Femenino'
+        }
+      ]
     },
     {
       label: 'Teléfono',
