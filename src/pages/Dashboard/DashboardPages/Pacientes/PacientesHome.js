@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 const pacientesSelector = createSelector(
-  (state) => state.pacientes.data,
+  (state) => (state.pacientes.data ? state.pacientes.data : []),
   (data) => data.filter((paciente) => paciente.paciente_status !== 2)
 )
 
@@ -27,7 +27,7 @@ export const PacientesHome = () => {
     <>
       <Table
         headers={PacienteSchema.tableHeaders}
-        data={pacientes ? pacientes : []}
+        data={pacientes}
         keys={PacienteSchema.keys}
         idKey="paciente_id"
       />
