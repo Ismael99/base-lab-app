@@ -8,7 +8,10 @@ import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 
 const pacientesSelector = createSelector(
   (state) => state.pacientes.data,
-  (data) => data.filter((paciente) => paciente.paciente_status)
+  (data) =>
+    data.filter((paciente) => {
+      return paciente.paciente_status !== 2
+    })
 )
 
 export const PacienteEdit = ({ id, ...props }) => {
@@ -26,7 +29,6 @@ export const PacienteEdit = ({ id, ...props }) => {
     }
     fetch()
   }, [dispatch])
-
   if (loading) return <LoaderPage />
 
   return (

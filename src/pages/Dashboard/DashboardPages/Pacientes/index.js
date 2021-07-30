@@ -12,19 +12,15 @@ import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
-import { useSelector } from 'react-redux'
-import { createSelector } from 'selector'
 import {
   savePaciente,
   updatePaciente
 } from '../../../../redux/actions/pacientesAction'
 
-const pacientesSelector = createSelector((state) => state.pacientes.data)
-
 export const Pacientes = () => {
   const dispatch = useDispatch()
-  const pacientes = useSelector(pacientesSelector)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [mounted, setMounted] = useState(true)
   useEffect(() => {
     const fetch = async () => {
       console.log('Fetching de datos')
@@ -32,7 +28,8 @@ export const Pacientes = () => {
       await dispatch(thunkFetchPacientes)
       setLoading(false)
     }
-    fetch()
+    if (mounted) fetch()
+    return () => setMounted(false)
   }, [dispatch])
   if (loading) return <LoaderPage />
   else {
@@ -45,7 +42,7 @@ export const Pacientes = () => {
             <PacienteDetail path="view/:id" />
             <PacienteNew path="create" toDispatch={savePaciente} />
             <PacienteEdit toDispatch={updatePaciente} path="edit/:id" />
-            <PacienteDelete path="delete/:id" pacientes={pacientes} />
+            <PacienteDelete path="delete/:id" />
             <NotFound default />
           </Router>
         </DashboardSectionContent>

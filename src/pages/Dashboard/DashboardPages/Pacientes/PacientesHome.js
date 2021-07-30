@@ -5,9 +5,8 @@ import { createSelector } from 'selector'
 import { useSelector, useDispatch } from 'react-redux'
 import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
-const pacientesSelector = createSelector(
-  (state) => (state.pacientes.data ? state.pacientes.data : []),
-  (data) => data.filter((paciente) => paciente.paciente_status !== 2)
+const pacientesSelector = createSelector((state) =>
+  state.pacientes.data ? state.pacientes.data : []
 )
 
 export const PacientesHome = () => {
