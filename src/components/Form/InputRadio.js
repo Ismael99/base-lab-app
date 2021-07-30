@@ -5,8 +5,8 @@ import { Field } from 'formik'
 export const InputRadio = ({ name, type, isInterfaceView, options }) => {
   return (
     <div className="flex flex-row w-full p-1 pl-9 outline-none">
-      {options.map((option) => (
-        <div className="mr-4">
+      {options.map((option, key) => (
+        <div className="mr-4" key={key}>
           <Field
             type={type}
             name={name}
