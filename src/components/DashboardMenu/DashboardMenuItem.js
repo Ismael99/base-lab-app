@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes, { object } from 'prop-types'
 import { Link } from '@reach/router'
-import {
-  HomeIcon,
-  ChevronDownIcon,
-  ChevronRightIcon
-} from '@heroicons/react/outline'
+import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import { useDropdown } from '../../hooks/useDropdown'
 
-export const DashboardMenuItem = ({ title, path, links }) => {
+export const DashboardMenuItem = ({ title, path, links, icon }) => {
   const [isDropdownOPen, onClickDropdown, openClasses] = useDropdown()
-
+  const Icon = icon
   return (
     <>
       <Link
@@ -21,7 +17,7 @@ export const DashboardMenuItem = ({ title, path, links }) => {
           {/* Module icon*/}
           <span>
             {' '}
-            <HomeIcon className="w-5 h-5" />{' '}
+            <Icon className="w-5 h-5" />{' '}
           </span>
           <span className="ml-2 text-sm">{title}</span>
         </span>
@@ -60,5 +56,6 @@ export const DashboardMenuItem = ({ title, path, links }) => {
 DashboardMenuItem.propTypes = {
   title: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(object)
+  links: PropTypes.arrayOf(object),
+  icon: PropTypes.func.isRequired
 }

@@ -22,6 +22,7 @@ const tokenSelector = createSelector((state) => state.users.token)
 export const Users = () => {
   const users = useSelector(usersSelector)
   const token = useSelector(tokenSelector)
+  console.log(users)
   return (
     <DashboardSection>
       <DashboardSectionTitle title="Usuarios" />
@@ -29,12 +30,7 @@ export const Users = () => {
         <Router>
           <UsersHome users={users} path="/" title="Ver" />
           <UserNew path="create" toDispatch={saveUser} />
-          <UserEdit
-            path="edit/:id"
-            users={users}
-            toDispatch={updateUser}
-            isUpdate={true}
-          />
+          <UserEdit path="edit/:id" users={users} toDispatch={updateUser} />
           <UserDelete path="delete/:id" users={users} />
           <UserDetail path="view/:id" users={users} />
           <NotFound default />
