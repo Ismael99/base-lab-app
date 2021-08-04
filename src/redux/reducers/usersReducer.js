@@ -12,7 +12,7 @@ export const usersReducer = (state = INITIAL_STATE, action) => {
       return { ...state, data: action.payload }
     case USER_ACTIONS.SAVE_USER:
       const newUsersData = [...state.data, action.payload]
-      return { ...state, data: [...state.data, action.payload] }
+      return { ...state, data: newUsersData }
     case USER_ACTIONS.SET_CURRENT_USER:
       return { ...state, current: action.payload }
     case USER_ACTIONS.UPDATE_USER:

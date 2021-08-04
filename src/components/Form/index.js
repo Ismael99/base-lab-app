@@ -10,7 +10,7 @@ export const Form = ({
   toDispatch,
   setCurrent,
   isInterfaceView,
-  recordsStatus
+  currentPath
 }) => {
   const dispatch = useDispatch()
   return (
@@ -30,14 +30,12 @@ export const Form = ({
     >
       <Formk className="flex flex-col pt-3 md:pt-2">
         {schema.fields.map((field, key) => (
-          <Input
-            {...field}
-            key={key}
-            isInterfaceView={isInterfaceView}
-            selectData={recordsStatus}
-          />
+          <Input {...field} key={key} isInterfaceView={isInterfaceView} />
         ))}
-        <FormButtons moduleName="users" isInterfaceView={isInterfaceView} />
+        <FormButtons
+          moduleName={currentPath}
+          isInterfaceView={isInterfaceView}
+        />
       </Formk>
     </Formik>
   )

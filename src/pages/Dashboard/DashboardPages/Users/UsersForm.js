@@ -6,7 +6,7 @@ import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatus
 import { useDispatch } from 'react-redux'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 export const UsersForm = ({ user, isInterfaceView, ...props }) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   useEffect(() => {
     const fetch = async () => {

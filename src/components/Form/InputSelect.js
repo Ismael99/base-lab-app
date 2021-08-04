@@ -15,6 +15,7 @@ export const InputSelect = ({
 }) => {
   const selectDataSelector = createSelector((state) => state[module].data)
   const selectData = useSelector(selectDataSelector)
+  console.log(selectData)
   return (
     <Field
       name={name}
@@ -38,7 +39,6 @@ InputSelect.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   isInterfaceView: PropTypes.bool.isRequired,
-  classDisabled: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
