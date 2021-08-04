@@ -1,4 +1,4 @@
 export const roles = () => ({
-  tableHeaders: ['Rol', 'Descripción', 'Código', 'Acciones'],
+  tableHeaders: ['Rol', 'Descripción', 'Código'],
   keys: ['role_name', 'role_desc', 'role_code']
 })

@@ -8,7 +8,14 @@ import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
 import './index.css'
 
-export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
+export const Table = ({
+  data,
+  headers,
+  keys,
+  PER_PAGE = 5,
+  idKey,
+  addActions = true
+}) => {
   // table search state
   const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
@@ -42,7 +49,7 @@ export const Table = ({ data, headers, keys, PER_PAGE = 5, idKey }) => {
             </td>
           )
         })}
-        <TableActions key={keyRow} data={row} idKey={idKey} />
+        {addActions && <TableActions key={keyRow} data={row} idKey={idKey} />}
       </tr>
     ))
 

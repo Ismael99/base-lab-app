@@ -31,6 +31,7 @@ export const RolesHome = () => {
         data={roles}
         keys={RolesSchema.keys}
         idKey="role_id"
+        addActions={false}
       />
     </>
   )
