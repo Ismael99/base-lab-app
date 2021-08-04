@@ -1,6 +1,8 @@
 import * as Yup from 'yup'
 import { user } from './user'
 import { paciente } from './paciente'
+import { roles } from './roles'
+
 export const LoginSchema = {
   initialValues: {
     user_username: '',
@@ -17,5 +19,6 @@ export const LoginSchema = {
       .required('Required')
   })
 }
+export const RolesSchema = roles()
 export const PacienteSchema = paciente(Yup)
 export const UserSchema = user(Yup)

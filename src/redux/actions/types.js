@@ -18,3 +18,7 @@ export const PACIENTES_ACTIONS = {
   UPDATE_PACIENTE: 'update_paciente',
   SET_CURRENT_PACIENTE: 'set_current_paciente'
 }
+
+export const ROLES_ACTIONS = {
+  FETCH_ROLES: 'fetch_roles'
+}
