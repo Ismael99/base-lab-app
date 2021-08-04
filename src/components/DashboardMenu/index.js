@@ -1,7 +1,7 @@
 import React from 'react'
-import { UserRoutes, PacientesRoutes } from '../../config/routes'
+import { UserRoutes, PacientesRoutes, RolesRoutes } from '../../config/routes'
 import { DashboardMenuItem } from './DashboardMenuItem'
-import { HomeIcon, UsersIcon } from '@heroicons/react/outline'
+import { HomeIcon, UsersIcon, BriefcaseIcon } from '@heroicons/react/outline'
 
 export const DashboardMenu = () => (
   <>
@@ -16,6 +16,12 @@ export const DashboardMenu = () => (
       path="pacientes"
       links={PacientesRoutes}
       icon={UsersIcon}
+    />
+    <DashboardMenuItem
+      title="Roles"
+      path="roles"
+      links={RolesRoutes}
+      icon={BriefcaseIcon}
     />
   </>
 )

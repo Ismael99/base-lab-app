@@ -7,3 +7,5 @@ export const PacientesRoutes = [
   { path: './pacientes', title: 'Ver pacientes' },
   { path: './pacientes/create', title: 'Registrar pacientes' }
 ]
+
+export const RolesRoutes = [{ path: './roles', title: 'Ver Roles' }]
