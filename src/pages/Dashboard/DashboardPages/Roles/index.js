@@ -23,7 +23,7 @@ export const Roles = () => {
     return () => {
       setMounted(false)
     }
-  }, [dispatch])
+  }, [dispatch, mounted])
   if (loading) return <LoaderPage />
   return (
     <DashboardSection>
