@@ -12,7 +12,7 @@ export const Table = ({
   data,
   headers,
   keys,
-  PER_PAGE = 5,
+  PER_PAGE = 1,
   idKey,
   addActions = true
 }) => {
@@ -78,6 +78,8 @@ export const Table = ({
         previousLabel={'\u2770 Previous'}
         nextLabel={'Next \u2771'}
         pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
         onPageChange={handlePageClick}
         containerClassName={
           'pagination my-5 w-1/2 text-xs flex flex-wrap flex-row md:text-md mx-auto'
