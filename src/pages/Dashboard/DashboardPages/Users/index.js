@@ -14,6 +14,7 @@ import { NotFound } from '../../../SiteStatus/NotFound'
 import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
+import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
 const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
@@ -24,6 +25,7 @@ export const Users = () => {
     const fetch = async () => {
       setLoading(true)
       await dispatch(thunkFecthUsers)
+      await dispatch(thunkFetchRecordsStatus)
       setLoading(false)
     }
     if (mounted) fetch()
