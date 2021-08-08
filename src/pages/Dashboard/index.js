@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Router } from '@reach/router'
 import { DashboardNav } from '../../components/DashboardNav'
@@ -11,9 +11,6 @@ import { Users } from './DashboardPages/Users'
 import { Pacientes } from './DashboardPages/Pacientes'
 import { Roles } from './DashboardPages/Roles'
 import { Home } from './DashboardPages/Home'
-import { thunkFecthUsers } from '../../redux/actions/usersActions'
-import { LoaderPage } from '../../components/Loader/LoaderPage'
-import { useDispatch } from 'react-redux'
 import { NotFound } from '../SiteStatus/NotFound'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
@@ -26,19 +23,6 @@ Section.propTypes = {
 }
 
 export const Dashboard = () => {
-  const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    const fetch = async () => {
-      console.log('fetching')
-      setLoading(true)
-      await dispatch(thunkFecthUsers)
-      setLoading(false)
-    }
-    fetch()
-  }, [dispatch])
-  console.log(loading)
-  if (loading) return <LoaderPage />
   return (
     <DashboardContainer>
       <DashboardSidebar />

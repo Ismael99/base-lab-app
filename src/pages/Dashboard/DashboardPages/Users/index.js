@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Router } from '@reach/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { createSelector } from 'selector'
 import { DashboardSection } from '../../DashboardSection'
 import { DashboardSectionTitle } from '../../DashboardSectionTitle'
@@ -12,27 +12,39 @@ import { UserDelete } from './UserDelete'
 import { UserDetail } from './UsersDetail'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
-
-const usersSelector = createSelector(
-  (state) => state.users.data,
-  (data) => data.filter((user) => user.user_status !== 2)
-)
+import { LoaderPage } from '../../../../components/Loader/LoaderPage'
+import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
+import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
 const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
-  const users = useSelector(usersSelector)
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+  const [mounted, setMounted] = useState(true)
+  useEffect(() => {
+    const fetch = async () => {
+      setLoading(true)
+      await dispatch(thunkFecthUsers)
+      await dispatch(thunkFetchRecordsStatus)
+      setLoading(false)
+    }
+    if (mounted) fetch()
+    return () => {
+      setMounted(false)
+    }
+  }, [dispatch, mounted])
   const token = useSelector(tokenSelector)
-  console.log(users)
+  if (loading) return <LoaderPage />
   return (
     <DashboardSection>
       <DashboardSectionTitle title="Usuarios" />
       <DashboardSectionContent>
         <Router>
-          <UsersHome users={users} path="/" title="Ver" />
+          <UsersHome path="/" title="Ver" />
           <UserNew path="create" toDispatch={saveUser} />
-          <UserEdit path="edit/:id" users={users} toDispatch={updateUser} />
-          <UserDelete path="delete/:id" users={users} />
-          <UserDetail path="view/:id" users={users} />
+          <UserEdit path="edit/:id" toDispatch={updateUser} />
+          <UserDelete path="delete/:id" />
+          <UserDetail path="view/:id" />
           <NotFound default />
         </Router>
       </DashboardSectionContent>

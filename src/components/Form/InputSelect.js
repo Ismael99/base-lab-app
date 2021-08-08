@@ -13,7 +13,9 @@ export const InputSelect = ({
   value,
   module
 }) => {
-  const selectDataSelector = createSelector((state) => state[module].data)
+  const selectDataSelector = createSelector((state) =>
+    state[module].data ? state[module].data : []
+  )
   const selectData = useSelector(selectDataSelector)
   console.log(selectData)
   return (
@@ -39,7 +41,6 @@ InputSelect.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   isInterfaceView: PropTypes.bool.isRequired,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 }
