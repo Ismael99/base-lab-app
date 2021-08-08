@@ -5,7 +5,7 @@ import { createSelector } from 'selector'
 import { useSelector, useDispatch } from 'react-redux'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
-
+import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
 const usersSelector = createSelector(
   (state) => (state.users.data ? state.users.data : []),
   (data) => data.filter((user) => user.user_state !== 2)
@@ -20,6 +20,7 @@ export const UsersHome = () => {
     const fetch = async () => {
       setLoading(true)
       await dispatch(thunkFecthUsers)
+      await dispatch(thunkFetchRecordsStatus)
       setLoading(false)
     }
     if (mounted) fetch()
