@@ -13,6 +13,7 @@ const pacientesSelector = createSelector(
 export const PacientesHome = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
+  const [mounted, setMounted] = useState(true)
   const pacientes = useSelector(pacientesSelector)
   useEffect(() => {
     const fetch = async () => {
@@ -20,8 +21,11 @@ export const PacientesHome = () => {
       await dispatch(thunkFetchPacientes)
       setLoading(false)
     }
-    fetch()
-  }, [dispatch])
+    if (mounted) fetch()
+    return () => {
+      setMounted(false)
+    }
+  }, [dispatch, mounted])
   if (loading) return <LoaderPage />
   return (
     <>

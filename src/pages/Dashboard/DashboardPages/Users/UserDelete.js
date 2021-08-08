@@ -6,11 +6,18 @@ import {
   setCurrentUser,
   deleteUser
 } from '../../../../redux/actions/usersActions'
+import { useSelector } from 'react-redux'
+import { createSelector } from 'selector'
 
-export const UserDelete = ({ id, users }) => {
+const usersSelector = createSelector(
+  (state) => (state.users.data ? state.users.data : []),
+  (data) => data.filter((user) => user.user_state !== 2)
+)
+
+export const UserDelete = ({ id }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+  const users = useSelector(usersSelector)
   const handleNavigate = async (event) => {
     event.preventDefault()
     navigate('../')

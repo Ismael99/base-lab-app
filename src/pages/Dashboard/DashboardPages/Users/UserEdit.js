@@ -1,13 +1,16 @@
 import React from 'react'
-import { UserSchema } from '../../../../schema'
 import { UsersForm } from './UsersForm'
+import { createSelector } from 'selector'
+import { useSelector } from 'react-redux'
 
-export const UserEdit = ({ id, users, ...props }) => {
-  console.log('UserEdit')
-  console.log('id', id)
-  const userToEdit = id
-    ? users.find((user) => (user.user_id.toString() === id ? user : undefined))
-    : UserSchema.initialValues
+const usersSelector = createSelector(
+  //la diferencia esta en ese : [], por ese ahora funciona y no da error de indefinido...
+  (state) => (state.users.data ? state.users.data : []),
+  (data) => data.filter((user) => user.user_status !== 2)
+)
 
-  return <UsersForm user={userToEdit} isInterfaceView={false} {...props} />
+export const UserEdit = ({ id, ...props }) => {
+  const users = useSelector(usersSelector)
+
+  return <UsersForm id={id} users={users} isInterfaceView={false} {...props} />
 }
