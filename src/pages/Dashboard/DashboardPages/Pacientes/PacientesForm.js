@@ -4,10 +4,13 @@ import { PacienteSchema } from '../../../../schema'
 import { setCurrentPaciente } from '../../../../redux/actions/pacientesAction'
 
 export const PacientesForm = ({ pacientes, id, isInterfaceView, ...props }) => {
-  const pacienteCurrent = pacientes?.find((paciente) => {
+  let pacienteCurrent = pacientes?.find((paciente) => {
     return paciente.paciente_id.toString() === id
   })
-  console.log(pacientes, id)
+  pacienteCurrent = pacienteCurrent
+    ? pacienteCurrent
+    : PacienteSchema.initialValues
+  console.log(pacienteCurrent)
   return (
     <Form
       isInterfaceView={isInterfaceView}

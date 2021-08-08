@@ -30,7 +30,7 @@ export const Pacientes = () => {
     }
     if (mounted) fetch()
     return () => setMounted(false)
-  }, [dispatch])
+  }, [dispatch, mounted])
   if (loading) return <LoaderPage />
   else {
     return (

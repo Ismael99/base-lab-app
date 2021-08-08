@@ -9,7 +9,7 @@ import {
 } from '../../../../redux/actions/pacientesAction'
 
 const pacientesSelector = createSelector(
-  (state) => state.pacientes.data,
+  (state) => (state.pacientes.data ? state.pacientes.data : []),
   (data) => data.filter((paciente) => paciente.paciente_status !== 2)
 )
 
