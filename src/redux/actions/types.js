@@ -22,3 +22,7 @@ export const PACIENTES_ACTIONS = {
 export const ROLES_ACTIONS = {
   FETCH_ROLES: 'fetch_roles'
 }
+
+export const LOGS_ACTIONS = {
+  FETCH_LOGS: 'fetch_logs'
+}

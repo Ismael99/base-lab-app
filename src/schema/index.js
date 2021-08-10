@@ -2,6 +2,7 @@ import * as Yup from 'yup'
 import { user } from './user'
 import { paciente } from './paciente'
 import { roles } from './roles'
+import { logs } from './logs'
 
 export const LoginSchema = {
   initialValues: {
@@ -20,5 +21,6 @@ export const LoginSchema = {
   })
 }
 export const RolesSchema = roles()
+export const LogsSchema = logs()
 export const PacienteSchema = paciente(Yup)
 export const UserSchema = user(Yup)

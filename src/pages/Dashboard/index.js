@@ -10,6 +10,7 @@ import { Test } from './DashboardPages/Test'
 import { Users } from './DashboardPages/Users'
 import { Pacientes } from './DashboardPages/Pacientes'
 import { Roles } from './DashboardPages/Roles'
+import { Logs } from './DashboardPages/Logs'
 import { Home } from './DashboardPages/Home'
 import { NotFound } from '../SiteStatus/NotFound'
 const Section = ({ title }) => (
@@ -35,6 +36,7 @@ export const Dashboard = () => {
             <Pacientes path="pacientes/*" />
             <Test path="test" />
             <Roles path="roles" />
+            <Logs path="logs" />
             <NotFound default />
           </Router>
         </DashboardMainContent>
