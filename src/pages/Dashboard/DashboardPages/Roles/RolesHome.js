@@ -8,7 +8,15 @@ import { thunkFetchRoles } from '.././../../../redux/actions/rolesActions'
 
 const rolesSelector = createSelector(
   (state) => (state.roles.data ? state.roles.data : []),
-  (data) => data.filter((role) => role.role_status !== 2)
+  (data) => data.filter((role) => role.role_status !== 2),
+  (data_sort) =>
+    data_sort.sort((a, b) => {
+      if (a.rol_created_at > b.rol_created_at) {
+        return -1
+      } else {
+        return 1
+      }
+    })
 )
 
 export const RolesHome = () => {

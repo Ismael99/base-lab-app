@@ -7,7 +7,15 @@ import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 const pacientesSelector = createSelector(
   (state) => (state.pacientes.data ? state.pacientes.data : []),
-  (data) => data.filter((paciente) => paciente.paciente_status !== 2)
+  (data) => data.filter((paciente) => paciente.paciente_status !== 2),
+  (data_sort) =>
+    data_sort.sort((a, b) => {
+      if (a.paciente_created_at > b.paciente_created_at) {
+        return -1
+      } else {
+        return 1
+      }
+    })
 )
 
 export const PacientesHome = () => {

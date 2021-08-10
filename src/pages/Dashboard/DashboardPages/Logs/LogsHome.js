@@ -6,7 +6,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFetchLogs } from '../../../../redux/actions/logsActions'
 
-const logsSelector = createSelector((state) => state.logs.data)
+const logsSelector = createSelector(
+  (state) => (state.logs.data ? state.logs.data : []),
+  (data_sort) =>
+    data_sort.sort((a, b) => {
+      if (a.paciente_created_at > b.paciente_created_at) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+)
 
 export const LogsHome = () => {
   const dispatch = useDispatch()
@@ -34,7 +44,8 @@ export const LogsHome = () => {
         data={logs}
         keys={LogsSchema.keys}
         idKey="log_id"
-        addActions={false}
+        addActions={true}
+        actionType="logs"
       />
     </>
   )

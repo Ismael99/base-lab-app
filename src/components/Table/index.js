@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { TableBody } from './TableBody'
 import { TableHeaders } from './TableHeaders'
 import { TableActions } from './TableActions'
+import { TableActionsLogs } from './TableActionsLogs'
 import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
 import './index.css'
@@ -12,10 +13,24 @@ export const Table = ({
   data,
   headers,
   keys,
-  PER_PAGE = 1,
+  PER_PAGE = 8,
   idKey,
-  addActions = true
+  addActions = true,
+  actionType = 'standar'
 }) => {
+  const ActionTypeRender = (actionType) => {
+    switch (actionType) {
+      case 'standar':
+        return TableActions
+      case 'logs':
+        return TableActionsLogs
+      default:
+        return TableActions
+    }
+  }
+
+  const ActionRender = ActionTypeRender(actionType)
+
   // table search state
   const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
@@ -49,7 +64,7 @@ export const Table = ({
             </td>
           )
         })}
-        {addActions && <TableActions key={keyRow} data={row} idKey={idKey} />}
+        {addActions && <ActionRender key={keyRow} data={row} idKey={idKey} />}
       </tr>
     ))
 

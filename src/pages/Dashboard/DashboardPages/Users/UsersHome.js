@@ -8,7 +8,15 @@ import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
 
 const usersSelector = createSelector(
   (state) => (state.users.data ? state.users.data : []),
-  (data) => data.filter((user) => user.user_state !== 2)
+  (data) => data.filter((user) => user.user_state !== 2),
+  (data_sort) =>
+    data_sort.sort((a, b) => {
+      if (a.user_created_at > b.user_created_at) {
+        return -1
+      } else {
+        return 1
+      }
+    })
 )
 
 export const UsersHome = () => {
