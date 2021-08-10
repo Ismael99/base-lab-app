@@ -9,6 +9,7 @@ import { DashboardMainContent } from './DashboardMainContent'
 import { Test } from './DashboardPages/Test'
 import { Users } from './DashboardPages/Users'
 import { Pacientes } from './DashboardPages/Pacientes'
+import { Examenes } from './DashboardPages/Examenes'
 import { Roles } from './DashboardPages/Roles'
 import { Home } from './DashboardPages/Home'
 import { NotFound } from '../SiteStatus/NotFound'
@@ -33,6 +34,7 @@ export const Dashboard = () => {
             <Home path="/" />
             <Users path="users/*" />
             <Pacientes path="pacientes/*" />
+            <Examenes path="examenes/*" />
             <Test path="test" />
             <Roles path="roles" />
             <NotFound default />
