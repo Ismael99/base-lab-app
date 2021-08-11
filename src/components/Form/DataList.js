@@ -25,7 +25,6 @@ export const DataList = ({
     return dataFilter
   })
   const dataListData = useSelector(dataListSelector)
-  console.log(dataListData)
   return (
     <>
       <ReactHTMLDatalist
