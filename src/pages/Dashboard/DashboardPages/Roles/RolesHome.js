@@ -11,7 +11,7 @@ const rolesSelector = createSelector(
   (data) => data.filter((role) => role.role_status !== 2),
   (data_sort) =>
     data_sort.sort((a, b) => {
-      if (a.rol_created_at > b.rol_created_at) {
+      if (a.rol_updated_at > b.rol_updated_at) {
         return -1
       } else {
         return 1

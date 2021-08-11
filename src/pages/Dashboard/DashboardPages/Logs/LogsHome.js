@@ -10,7 +10,7 @@ const logsSelector = createSelector(
   (state) => (state.logs.data ? state.logs.data : []),
   (data_sort) =>
     data_sort.sort((a, b) => {
-      if (a.paciente_created_at > b.paciente_created_at) {
+      if (a.log_updated_at > b.log_updated_at) {
         return -1
       } else {
         return 1

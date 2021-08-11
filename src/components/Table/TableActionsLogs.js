@@ -5,6 +5,7 @@ import { Link } from '@reach/router'
 export const TableActionsLogs = ({ data }) => {
   console.log(data)
   const { log_register_id, log_register_module } = data
+  if (data.log_action === 'delete') return <></>
   return (
     <td className="px-6 py-3 whitespace-nowrap">
       <div className="flex items-center justify-center">

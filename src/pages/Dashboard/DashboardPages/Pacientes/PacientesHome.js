@@ -10,7 +10,7 @@ const pacientesSelector = createSelector(
   (data) => data.filter((paciente) => paciente.paciente_status !== 2),
   (data_sort) =>
     data_sort.sort((a, b) => {
-      if (a.paciente_created_at > b.paciente_created_at) {
+      if (a.paciente_updated_at > b.paciente_updated_at) {
         return -1
       } else {
         return 1
