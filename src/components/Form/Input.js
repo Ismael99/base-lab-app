@@ -4,9 +4,9 @@ import { InformationCircleIcon } from '@heroicons/react/outline'
 import PropTypes from 'prop-types'
 import { TypeInput } from '../../utils/TypeInput'
 export const Input = (props) => {
-  const { label, icon, type, name } = props
+  const { label, icon, type, name, isInterfaceView } = props
   const Icon = icon ? icon : InformationCircleIcon
-  const InputRender = TypeInput(type)
+  const InputRender = TypeInput(type, isInterfaceView)
   return (
     <div className="w-full">
       <div className="w-3/4 h-6 mx-auto mt-3 text-xs font-bold text-gray-600 uppercase xl:w-1/2 leading-8">

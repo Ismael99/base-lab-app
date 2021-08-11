@@ -2,7 +2,7 @@ import { InputText } from '../components/Form/InputText'
 import { InputRadio } from '../components/Form/InputRadio'
 import { InputSelect } from '../components/Form/InputSelect'
 import { DataList } from '../components/Form/DataList'
-export const TypeInput = (type) => {
+export const TypeInput = (type, isInterfaceView) => {
   switch (type) {
     case 'select':
       return InputSelect
@@ -10,8 +10,10 @@ export const TypeInput = (type) => {
       return InputRadio
     case 'text':
       return InputText
-    case 'datalist':
+    case 'datalist': {
+      if (isInterfaceView) return InputText
       return DataList
+    }
     default:
       return InputText
   }

@@ -12,13 +12,21 @@ var cars = [
   { value: 8, text: 'Toyota' },
   { value: 9, text: 'Toyota' }
 ]
-export const DataList = ({ datalistData, ...props }) => {
+export const DataList = ({
+  datalistData,
+  id,
+  value,
+  isInterfaceView,
+  ...props
+}) => {
   const [field, meta] = useField(props)
+  console.log(props)
   return (
     <>
       <ReactHTMLDatalist
         {...field}
         {...props}
+        disabled
         options={cars}
         id="id"
         classNames={`w-full p-1 px-2 pl-9 outline-none`}
