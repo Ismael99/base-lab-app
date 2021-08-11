@@ -36,9 +36,10 @@ export const user = (Yup) => ({
       placeholder: 'Estado',
       type: 'datalist',
       name: 'user_status',
-      id: 'record_status_id',
-      value: 'record_status_name',
-      module: 'records_status'
+      id: 'paciente_id',
+      value: 'paciente_nombre',
+      module: 'pacientes',
+      status: 'paciente_status'
     }
   ]
 })

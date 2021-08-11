@@ -10,11 +10,14 @@ export const InputSelect = ({
   isInterfaceView,
   id,
   value,
-  module
+  module,
+  status
 }) => {
-  const selectDataSelector = createSelector((state) =>
-    state[module].data ? state[module].data : []
-  )
+  const selectDataSelector = createSelector((state) => {
+    const data = state[module].data ? state[module].data : []
+    if (status) return data.filter((register) => register[status] !== 2)
+    return data
+  })
   const selectData = useSelector(selectDataSelector)
   console.log(selectData)
   return (

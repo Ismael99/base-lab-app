@@ -1,33 +1,38 @@
 import React from 'react'
 import { useField } from 'formik'
 import ReactHTMLDatalist from 'react-html-datalist'
-var cars = [
-  { value: 1, text: 'Honda' },
-  { value: 2, text: 'Honda' },
-  { value: 3, text: 'Maruti' },
-  { value: 4, text: 'Honda' },
-  { value: 5, text: 'Tesla' },
-  { value: 6, text: 'Tesla' },
-  { value: 7, text: 'Tesla' },
-  { value: 8, text: 'Toyota' },
-  { value: 9, text: 'Toyota' }
-]
+import { useSelector } from 'react-redux'
+import { createSelector } from 'selector'
+
 export const DataList = ({
   datalistData,
   id,
   value,
-  isInterfaceView,
+  status,
+  module,
   ...props
 }) => {
   const [field, meta] = useField(props)
-  console.log(props)
+  const dataListSelector = createSelector((state) => {
+    const data = state[module].data ? state[module].data : []
+    console.log(data)
+    const dataFilter = data.map((register) => {
+      if (register[status] !== 2) {
+        return { text: register[value], value: register[id] }
+      }
+      return undefined
+    })
+    return dataFilter
+  })
+  const dataListData = useSelector(dataListSelector)
+  console.log(dataListData)
   return (
     <>
       <ReactHTMLDatalist
         {...field}
         {...props}
         disabled
-        options={cars}
+        options={dataListData}
         id="id"
         classNames={`w-full p-1 px-2 pl-9 outline-none`}
       />

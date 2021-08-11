@@ -15,6 +15,7 @@ import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
 import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
+import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
@@ -26,6 +27,7 @@ export const Users = () => {
       setLoading(true)
       await dispatch(thunkFecthUsers)
       await dispatch(thunkFetchRecordsStatus)
+      await dispatch(thunkFetchPacientes)
       setLoading(false)
     }
     if (mounted) fetch()
