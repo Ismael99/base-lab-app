@@ -1,7 +1,7 @@
 import { InputText } from '../components/Form/InputText'
 import { InputRadio } from '../components/Form/InputRadio'
 import { InputSelect } from '../components/Form/InputSelect'
-import { InputDatalist } from '../components/Form/InputDatalist'
+import { DataList } from '../components/Form/DataList'
 export const TypeInput = (type) => {
   switch (type) {
     case 'select':
@@ -11,7 +11,7 @@ export const TypeInput = (type) => {
     case 'text':
       return InputText
     case 'datalist':
-      return InputDatalist
+      return DataList
     default:
       return InputText
   }
