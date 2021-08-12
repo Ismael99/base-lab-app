@@ -1,5 +1,5 @@
 import { BeakerIcon } from '@heroicons/react/outline'
-export const examen = (Yup) => ({
+export const quimico = (Yup) => ({
   validations: Yup.object({
     quimico_nombre: Yup.string()
       .min(3, 'Caracteres mínimos 3')
