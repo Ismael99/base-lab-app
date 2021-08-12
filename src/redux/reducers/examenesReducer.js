@@ -34,7 +34,7 @@ export const examenesReducer = (state = INITIAL_STATE, action) => {
       }
     }
     default: {
-      return { state }
+      return { ...state }
     }
   }
 }

@@ -5,7 +5,7 @@ import { createSelector } from 'selector'
 import { useSelector, useDispatch } from 'react-redux'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFetchLogs } from '../../../../redux/actions/logsActions'
-
+import {thunkFecthUsers} from '../../../../redux/actions/usersActions'
 const logsSelector = createSelector(
   (state) => (state.logs.data ? state.logs.data : []),
   (data_sort) =>
@@ -18,12 +18,16 @@ const logsSelector = createSelector(
     })
 )
 
+const usersSelector = createSelector(
+  (state) => (state.users.data ?? [])
+)
+
 export const LogsHome = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(true)
   const logs = useSelector(logsSelector)
-  console.log(logs)
+  const users = useSelector(usersSelector)
   useEffect(() => {
     const fetch = async () => {
       setLoading(true)
@@ -37,11 +41,18 @@ export const LogsHome = () => {
   }, [mounted, dispatch])
 
   if (loading) return <LoaderPage />
+  // pivot variable
+  const logsUsernames = logs.map((log) => ( {
+    ...log, 
+    log_user: users.find((user) => ( log.log_user === user.user_id)).user_name 
+  }))
+
+
   return (
     <>
       <Table
         headers={LogsSchema.tableHeaders}
-        data={logs}
+        data={logsUsernames}
         keys={LogsSchema.keys}
         idKey="log_id"
         addActions={true}
