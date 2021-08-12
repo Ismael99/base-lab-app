@@ -6,7 +6,7 @@ export const user = (Yup) => ({
       .min(3, 'Caracteres mínimos 3')
       .required('Campo requerido'),
     user_role: Yup.number().required('Campo requerido'),
-    user_status: Yup.number().required('Campo requerido')
+    user_status: Yup.string().required('Campo requerido')
   }),
   initialValues: {
     user_id: 0,
