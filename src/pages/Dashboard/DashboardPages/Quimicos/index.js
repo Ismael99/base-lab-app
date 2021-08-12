@@ -4,7 +4,7 @@ import { DashboardSection } from '../../DashboardSection'
 import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
 import { QuimicosHome } from './QuimicosHome'
-//import { ExamenDetail } from './ExamenesDetail'
+import { QuimicoDetail } from './QuimicosDetail'
 //import { ExamenEdit } from './ExamenesEdit'
 //import { ExamenDelete } from './ExamenDelete'
 //import { ExamenNew } from './ExamenesNew'
@@ -39,6 +39,7 @@ export const Quimicos = () => {
         <DashboardSectionContent>
           <Router>
             <QuimicosHome path="/" title="Ver" />
+            <QuimicoDetail path="view/:id" />
             
             <NotFound default />
           </Router>
