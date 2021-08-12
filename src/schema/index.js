@@ -3,6 +3,7 @@ import { user } from './user'
 import { paciente } from './paciente'
 import { examen } from './examen'
 import { roles } from './roles'
+import { logs } from './logs'
 
 export const LoginSchema = {
   initialValues: {
@@ -21,6 +22,7 @@ export const LoginSchema = {
   })
 }
 export const RolesSchema = roles()
+export const LogsSchema = logs()
 export const PacienteSchema = paciente(Yup)
 export const ExamenSchema = examen(Yup)
 export const UserSchema = user(Yup)

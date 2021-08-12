@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Table } from '../../../../components/Table'
-import { RolesSchema } from '../../../../schema'
-import { useSelector, useDispatch } from 'react-redux'
+import { LogsSchema } from '../../../../schema'
 import { createSelector } from 'selector'
+import { useSelector, useDispatch } from 'react-redux'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
-import { thunkFetchRoles } from '.././../../../redux/actions/rolesActions'
+import { thunkFetchLogs } from '../../../../redux/actions/logsActions'
 
-const rolesSelector = createSelector(
-  (state) => (state.roles.data ? state.roles.data : []),
-  (data) => data.filter((role) => role.role_status !== 2),
+const logsSelector = createSelector(
+  (state) => (state.logs.data ? state.logs.data : []),
   (data_sort) =>
     data_sort.sort((a, b) => {
-      if (a.rol_updated_at > b.rol_updated_at) {
+      if (a.log_updated_at > b.log_updated_at) {
         return -1
       } else {
         return 1
@@ -19,31 +18,34 @@ const rolesSelector = createSelector(
     })
 )
 
-export const RolesHome = () => {
+export const LogsHome = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(true)
-  const roles = useSelector(rolesSelector)
+  const logs = useSelector(logsSelector)
+  console.log(logs)
   useEffect(() => {
     const fetch = async () => {
       setLoading(true)
-      await dispatch(thunkFetchRoles)
+      await dispatch(thunkFetchLogs)
       setLoading(false)
     }
     if (mounted) fetch()
     return () => {
       setMounted(false)
     }
-  }, [dispatch, mounted])
+  }, [mounted, dispatch])
+
   if (loading) return <LoaderPage />
   return (
     <>
       <Table
-        headers={RolesSchema.tableHeaders}
-        data={roles}
-        keys={RolesSchema.keys}
-        idKey="role_id"
-        addActions={false}
+        headers={LogsSchema.tableHeaders}
+        data={logs}
+        keys={LogsSchema.keys}
+        idKey="log_id"
+        addActions={true}
+        actionType="logs"
       />
     </>
   )

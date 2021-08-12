@@ -27,7 +27,11 @@ export const user = (Yup) => ({
     {
       label: 'Rol',
       placeholder: 'Rol',
-      type: 'text',
+      type: 'select',
+      id: 'rol_id',
+      value: 'rol_name',
+      module: 'roles',
+      status: 'rol_status',
       name: 'user_role',
       icon: BriefcaseIcon
     },

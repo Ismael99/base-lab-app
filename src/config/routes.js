@@ -14,3 +14,4 @@ export const ExamenesRoutes = [
 ]
 
 export const RolesRoutes = [{ path: './roles', title: 'Ver Roles' }]
+export const LogsRoutes = [{ path: './logs', title: 'Ver Logs' }]
