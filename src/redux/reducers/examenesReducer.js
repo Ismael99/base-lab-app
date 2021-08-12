@@ -17,7 +17,7 @@ export const examenesReducer = (state = INITIAL_STATE, action) => {
       }
     }
     case EXAMENES_ACTIONS.SAVE_EXAMEN: {
-      const newExamenData = [...state.data, action.payload]
+      const newExamenData = [...(state.data ?? []), action.payload]
       return { ...state, data: newExamenData }
     }
     case EXAMENES_ACTIONS.SET_CURRENT_EXAMEN: {
@@ -34,7 +34,7 @@ export const examenesReducer = (state = INITIAL_STATE, action) => {
       }
     }
     default: {
-      return { state }
+      return { ...state }
     }
   }
 }

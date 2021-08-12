@@ -20,7 +20,7 @@ const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [mounted, setMounted] = useState(true)
   useEffect(() => {
     const fetch = async () => {
@@ -29,12 +29,16 @@ export const Users = () => {
       await dispatch(thunkFetchRecordsStatus)
       await dispatch(thunkFetchRoles)
       setLoading(false)
+      console.log('fin fetch user')
     }
-    if (mounted) fetch()
+    const fetch_async = async () => {
+      await fetch()
+    }
+    if (mounted) fetch_async()
     return () => {
       setMounted(false)
     }
-  }, [dispatch, mounted])
+  }, [mounted])
   const token = useSelector(tokenSelector)
   if (loading) return <LoaderPage />
   return (

@@ -7,7 +7,7 @@ export const recordsStatusReducer = (state = INITIAL_STATE, action) => {
       return { ...state, data: action.payload }
     }
     default: {
-      return { state }
+      return { ...state }
     }
   }
 }

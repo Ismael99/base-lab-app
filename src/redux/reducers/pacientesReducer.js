@@ -17,7 +17,7 @@ export const pacientesReducer = (state = INITIAL_STATE, action) => {
       }
     }
     case PACIENTES_ACTIONS.SAVE_PACIENTE: {
-      const newPacienteData = [...state.data, action.payload]
+      const newPacienteData = [...(state.data ?? []), action.payload]
       return { ...state, data: newPacienteData }
     }
     case PACIENTES_ACTIONS.SET_CURRENT_PACIENTE: {
@@ -34,7 +34,7 @@ export const pacientesReducer = (state = INITIAL_STATE, action) => {
       }
     }
     default: {
-      return { state }
+      return { ...state }
     }
   }
 }

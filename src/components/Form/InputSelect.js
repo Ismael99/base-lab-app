@@ -11,15 +11,21 @@ export const InputSelect = ({
   id,
   value,
   module,
+  placeholder,
   status
 }) => {
-  const selectDataSelector = createSelector((state) => {
-    const data = state[module].data ? state[module].data : []
-    if (status) return data.filter((register) => register[status] !== 2)
-    return data
+  const selectDataSelector = createSelector((state) =>
+    state[module].data ? state[module].data : []
+  )
+  const selectDataSelectorTest = createSelector((state) => {
+    console.log(state)
+    return state
   })
+
   const selectData = useSelector(selectDataSelector)
+  const test = useSelector(selectDataSelectorTest)
   console.log(selectData)
+  console.log(test)
   return (
     <Field
       name={name}
@@ -27,11 +33,14 @@ export const InputSelect = ({
       disabled={isInterfaceView}
       className={`w-full p-1 px-2 pl-9 outline-none`}
     >
+      <option value={0} key={0} defaultValue>
+        {placeholder}
+      </option>
       {selectData.map((option) => (
         <option key={option[id]} value={option[id]}>
           {option[value]}
         </option>
-      ))}
+  ))}
     </Field>
   )
 }
