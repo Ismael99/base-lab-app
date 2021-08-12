@@ -28,10 +28,10 @@ export const user = (Yup) => ({
       label: 'Rol',
       placeholder: 'Rol',
       type: 'select',
-      id: 'rol_id',
-      value: 'rol_name',
+      id: 'role_id',
+      value: 'role_name',
       module: 'roles',
-      status: 'rol_status',
+      status: 'role_status',
       name: 'user_role',
       icon: BriefcaseIcon
     },

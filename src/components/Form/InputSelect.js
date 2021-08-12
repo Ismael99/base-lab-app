@@ -13,13 +13,22 @@ export const InputSelect = ({
   module,
   status
 }) => {
-  const selectDataSelector = createSelector((state) => {
-    const data = state[module].data ? state[module].data : []
-    if (status) return data.filter((register) => register[status] !== 2)
-    return data
+  const selectDataSelector = createSelector((state) =>
+    state[module].data
+      ? state[module].data
+      : state[module].state.data
+      ? state[module].state.data
+      : []
+  )
+  const selectDataSelectorTest = createSelector((state) => {
+    console.log(state)
+    return state
   })
+
   const selectData = useSelector(selectDataSelector)
+  const test = useSelector(selectDataSelectorTest)
   console.log(selectData)
+  console.log(test)
   return (
     <Field
       name={name}
