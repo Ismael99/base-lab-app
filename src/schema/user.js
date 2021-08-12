@@ -34,7 +34,7 @@ export const user = (Yup) => ({
     {
       label: 'Estado',
       placeholder: 'Estado',
-      type: 'datalist',
+      type: 'select',
       name: 'user_status',
       id: 'record_status_id',
       value: 'record_status_name',
