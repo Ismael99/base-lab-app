@@ -59,7 +59,12 @@ export const Table = ({
                   key < 1 ? ' justify-left ' : ' justify-center '
                 }`}
               >
-                <span className="font-medium">{row[keyName]}</span>
+                <span className="font-medium">
+                  {keyName.includes('created_at') ||
+                  keyName.includes('updated_at')
+                    ? new Date(row[keyName]).toUTCString()
+                    : row[keyName]}
+                </span>
               </div>
             </td>
           )
