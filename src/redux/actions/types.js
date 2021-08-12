@@ -19,6 +19,15 @@ export const PACIENTES_ACTIONS = {
   SET_CURRENT_PACIENTE: 'set_current_paciente'
 }
 
+export const EXAMENES_ACTIONS = {
+  FETCH_EXAMENES: 'fetch_examen',
+  SAVE_EXAMEN: 'save_examen',
+  DELETE_EXAMENES: 'delete_examen',
+  UPDATE_EXAMEN: 'update_examen',
+  SET_CURRENT_EXAMEN: 'set_current_examen'
+}
+
+
 export const ROLES_ACTIONS = {
   FETCH_ROLES: 'fetch_roles'
 }

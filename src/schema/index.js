@@ -1,6 +1,7 @@
 import * as Yup from 'yup'
 import { user } from './user'
 import { paciente } from './paciente'
+import { examen } from './examen'
 import { roles } from './roles'
 
 export const LoginSchema = {
@@ -21,4 +22,5 @@ export const LoginSchema = {
 }
 export const RolesSchema = roles()
 export const PacienteSchema = paciente(Yup)
+export const ExamenSchema = examen(Yup)
 export const UserSchema = user(Yup)
