@@ -15,7 +15,7 @@ export const quimico = (Yup) => ({
   fields: [
     {
       label: 'Nombre Quimico',
-      placeholder: 'Imgrese nombre de quimico',
+      placeholder: 'ingrese el nombre del quimico',
       type: 'text',
       name: 'quimico_nombre',
       icon:BeakerIcon

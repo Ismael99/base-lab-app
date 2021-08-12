@@ -5,9 +5,9 @@ import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
 import { QuimicosHome } from './QuimicosHome'
 import { QuimicoDetail } from './QuimicosDetail'
-//import { ExamenEdit } from './ExamenesEdit'
-//import { ExamenDelete } from './ExamenDelete'
-//import { ExamenNew } from './ExamenesNew'
+import { QuimicoEdit } from './QuimicosEdit'
+import { QuimicoDelete } from './QuimicosDelete'
+import { QuimicoNew } from './QuimicosNew'
 import { thunkFetchQuimicos } from '../../../../redux/actions/quimicosAction'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
@@ -40,7 +40,9 @@ export const Quimicos = () => {
           <Router>
             <QuimicosHome path="/" title="Ver" />
             <QuimicoDetail path="view/:id" />
-            
+            <QuimicoNew path="create" toDispatch={saveQuimico} />
+            <QuimicoEdit toDispatch={updateQuimico} path="edit/:id" />
+            <QuimicoDelete path="delete/:id" />
             <NotFound default />
           </Router>
         </DashboardSectionContent>

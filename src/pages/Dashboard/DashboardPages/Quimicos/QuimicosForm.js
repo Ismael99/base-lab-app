@@ -7,7 +7,7 @@ export const QuimicosForm = ({ quimicos, id, isInterfaceView, ...props }) => {
   const quimicoCurrent = quimicos?.find((quimico) => {
     return quimico.quimico_id.toString() === id
   })
-console.log(quimicoCurrent)
+console.log(props)
   return (
     <Form
       isInterfaceView={isInterfaceView}

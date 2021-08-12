@@ -13,15 +13,16 @@ export const thunkFetchQuimicos = async (dispatch, _) => {
   await dispatch({
     type: QUIMICOS_ACTIONS.FETCH_QUIMICOS,
     payload: quimicos
-  })
+  }) 
 }
 
 export const saveQuimico = async (dispatch, getState) => {
   let state = getState()
   const quimicoData = state.quimicos.current
+  console.log("saveQuimico")
   const newQuimico = await client.post({
     resource: resource,
-    body: quimicoData
+    body: quimicoData 
   })
   dispatch({ type: QUIMICOS_ACTIONS.SAVE_QUIMICO, payload: newQuimico })
 }
@@ -43,7 +44,7 @@ export const deleteQuimico = async (dispatch, getState) => {
     resource: resource,
     body: quimicoData
   })
-  dispatch({ type: QUIMICOS_ACTIONS.DELETE_QUIMICO, payload: deleteQuimico })
+  dispatch({ type: QUIMICOS_ACTIONS.DELETE_QUIMICOS, payload: deleteQuimico })
 }
 
 export const setCurrentQuimico = (quimico) => ({
