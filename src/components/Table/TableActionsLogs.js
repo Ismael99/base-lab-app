@@ -10,7 +10,7 @@ export const TableActionsLogs = ({ data }) => {
     <td className="px-6 py-3 whitespace-nowrap">
       <div className="flex items-center justify-center">
         <Link
-          to={`/dashboard/${log_register_module}/view/${log_register_id}`}
+          to={`/dashboard/${log_register_module}/view/${log_register_id}?path=logs`}
           className="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
         >
           <ClipboardListIcon />
