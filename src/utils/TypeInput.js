@@ -11,7 +11,7 @@ export const TypeInput = (type, isInterfaceView) => {
     case 'text':
       return InputText
     case 'datalist': {
-      if (isInterfaceView) return InputText
+      if (isInterfaceView) return InputSelect
       return DataList
     }
     default:
