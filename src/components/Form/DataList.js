@@ -32,8 +32,7 @@ export const DataList = ({
         {...props}
         disabled
         options={dataListData}
-        value = {}
-          classNames={`w-full p-1 px-2 pl-9 outline-none`}
+        classNames={`w-full p-1 px-2 pl-9 outline-none`}
       />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
