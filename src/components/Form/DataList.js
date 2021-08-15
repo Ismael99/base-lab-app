@@ -10,6 +10,7 @@ export const DataList = ({
   module,
   label,
   name,
+  value,
   ...props
 }) => {
   const [field, _, helper] = useField({ ...props, name })
@@ -22,7 +23,7 @@ export const DataList = ({
     console.log(data)
     const dataFilter = data.map((register) => {
       if (register[status] !== 2) {
-        return { label: register[props.value], value: register[id] }
+        return { label: register[value], value: register[id] }
       }
       return undefined
     })
