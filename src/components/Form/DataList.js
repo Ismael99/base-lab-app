@@ -6,13 +6,13 @@ import Select from 'react-select'
 export const DataList = ({
   datalistData,
   id,
-  value,
   status,
   module,
   label,
+  name,
   ...props
 }) => {
-  const [field, helper] = useField(props)
+  const [field, _, helper] = useField({ ...props, name })
   const { onBlur } = field
   const { setValue } = helper
   console.log(field.value)
@@ -22,7 +22,7 @@ export const DataList = ({
     console.log(data)
     const dataFilter = data.map((register) => {
       if (register[status] !== 2) {
-        return { label: register[value], value: register[id] }
+        return { label: register[props.value], value: register[id] }
       }
       return undefined
     })
@@ -35,13 +35,10 @@ export const DataList = ({
   return (
     <div className="w-full">
       <Select
-        {...field}
-        {...props}
-        options={dataListData}
-        id="id"
         onChange={setValue}
+        defaultValue={valueDefault || { value: 0, label: 'Default' }}
         onBlur={onBlur}
-        defaultValue={valueDefault || { value: 0, label: label }}
+        options={dataListData}
       />
     </div>
   )
