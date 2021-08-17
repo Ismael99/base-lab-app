@@ -11,7 +11,7 @@ export const examen = (Yup) => ({
       .min(1, 'Dígitos mínimos 1')
       .positive()
       .required('Campo requerido')
-      .max(130, 'Precio no Valido')
+      .max(1000, 'Precio no Valido')
       .test(
         'is-decimal',
     'invalid decimal',
