@@ -6,7 +6,7 @@ export const UsersForm = ({ users, id, isInterfaceView, ...props }) => {
   let userCurrent = users?.find((user) => {
     return user.user_id.toString() === id
   })
-  userCurrent = userCurrent ? userCurrent : UserSchema.initialValues
+  userCurrent = userCurrent ?? UserSchema.initialValues
   console.log(id, userCurrent)
   return (
     <Form
