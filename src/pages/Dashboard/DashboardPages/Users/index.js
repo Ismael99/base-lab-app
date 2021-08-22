@@ -31,14 +31,11 @@ export const Users = () => {
       setLoading(false)
       console.log('fin fetch user')
     }
-    const fetch_async = async () => {
-      await fetch()
-    }
-    if (mounted) fetch_async()
+    if (mounted) fetch()
     return () => {
       setMounted(false)
     }
-  }, [mounted])
+  }, [mounted, dispatch])
   const token = useSelector(tokenSelector)
   if (loading) return <LoaderPage />
   return (

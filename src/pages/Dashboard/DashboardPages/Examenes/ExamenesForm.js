@@ -4,10 +4,11 @@ import { ExamenSchema } from '../../../../schema'
 import { setCurrentExamen } from '../../../../redux/actions/examenesAction'
 
 export const ExamenesForm = ({ examenes, id, isInterfaceView, ...props }) => {
-  const examenCurrent = examenes?.find((examen) => {
+  let examenCurrent = examenes?.find((examen) => {
     return examen.examen_id.toString() === id
   })
-console.log(examenCurrent)
+  examenCurrent = examenCurrent ?? ExamenSchema.initialValues
+  console.log(examenCurrent)
   return (
     <Form
       isInterfaceView={isInterfaceView}

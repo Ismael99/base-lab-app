@@ -1,43 +1,46 @@
 import React from 'react'
 import { useField } from 'formik'
-import ReactHTMLDatalist from 'react-html-datalist'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
-
+import Select from 'react-select'
 export const DataList = ({
   datalistData,
   id,
-  value,
   status,
   module,
+  label,
+  name,
+  value,
   ...props
 }) => {
-  const [field, meta] = useField(props)
+  const [field, _, helper] = useField({ ...props, name })
+  const { onBlur } = field
+  const { setValue } = helper
+  console.log(field.value)
+  console.log(helper)
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ? state[module].data : []
     console.log(data)
     const dataFilter = data.map((register) => {
       if (register[status] !== 2) {
-        return { text: register[value], value: register[id] }
+        return { label: register[value], value: register[id] }
       }
       return undefined
     })
     return dataFilter
   })
   const dataListData = useSelector(dataListSelector)
+  const valueDefault = dataListData.find((option) => {
+    return option.value === field.value
+  })
   return (
-    <>
-      <ReactHTMLDatalist
-        {...field}
-        {...props}
-        disabled
+    <div className="w-full">
+      <Select
+        onChange={setValue}
+        defaultValue={valueDefault || { value: 0, label: 'Default' }}
+        onBlur={onBlur}
         options={dataListData}
-        id="id"
-        classNames={`w-full p-1 px-2 pl-9 outline-none`}
       />
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
-    </>
+    </div>
   )
 }

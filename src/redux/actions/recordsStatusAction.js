@@ -6,11 +6,12 @@ export const fetchRecordsStatus = (recordsStatus) => ({
   payload: recordsStatus
 })
 
-export const thunkFetchRecordsStatus = async (dispatch, _) => {
-  const recordsStatus = await client.get({ resource: 'records_status' })
-  console.log(recordsStatus)
-  await dispatch({
-    type: RECORD_STATUS_ACTIONS.FETCH_RECORD_STATUS,
-    payload: recordsStatus
+export const thunkFetchRecordsStatus = (dispatch, _) => {
+  client.get({ resource: 'records_status' }).then((recordsStatus) => {
+    console.log(recordsStatus)
+    dispatch({
+      type: RECORD_STATUS_ACTIONS.FETCH_RECORD_STATUS,
+      payload: recordsStatus
+    })
   })
 }

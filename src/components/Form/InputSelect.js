@@ -6,7 +6,6 @@ import { createSelector } from 'selector'
 
 export const InputSelect = ({
   name,
-  type,
   isInterfaceView,
   id,
   value,
@@ -29,7 +28,7 @@ export const InputSelect = ({
   return (
     <Field
       name={name}
-      as={type}
+      as="select"
       disabled={isInterfaceView}
       className={`w-full p-1 px-2 pl-9 outline-none`}
     >
@@ -40,7 +39,7 @@ export const InputSelect = ({
         <option key={option[id]} value={option[id]}>
           {option[value]}
         </option>
-  ))}
+      ))}
     </Field>
   )
 }

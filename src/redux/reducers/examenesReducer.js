@@ -2,6 +2,7 @@ import { EXAMENES_ACTIONS } from '../actions/types'
 const INITIAL_STATE = { data: [], current: {} }
 
 export const examenesReducer = (state = INITIAL_STATE, action) => {
+  console.log(action.type, EXAMENES_ACTIONS.FETCH_EXAMENES)
   switch (action.type) {
     case EXAMENES_ACTIONS.FETCH_EXAMENES: {
       return { ...state, data: action.payload }

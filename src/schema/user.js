@@ -5,8 +5,12 @@ export const user = (Yup) => ({
     user_name: Yup.string()
       .min(3, 'Caracteres mínimos 3')
       .required('Campo requerido'),
-    user_role: Yup.number().required('Campo requerido').min(1, 'Seleccione una opcion valida'),
-    user_status: Yup.number().required('Campo requerido').min(1, 'Seleccione una opcion valida')
+    user_role: Yup.number()
+      .required('Campo requerido')
+      .min(1, 'Seleccione una opcion valida'),
+    user_status: Yup.number()
+      .required('Campo requerido')
+      .min(1, 'Seleccione una opcion valida')
   }),
   initialValues: {
     user_id: 0,
@@ -42,7 +46,7 @@ export const user = (Yup) => ({
       name: 'user_status',
       id: 'record_status_id',
       value: 'record_status_name',
-      module: 'records_status',
+      module: 'records_status'
     }
   ]
 })

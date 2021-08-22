@@ -28,7 +28,6 @@ export const UsersHome = () => {
     const fetch = async () => {
       setLoading(true)
       await dispatch(thunkFecthUsers)
-      await dispatch(thunkFetchRecordsStatus)
       setLoading(false)
     }
     if (mounted) fetch()
