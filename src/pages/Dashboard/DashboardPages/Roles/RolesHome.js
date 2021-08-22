@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Table } from '../../../../components/Table'
 import { RolesSchema } from '../../../../schema'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
-import { LoaderPage } from '../../../../components/Loader/LoaderPage'
-import { thunkFetchRoles } from '.././../../../redux/actions/rolesActions'
 
 const rolesSelector = createSelector(
   (state) => (state.roles.data ? state.roles.data : []),
@@ -20,22 +18,7 @@ const rolesSelector = createSelector(
 )
 
 export const RolesHome = () => {
-  const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
-  const [mounted, setMounted] = useState(true)
   const roles = useSelector(rolesSelector)
-  useEffect(() => {
-    const fetch = async () => {
-      setLoading(true)
-      await dispatch(thunkFetchRoles)
-      setLoading(false)
-    }
-    if (mounted) fetch()
-    return () => {
-      setMounted(false)
-    }
-  }, [dispatch, mounted])
-  if (loading) return <LoaderPage />
   return (
     <>
       <Table
