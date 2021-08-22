@@ -14,6 +14,6 @@ const reducer = combineReducers({
   quimicos
 })
 
-const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
+
 
 export const configureStore = () => createStore(reducer, composedEnhancer)

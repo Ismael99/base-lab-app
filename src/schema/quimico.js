@@ -4,11 +4,9 @@ export const quimico = (Yup) => ({
     quimico_nombre: Yup.string()
       .min(3, 'Caracteres mínimos 3')
       .required('Campo requerido'),
-    quimico_status: Yup.number().required('Campo requerido'),
   }),
   initialValues: {
     quimico_nombre: '',
-    quimico_status: '',
   },
   tableHeaders: ['Nombre Quimico', 'Estado', 'Acciones'],
   keys: ['quimico_nombre', 'quimico_status',],
