@@ -27,6 +27,14 @@ export const EXAMENES_ACTIONS = {
   SET_CURRENT_EXAMEN: 'set_current_examen'
 }
 
+export const QUIMICOS_ACTIONS = {
+  FETCH_QUIMICOS: 'fetch_quimico',
+  SAVE_QUIMICO: 'save_quimico',
+  DELETE_QUIMICOS: 'delete_quimico',
+  UPDATE_QUIMICO: 'update_quimico',
+  SET_CURRENT_QUIMICO: 'set_current_quimico'
+}
+
 
 export const ROLES_ACTIONS = {
   FETCH_ROLES: 'fetch_roles'

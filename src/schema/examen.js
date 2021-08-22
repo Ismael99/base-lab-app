@@ -15,10 +15,12 @@ export const examen = (Yup) => ({
       .min(1, 'Dígitos mínimos 1')
       .positive('Precio no válido')
       .required('Campo requerido')
-      .max(130, 'Precio no Valido')
-      .test('is-decimal', 'invalid decimal', (value) =>
-        (value + '').match(/^[0-9]*.?[0-9]*?$/)
-      )
+      .max(1000, 'Precio no Valido')
+      .test(
+        'is-decimal',
+    'invalid decimal',
+    value => (value + "").match(/^[0-9]*.?[0-9]*?$/),
+      ),
   }),
   initialValues: {
     examen_nombre: '',
