@@ -4,6 +4,7 @@ import { FormButtons } from './FormButtons'
 import { Input } from './Input'
 import { useDispatch } from 'react-redux'
 import { navigate } from '@reach/router'
+import { datalistTransform } from '../../utils/DatalistTransformValues'
 export const Form = ({
   initialValues,
   schema,
@@ -20,11 +21,13 @@ export const Form = ({
       }
       validationSchema={schema.validations}
       onSubmit={(values, { setSubmitting }) => {
+        values = datalistTransform(values)
         dispatch(setCurrent(values))
         dispatch(toDispatch)
         setSubmitting(false)
         console.log('Submiting...')
         console.log(values)
+        debugger
         navigate(`/dashboard/${currentPath}`, { replace: true })
       }}
       className="flex flex-col justify-center min-h-screen px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32"
