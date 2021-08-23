@@ -7,7 +7,7 @@ export const FormButtons = ({ moduleName, isInterfaceView }) => {
   const backPath = params.get('path')
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-4">
       <div className="flex flex-col items-center justify-center w-1/2 mx-auto lg:flex-row">
         <div className="flex items-center justify-center w-full lg:w-1/2">
           {!isInterfaceView && (

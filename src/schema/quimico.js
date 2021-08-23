@@ -21,7 +21,7 @@ export const quimico = (Yup) => ({
   fields: [
     {
       label: 'Nombre Quimico',
-      placeholder: 'ingrese el nombre del quimico',
+      placeholder: 'Ingrese el nombre del quimico',
       type: 'text',
       name: 'quimico_nombre',
       icon: BeakerIcon
@@ -33,7 +33,8 @@ export const quimico = (Yup) => ({
       icon: BeakerIcon,
       id: 'record_status_id',
       value: 'record_status_name',
-      module: 'records_status'
+      module: 'records_status',
+      placeholder: 'Status Quimico'
     }
   ]
 })
