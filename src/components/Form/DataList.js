@@ -8,16 +8,7 @@ const colourStyles = {
     ...styles,
     backgroundColor: 'white',
     paddingLeft: '25px'
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: 'white',
-      color: '#000',
-      paddingLeft: '100',
-      cursor: isDisabled ? 'not-allowed' : 'default'
-    }
-  }
+  })
 }
 export const DataList = ({
   datalistData,
