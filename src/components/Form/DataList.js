@@ -1,5 +1,5 @@
-import React from 'react'
-import { useField } from 'formik'
+import React, { useEffect } from 'react'
+import { useField, ErrorMessage } from 'formik'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
 import Select from 'react-select'
@@ -13,7 +13,7 @@ export const DataList = ({
   value,
   ...props
 }) => {
-  const [field, _, helper] = useField({ ...props, name })
+  const [field, meta, helper] = useField({ ...props, name })
   const { onBlur } = field
   const { setValue } = helper
   console.log(field.value)
@@ -21,26 +21,38 @@ export const DataList = ({
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ? state[module].data : []
     console.log(data)
-    const dataFilter = data.map((register) => {
-      if (register[status] !== 2) {
-        return { label: register[value], value: register[id] }
-      }
-      return undefined
-    })
+    const dataFilter = status
+      ? data.map((register) => {
+          if (register[status] !== 2) {
+            return { label: register[value], value: register[id] }
+          }
+          return undefined
+        })
+      : data.map((register) => {
+          return { label: register[value], value: register[id] }
+        })
     return dataFilter
   })
   const dataListData = useSelector(dataListSelector)
-  const valueDefault = dataListData.find((option) => {
-    return option.value === field.value
-  })
+  console.log({ field })
+  console.log({ meta })
+  useEffect(() => {
+    const valueDefault = dataListData.find((option) => {
+      return option.value === field.value
+    })
+    setValue(valueDefault)
+    debugger
+  }, [])
   return (
     <div className="w-full">
       <Select
+        {...field}
         onChange={setValue}
-        defaultValue={valueDefault || { value: 0, label: 'Default' }}
         onBlur={onBlur}
         options={dataListData}
+        name={name}
       />
+      <ErrorMessage name={name} />
     </div>
   )
 }

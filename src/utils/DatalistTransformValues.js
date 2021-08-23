@@ -1,4 +1,4 @@
-const DATALIST_KEYS = ['record_status', 'key', 'user_status']
+const DATALIST_KEYS = ['record_status', 'key', 'user_status', 'quimico_status']
 
 export function datalistTransform(values) {
   const keys = Object.keys(values)
@@ -7,10 +7,8 @@ export function datalistTransform(values) {
     currentValue = DATALIST_KEYS.includes(key)
       ? { [key]: values[key].value }
       : { [key]: values[key] }
-    debugger
     return { ...previousVals, ...currentValue }
   }, {})
-  debugger
   return transformedValues
 }
 

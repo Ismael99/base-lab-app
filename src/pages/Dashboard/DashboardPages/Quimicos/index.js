@@ -9,6 +9,7 @@ import { QuimicoEdit } from './QuimicosEdit'
 import { QuimicoDelete } from './QuimicosDelete'
 import { QuimicoNew } from './QuimicosNew'
 import { thunkFetchQuimicos } from '../../../../redux/actions/quimicosAction'
+import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
@@ -26,6 +27,7 @@ export const Quimicos = () => {
       console.log('Fetching de datos')
       setLoading(true)
       await dispatch(thunkFetchQuimicos)
+      await dispatch(thunkFetchRecordsStatus)
       setLoading(false)
     }
     if (mounted) fetch()

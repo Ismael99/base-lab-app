@@ -9,8 +9,8 @@ export const user = (Yup) => ({
       .required('Campo requerido')
       .min(1, 'Seleccione una opcion valida'),
     user_status: Yup.number()
+      .min(1, 'Seleccione un opcion valida')
       .required('Campo requerido')
-      .min(1, 'Seleccione una opcion valida')
   }),
   initialValues: {
     user_id: 0,
@@ -42,7 +42,7 @@ export const user = (Yup) => ({
     {
       label: 'Estado',
       placeholder: 'Estado',
-      type: 'datalist',
+      type: 'select',
       name: 'user_status',
       id: 'record_status_id',
       value: 'record_status_name',

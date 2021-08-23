@@ -23,6 +23,7 @@ export const Form = ({
       onSubmit={(values, { setSubmitting }) => {
         values = datalistTransform(values)
         dispatch(setCurrent(values))
+        debugger
         dispatch(toDispatch)
         setSubmitting(false)
         console.log('Submiting...')
