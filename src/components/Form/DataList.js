@@ -27,7 +27,7 @@ export const DataList = ({
   console.log(field.value)
   console.log(helper)
   const dataListSelector = createSelector((state) => {
-    const data = state[module].data ? state[module].data : []
+    const data = state[module].data ?? []
     console.log(data)
     const dataFilter = status
       ? data.map((register) => {
