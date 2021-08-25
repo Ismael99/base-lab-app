@@ -1,5 +1,5 @@
-import { TableActions } from './TableActions'
-import { TableActionsLogs } from './TableActionsLogs'
+import { TableActions } from '../components/Table/TableActions'
+import { TableActionsLogs } from '../components/Table/TableActionsLogs'
 
 export const ActionTypeRender = (actionType) => {
   switch (actionType) {
