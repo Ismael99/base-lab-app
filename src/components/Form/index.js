@@ -4,6 +4,7 @@ import { FormButtons } from './FormButtons'
 import { Input } from './Input'
 import { useDispatch } from 'react-redux'
 import { navigate } from '@reach/router'
+import { datalistTransform } from '../../utils/DatalistTransformValues'
 export const Form = ({
   initialValues,
   schema,
@@ -20,6 +21,7 @@ export const Form = ({
       }
       validationSchema={schema.validations}
       onSubmit={(values, { setSubmitting }) => {
+        values = datalistTransform(values)
         dispatch(setCurrent(values))
         dispatch(toDispatch)
         setSubmitting(false)

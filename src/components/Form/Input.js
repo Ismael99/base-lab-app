@@ -16,13 +16,15 @@ export const Input = (props) => {
         className={`flex  w-3/4 xl:w-1/2 p-1 mx-auto my-2 border border-gray-200 rounded`}
       >
         <span className="flex flex-row items-center justify-start w-full">
-          <Icon className="absolute w-5 ml-1" />
+          <Icon className="absolute w-5 ml-1 z-10" />
           <InputRender {...props} />
         </span>
       </div>
-      <div className="w-3/4 h-6 mx-auto mt-3 text-xs text-red-500 xl:w-1/2">
-        <ErrorMessage name={name} />
-      </div>
+      {type !== 'datalist' && (
+        <div className="w-3/4 h-6 mx-auto mt-3 text-xs text-red-500 xl:w-1/2">
+          <ErrorMessage name={name} />
+        </div>
+      )}
     </div>
   )
 }

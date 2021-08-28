@@ -3,10 +3,9 @@ import ReactPaginate from 'react-paginate'
 import PropTypes from 'prop-types'
 import { TableBody } from './TableBody'
 import { TableHeaders } from './TableHeaders'
-import { TableActions } from './TableActions'
-import { TableActionsLogs } from './TableActionsLogs'
 import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
+import { ActionTypeRender } from '../../utils/ActionTypeRender'
 import './index.css'
 
 export const Table = ({
@@ -18,17 +17,6 @@ export const Table = ({
   addActions = true,
   actionType = 'standar'
 }) => {
-  const ActionTypeRender = (actionType) => {
-    switch (actionType) {
-      case 'standar':
-        return TableActions
-      case 'logs':
-        return TableActionsLogs
-      default:
-        return TableActions
-    }
-  }
-
   const ActionRender = ActionTypeRender(actionType)
 
   // table search state

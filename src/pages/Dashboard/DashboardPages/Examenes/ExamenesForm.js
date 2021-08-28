@@ -7,8 +7,6 @@ export const ExamenesForm = ({ examenes, id, isInterfaceView, ...props }) => {
   let examenCurrent = examenes?.find((examen) => {
     return examen.examen_id.toString() === id
   })
-  examenCurrent = examenCurrent ?? ExamenSchema.initialValues
-  console.log(examenCurrent)
   return (
     <Form
       isInterfaceView={isInterfaceView}
