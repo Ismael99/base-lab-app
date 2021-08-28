@@ -33,6 +33,7 @@ export const DashboardMenu = () => (
       path="users"
       links={UserRoutes}
       icon={UserGroupIcon}
+      onClick={() => console.log('Users Button')}
     />
     <DashboardMenuItem
       title="Pacientes"

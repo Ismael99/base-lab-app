@@ -24,11 +24,8 @@ export const DataList = ({
   const [field, meta, helper] = useField({ ...props, name })
   const { onBlur } = field
   const { setValue, setTouched } = helper
-  console.log(field.value)
-  console.log(helper)
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ?? []
-    console.log(data)
     const dataFilter = status
       ? data.map((register) => {
           if (register[status] !== 2) {
@@ -42,14 +39,11 @@ export const DataList = ({
     return dataFilter
   })
   const dataListData = useSelector(dataListSelector)
-  console.log({ field })
-  console.log({ meta })
   useEffect(() => {
     const valueDefault = dataListData.find((option) => {
       return option.value === field.value
     })
     setValue(valueDefault)
-    debugger
   }, [])
   return (
     <div className="w-full">

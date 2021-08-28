@@ -30,7 +30,6 @@ export const quimico = (Yup) => ({
       label: 'Quimico Estado',
       type: 'datalist',
       name: 'quimico_status',
-      icon: BeakerIcon,
       id: 'record_status_id',
       value: 'record_status_name',
       module: 'records_status',
