@@ -5,7 +5,7 @@ import { examen } from './examen'
 import { quimico } from './quimico'
 import { roles } from './roles'
 import { logs } from './logs'
-
+import { ordenExamen } from './ordenExamen'
 export const LoginSchema = {
   initialValues: {
     user_username: '',
@@ -28,3 +28,4 @@ export const PacienteSchema = paciente(Yup)
 export const ExamenSchema = examen(Yup)
 export const QuimicoSchema = quimico(Yup)
 export const UserSchema = user(Yup)
+export const OrdenExamenSchema = ordenExamen(Yup)

@@ -5,7 +5,9 @@ import { examenesReducer } from './examenesReducer'
 import { rolesReducer } from './rolesReducer'
 import { logsReducer } from './logsReducer'
 import { quimicosReducer } from './quimicosReducer'
+import { ordenesExamenesReducer } from './ordenesExamenesReducer'
 
+export const ordenes_examenes = ordenesExamenesReducer
 export const logs = logsReducer
 export const roles = rolesReducer
 export const pacientes = pacientesReducer

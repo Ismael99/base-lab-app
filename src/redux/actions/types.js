@@ -35,11 +35,18 @@ export const QUIMICOS_ACTIONS = {
   SET_CURRENT_QUIMICO: 'set_current_quimico'
 }
 
-
 export const ROLES_ACTIONS = {
   FETCH_ROLES: 'fetch_roles'
 }
 
 export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
+}
+
+export const ORDENES_EXAMENES_ACTIONS = {
+  FETCH_ORDENES_EXAMENES: 'fetch_ordenes_examenes',
+  SAVE_ORDEN_EXAMEN: 'save_orden_examen',
+  DELETE_ORDEN_EXAMEN: 'delete_orden_examen',
+  UPDATE_ORDEN_EXAMEN: 'update_orden_examen',
+  SET_CURRENT_ORDEN_EXAMEN: 'set_current_orden_examen'
 }

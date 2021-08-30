@@ -48,6 +48,7 @@ export const Table = ({
                 }`}
               >
                 <span className="font-medium">
+                  {keyName.includes('precio') ? '$' : ''}
                   {keyName.includes('created_at') ||
                   keyName.includes('updated_at')
                     ? new Date(row[keyName]).toUTCString()
