@@ -41,7 +41,7 @@ export const Dashboard = () => {
             <Quimicos path="quimicos/*" />
             <Test path="test" />
             <Roles path="roles" />
-            <OrdenesExamenes path="ordenes_examenes" />
+            <OrdenesExamenes path="ordenes_examenes/*" />
             <Logs path="logs" />
             <NotFound default />
           </Router>

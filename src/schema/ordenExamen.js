@@ -23,9 +23,13 @@ export const ordenExamen = (Yup) => ({
           .required('Campo Requerido'),
         label: Yup.string().required('Campo requerido')
       })
-      .required('Campo Requerido'),
-    examenes_realizados: Yup.array().required('Campo Requerido')
+      .required('Campo Requerido')
   }),
+  initialValues: {
+    ordenes_exam_pacientes: [{ value: '', label: '' }],
+    orden_exam_dr_responsable: '',
+    orden_exam_total_precio: 0
+  },
   tableHeaders: ['Paciente', 'Dr Responsable', 'Total Precio', 'Acciones'],
   keys: [
     'orden_exam_paciente',
@@ -36,9 +40,14 @@ export const ordenExamen = (Yup) => ({
     {
       label: 'Paciente',
       placeholder: 'Paciente',
-      type: 'text',
+      type: 'datalist',
       name: 'orden_exam_paciente',
-      icon: ClipboardListIcon
+      icon: ClipboardListIcon,
+      id: 'paciente_id',
+      status: 'paciente_status',
+      value: ['paciente_nombre', 'paciente_apellido'],
+      module: 'pacientes',
+      isMulti: false
     },
     {
       label: 'Dr Resposable',
@@ -54,6 +63,18 @@ export const ordenExamen = (Yup) => ({
       name: 'orden_exam_total_precio',
       icon: CurrencyDollarIcon,
       disabled: true
+    },
+    {
+      label: 'Examenes',
+      placeholder: 'Examenes',
+      type: 'datalist_multi',
+      name: 'examenes_realizados',
+      icon: ClipboardListIcon,
+      id: 'examen_id',
+      status: 'examen_status',
+      value: 'examen_nombre',
+      module: 'examenes',
+      isMulti: true
     }
   ]
 })
