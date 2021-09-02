@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useField, ErrorMessage } from 'formik'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
+import { concatLabel } from '../../utils/concatLabel'
 import Select from 'react-select'
 export const DataList = ({
   id,
@@ -15,7 +16,6 @@ export const DataList = ({
   ...props
 }) => {
   const [field, meta, helper] = useField({ ...props, name })
-  const { onBlur } = field
   const { setValue, setTouched } = helper
   console.log({ meta })
   console.log({ helper })
@@ -24,11 +24,8 @@ export const DataList = ({
     const data = state[module].data ?? []
     const dataFilter = status
       ? data.map((register) => {
-          let label_concat = ''
+          const label_concat = concatLabel(value, register)
           if (register[status] !== 2) {
-            value.forEach((val) => {
-              label_concat += ` ${register[val]}`
-            })
             return { label: label_concat, value: register[id] }
           }
           return undefined
@@ -50,7 +47,6 @@ export const DataList = ({
       <Select
         {...field}
         onChange={setValue}
-        onBlur={onBlur}
         options={dataListData}
         name={name}
         isMulti={isMulti}
@@ -58,7 +54,7 @@ export const DataList = ({
         placeholder={placeholder}
       />
       <div className="absolute py-4 mb-10 text-xs text-red-500">
-        <ErrorMessage name={name} render={(msg) => <p>{msg.value}</p>} />
+        <p>{meta.error?.value && meta.touched ? meta.error.value : ''}</p>
       </div>
     </div>
   )

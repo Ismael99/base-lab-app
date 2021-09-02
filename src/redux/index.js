@@ -8,7 +8,8 @@ import {
   examenes,
   logs,
   quimicos,
-  ordenes_examenes
+  ordenes_examenes,
+  examenes_realizados
 } from './reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
@@ -21,7 +22,8 @@ const reducer = combineReducers({
   logs,
   examenes,
   quimicos,
-  ordenes_examenes
+  ordenes_examenes,
+  examenes_realizados
 })
 
 export const configureStore = () => createStore(reducer, composedEnhancer)

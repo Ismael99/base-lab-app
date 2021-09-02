@@ -5,7 +5,8 @@ import {
   RolesRoutes,
   ExamenesRoutes,
   QuimicosRoutes,
-  LogsRoutes
+  LogsRoutes,
+  OrdenesExamenesRoutes
 } from '../../config/routes'
 import { DashboardMenuItem } from './DashboardMenuItem'
 import {
@@ -14,7 +15,8 @@ import {
   UserGroupIcon,
   BriefcaseIcon,
   BeakerIcon,
-  ClipboardListIcon
+  ClipboardListIcon,
+  FolderOpenIcon
 } from '@heroicons/react/outline'
 import { Link } from '@reach/router'
 export const DashboardMenu = () => (
@@ -58,6 +60,12 @@ export const DashboardMenu = () => (
       path="roles"
       links={RolesRoutes}
       icon={BriefcaseIcon}
+    />
+    <DashboardMenuItem
+      title="Ordenes Examenes"
+      path="ordenes_examenes"
+      links={OrdenesExamenesRoutes}
+      icon={FolderOpenIcon}
     />
     <DashboardMenuItem
       title="Logs"

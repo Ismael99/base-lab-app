@@ -13,10 +13,13 @@ export const Form = ({
   isInterfaceView,
   currentPath,
   valueDatalist = undefined,
+  valueExtraInput = undefined,
   onChangeDatalist = undefined,
-  customOnSubmit = undefined
+  customOnSubmit = undefined,
+  errorDatalist = undefined
 }) => {
-  const onSubmit = (values, { setSubmitting }) => {
+  const dispatch = useDispatch()
+  const submitDefault = (values, { setSubmitting }) => {
     values = datalistTransform(values)
     dispatch(setCurrent(values))
     dispatch(toDispatch)
@@ -25,14 +28,25 @@ export const Form = ({
     console.log(values)
     navigate(`/dashboard/${currentPath}`, { replace: true })
   }
-  const dispatch = useDispatch()
   return (
     <Formik
       initialValues={
         initialValues !== undefined ? initialValues : schema.initialValues
       }
       validationSchema={schema.validations}
-      onSubmit={customOnSubmit || onSubmit}
+      onSubmit={(values, { setSubmitting }) => {
+        if (customOnSubmit)
+          customOnSubmit(
+            values,
+            { setSubmitting },
+            setCurrent,
+            toDispatch,
+            currentPath
+          )
+        else {
+          submitDefault(values, { setSubmitting })
+        }
+      }}
       className="flex flex-col justify-center min-h-screen px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32"
     >
       <Formk className="flex flex-col pt-3 md:pt-2">
@@ -43,6 +57,8 @@ export const Form = ({
             valueDatalist={valueDatalist}
             onChangeDatalist={onChangeDatalist}
             isInterfaceView={isInterfaceView}
+            valueExtraInput={valueExtraInput}
+            errorDatalist={errorDatalist}
           />
         ))}
         <FormButtons

@@ -20,3 +20,7 @@ export const QuimicosRoutes = [
 
 export const RolesRoutes = [{ path: './roles', title: 'Ver Roles' }]
 export const LogsRoutes = [{ path: './logs', title: 'Ver Logs' }]
+export const OrdenesExamenesRoutes = [
+  { path: './ordenes_examenes', title: 'Ver Ordenes Examenes' },
+  { path: './ordenes_examenes/create', title: 'Registrar Orden de Examen' }
+]

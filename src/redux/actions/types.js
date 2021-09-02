@@ -43,6 +43,13 @@ export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
 }
 
+export const EXAMENES_REALIZADOS_ACTIONS = {
+  FETCH_EXAMENES_REALIZADOS: 'fetch_examenes_realizados',
+  SAVE_EXAMEN_REALIZADO: 'save_examen_realizado',
+  UPDATE_EXAMEN_REALIZADO: 'update_examen_realizado',
+  SET_CURRENT_EXAMEN_REALIZADO: 'set_current_examen_realizado'
+}
+
 export const ORDENES_EXAMENES_ACTIONS = {
   FETCH_ORDENES_EXAMENES: 'fetch_ordenes_examenes',
   SAVE_ORDEN_EXAMEN: 'save_orden_examen',

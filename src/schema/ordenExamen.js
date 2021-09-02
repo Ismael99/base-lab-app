@@ -11,11 +11,7 @@ export const ordenExamen = (Yup) => ({
     orden_exam_total_precio: Yup.number()
       .min(1, 'Dígitos mínimos 1')
       .positive('Precio no válido')
-      .required('Campo requerido')
-      .max(1000, 'Precio no Valido')
-      .test('is-decimal', 'invalid decimal', (value) =>
-        (value + '').match(/^[0-9]*.?[0-9]*?$/)
-      ),
+      .max(1000, 'Precio no Valido'),
     orden_exam_paciente: Yup.object()
       .shape({
         value: Yup.number()
@@ -26,15 +22,21 @@ export const ordenExamen = (Yup) => ({
       .required('Campo Requerido')
   }),
   initialValues: {
-    ordenes_exam_pacientes: [{ value: '', label: '' }],
     orden_exam_dr_responsable: '',
-    orden_exam_total_precio: 0
+    examenes_realizados: []
   },
-  tableHeaders: ['Paciente', 'Dr Responsable', 'Total Precio', 'Acciones'],
+  tableHeaders: [
+    'Paciente',
+    'Dr Responsable',
+    'Total Precio',
+    'Fecha/Hora',
+    'Detalles'
+  ],
   keys: [
     'orden_exam_paciente',
     'orden_exam_dr_responsable',
-    'orden_exam_total_precio'
+    'orden_exam_total_precio',
+    'orden_exam_created_at'
   ],
   fields: [
     {
@@ -57,14 +59,6 @@ export const ordenExamen = (Yup) => ({
       icon: BeakerIcon
     },
     {
-      label: 'Total',
-      placeholder: 'Total...',
-      type: 'number',
-      name: 'orden_exam_total_precio',
-      icon: CurrencyDollarIcon,
-      disabled: true
-    },
-    {
       label: 'Examenes',
       placeholder: 'Examenes',
       type: 'datalist_multi',
@@ -72,9 +66,18 @@ export const ordenExamen = (Yup) => ({
       icon: ClipboardListIcon,
       id: 'examen_id',
       status: 'examen_status',
-      value: 'examen_nombre',
+      value: ['examen_nombre', 'examen_precio'],
       module: 'examenes',
+      extraValue: 'examen_precio',
       isMulti: true
+    },
+    {
+      label: 'Total',
+      placeholder: 'Total...',
+      type: 'totalPrecio',
+      name: 'orden_exam_total_precio',
+      icon: CurrencyDollarIcon,
+      disabled: true
     }
   ]
 })

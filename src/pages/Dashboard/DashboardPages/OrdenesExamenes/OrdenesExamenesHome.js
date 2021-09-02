@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Table } from '../../../../components/Table'
 import { OrdenExamenSchema } from '../../../../schema'
 import { createSelector } from 'selector'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenesRealizadosActions'
+
 const ordenesExamenesSelector = createSelector(
   (state) => state.ordenes_examenes.data ?? [],
   (data) =>
@@ -18,6 +20,17 @@ const ordenesExamenesSelector = createSelector(
 )
 const pacientesSelector = createSelector((state) => state.pacientes.data ?? [])
 export const OrdenesExamenesHome = () => {
+  const dispatch = useDispatch()
+  const [mounted, setMounted] = useState(true)
+  useEffect(() => {
+    const fetch = async () => {
+      await dispatch(thunkFetchExamenesRealizados)
+    }
+    if (mounted) fetch()
+    return () => {
+      setMounted(false)
+    }
+  }, [mounted, dispatch])
   const pacientes = useSelector(pacientesSelector)
   const ordenesExamenes = useSelector(ordenesExamenesSelector)
   console.log({ ordenesExamenes })
@@ -39,6 +52,7 @@ export const OrdenesExamenesHome = () => {
         data={ordenesExamenesPacientesName}
         keys={OrdenExamenSchema.keys}
         idKey="orden_exam_id"
+        actionType="only_detail"
       />
     </>
   )
