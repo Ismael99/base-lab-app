@@ -35,7 +35,7 @@ export const OrdenesExamenes = () => {
       await dispatch(thunkFetchOrdenesExamenes)
       await dispatch(thunkFetchExamenes)
       await dispatch(thunkFetchExamenesRealizados)
-
+      debugger
       setLoading(false)
     }
     if (mounted) fetch()

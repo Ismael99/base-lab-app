@@ -4,7 +4,7 @@ import { ExamenSchema } from '../../../../schema'
 import { createSelector } from 'selector'
 import { useSelector } from 'react-redux'
 const examenesSelector = createSelector(
-  (state) => (state.examenes.data ? state.examenes.data : []),
+  (state) => state.examenes.data ?? [],
   (data) => data.filter((examen) => examen.examen_status !== 2)
 )
 

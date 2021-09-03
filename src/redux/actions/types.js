@@ -42,7 +42,9 @@ export const ROLES_ACTIONS = {
 export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
 }
-
+export const ORDENES_EXAMENES_STATUS_ACTIONS = {
+  FETCH_ORDENES_EXAMENES_STATUS: 'ordenes_examenes_status'
+}
 export const EXAMENES_REALIZADOS_ACTIONS = {
   FETCH_EXAMENES_REALIZADOS: 'fetch_examenes_realizados',
   SAVE_EXAMEN_REALIZADO: 'save_examen_realizado',

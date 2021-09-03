@@ -39,7 +39,7 @@ export const OrdenesExamenesHome = () => {
     const currentPaciente = pacientes.find(
       (paciente) => ordenExamen.orden_exam_paciente === paciente.paciente_id
     )
-    const paciente_full_name = `${currentPaciente.paciente_nombre} ${currentPaciente.paciente_apellido}`
+    const paciente_full_name = `${currentPaciente?.paciente_nombre} ${currentPaciente?.paciente_apellido}`
     return {
       ...ordenExamen,
       orden_exam_paciente: paciente_full_name
@@ -52,7 +52,7 @@ export const OrdenesExamenesHome = () => {
         data={ordenesExamenesPacientesName}
         keys={OrdenExamenSchema.keys}
         idKey="orden_exam_id"
-        actionType="only_detail"
+        actionType="orden_examenes"
       />
     </>
   )

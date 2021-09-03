@@ -44,7 +44,7 @@ export const updateExamenRealizado = async (dispatch, getState) => {
   })
 }
 
-export const setCurrentExamen = (examen_realizado) => ({
+export const setCurrentExamenRealizado = (examen_realizado) => ({
   type: EXAMENES_REALIZADOS_ACTIONS.SET_CURRENT_EXAMEN_REALIZADO,
   payload: examen_realizado
 })

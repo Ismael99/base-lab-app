@@ -1,15 +1,17 @@
 import { TableActions } from '../components/Table/TableActions'
 import { TableActionsLogs } from '../components/Table/TableActionsLogs'
-import { TableActionsOnlyDetail } from '../components/Table/TableActionsOnlyDetail'
-
+import { TableActionsOrdenExamenes } from '../components/Table/TableActionsOrdenExamenes'
+import { TableActionsExamenesRealizados } from '../components/Table/TableActionsExamenesRealizados'
 export const ActionTypeRender = (actionType) => {
   switch (actionType) {
     case 'standar':
       return TableActions
     case 'logs':
       return TableActionsLogs
-    case 'only_detail':
-      return TableActionsOnlyDetail
+    case 'orden_examenes':
+      return TableActionsOrdenExamenes
+    case 'examenes_realizados':
+      return TableActionsExamenesRealizados
     default:
       return TableActions
   }

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
 
 const examenesSelector = createSelector(
-  (state) => (state.examenes.data ? state.examenes.data : []),
+  (state) => state.examenes.data ?? [],
   (data) => data.filter((examen) => examen.examen_status !== 2)
 )
 
