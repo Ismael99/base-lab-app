@@ -61,7 +61,7 @@ export const ordenExamen = (Yup) => ({
     {
       label: 'Examenes',
       placeholder: 'Examenes',
-      type: 'datalist_multi',
+      type: 'datalist_custom',
       name: 'examenes_realizados',
       icon: ClipboardListIcon,
       id: 'examen_id',

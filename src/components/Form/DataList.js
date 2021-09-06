@@ -54,7 +54,11 @@ export const DataList = ({
         placeholder={placeholder}
       />
       <div className="absolute py-4 mb-10 text-xs text-red-500">
-        <p>{meta.error?.value && meta.touched ? meta.error.value : ''}</p>
+        <p>
+          {(meta.error?.value || meta.error) && meta.touched
+            ? meta.error.value ?? meta.error
+            : ''}
+        </p>
       </div>
     </div>
   )

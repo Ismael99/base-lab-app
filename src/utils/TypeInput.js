@@ -4,6 +4,7 @@ import { InputSelect } from '../components/Form/InputSelect'
 import { DataList } from '../components/Form/DataList'
 import { CustomDataList } from '../components/Form/CustomDatalist'
 import { InputTotalPrecio } from '../components/Form/InputTotalPrecio'
+import { InputFieldArray } from '../components/Form/InputFieldArray'
 export const TypeInput = (type, isInterfaceView) => {
   switch (type) {
     case 'select':
@@ -16,8 +17,11 @@ export const TypeInput = (type, isInterfaceView) => {
       if (isInterfaceView) return InputSelect
       return DataList
     }
-    case 'datalist_multi': {
+    case 'datalist_custom': {
       return CustomDataList
+    }
+    case 'array_field': {
+      return InputFieldArray
     }
     case 'totalPrecio': {
       return InputTotalPrecio

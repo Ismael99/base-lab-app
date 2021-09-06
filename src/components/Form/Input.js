@@ -16,10 +16,10 @@ export const Input = (props) => {
         className={`flex  w-3/4 xl:w-1/2 p-1 mx-auto my-2 border border-gray-200 rounded`}
       >
         <span className="flex flex-row items-center justify-start w-full">
-          <Icon className="absolute w-5 ml-1" />
+          {type !== 'array_field' && <Icon className="absolute w-5 ml-1" />}
           <InputRender {...props} />
         </span>
-        {type !== 'datalist' && (
+        {type !== 'datalist' && type !== 'array_field' && (
           <div className="absolute w-3/4 h-6 mx-auto mt-12 text-xs text-red-500 xl:w-1/2">
             <ErrorMessage name={name} />
           </div>

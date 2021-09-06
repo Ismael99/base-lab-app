@@ -25,7 +25,7 @@ export const LoginSchema = {
 }
 export const RolesSchema = roles()
 export const LogsSchema = logs()
-export const ExamenRealizadoSchema = examenRealizado()
+export const ExamenRealizadoSchema = examenRealizado(Yup)
 export const PacienteSchema = paciente(Yup)
 export const ExamenSchema = examen(Yup)
 export const QuimicoSchema = quimico(Yup)

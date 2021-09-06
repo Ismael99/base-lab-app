@@ -1,9 +1,9 @@
 import React from 'react'
-import { Form } from '../../../../components/Form'
+import { FormWithRender } from '../../../../components/Form/FormWithRender'
 import { ExamenRealizadoSchema } from '../../../../schema'
 import { setCurrentExamenRealizado } from '../../../../redux/actions/examenesRealizadosActions'
 
-export const ExamenesRealizadosForm = ({
+export const ExamenesRealizadosFormWithRender = ({
   examenesRealizados,
   id,
   isInterfaceView,
@@ -14,7 +14,7 @@ export const ExamenesRealizadosForm = ({
     return examen_realizado.examen_realizado_id.toString() === id
   })
   return (
-    <Form
+    <FormWithRender
       isInterfaceView={isInterfaceView}
       initialValues={examenRealizadoCurrent}
       schema={ExamenRealizadoSchema}

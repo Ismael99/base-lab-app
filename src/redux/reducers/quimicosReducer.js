@@ -17,7 +17,7 @@ export const quimicosReducer = (state = INITIAL_STATE, action) => {
       }
     }
     case QUIMICOS_ACTIONS.SAVE_QUIMICO: {
-      const newQuimicoData = [...state.data, action.payload]
+      const newQuimicoData = [...(state.data ?? []), action.payload]
       return { ...state, data: newQuimicoData }
     }
     case QUIMICOS_ACTIONS.SET_CURRENT_QUIMICO: {

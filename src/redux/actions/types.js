@@ -39,6 +39,9 @@ export const ROLES_ACTIONS = {
   FETCH_ROLES: 'fetch_roles'
 }
 
+export const QUIMICOS_EXAMENES_ACTIONS = {
+  FETCH_QUIMICOS_EXAMENES: 'fetch_quimicos_examenes'
+}
 export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
 }
