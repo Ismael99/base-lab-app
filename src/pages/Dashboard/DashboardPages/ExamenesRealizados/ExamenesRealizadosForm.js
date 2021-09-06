@@ -7,6 +7,7 @@ export const ExamenesRealizadosForm = ({
   examenesRealizados,
   id,
   isInterfaceView,
+  redirectToBack,
   ...props
 }) => {
   let examenRealizadoCurrent = examenesRealizados?.find((examen_realizado) => {

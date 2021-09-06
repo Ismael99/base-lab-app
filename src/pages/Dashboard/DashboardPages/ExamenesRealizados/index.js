@@ -9,6 +9,7 @@ import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenes
 import { thunkFetchOrdenesExamenes } from '../../../../redux/actions/ordenesExamenesActions'
 import { thunkFetchOrdenesExamenesStatus } from '../../../../redux/actions/ordenesExamenesStatusActions'
 import { thunkFetchExamenes } from '../../../../redux/actions/examenesAction'
+import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
@@ -22,6 +23,7 @@ export const ExamenesRealizados = () => {
       console.log('Fetching de datos')
       setLoading(true)
       await dispatch(thunkFetchExamenesRealizados)
+      await dispatch(thunkFetchPacientes)
       await dispatch(thunkFetchOrdenesExamenes)
       await dispatch(thunkFetchExamenes)
       await dispatch(thunkFetchOrdenesExamenesStatus)

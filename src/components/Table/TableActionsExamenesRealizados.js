@@ -13,8 +13,8 @@ export const TableActionsExamenesRealizados = ({ data, idKey }) => {
           <EyeIcon />
         </Link>
         <Link
-          to={`../../resultados/${data[idKey]}`}
-          className="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
+          to={`../../resultados/${data[idKey]}?path=examenes_realizados/examenes/${data['examen_realizado_orden_examen']}`}
+          className="w-4 disabled-link mr-2 text-green-400 disabled transform hover:text-blue-500 hover:scale-110"
         >
           <ClipboardCheckIcon />
         </Link>
