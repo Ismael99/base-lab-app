@@ -11,7 +11,7 @@ export const examenesRealizadosReducer = (state = INITIAL_STATE, action) => {
         ...state,
         data: state.data.map((examen_realizado) => {
           return examen_realizado.examen_realizado_id ===
-            action.payload.examen_realizado_id
+            action.payload?.examen_realizado_id ?? undefined
             ? action.payload
             : examen_realizado
         })
