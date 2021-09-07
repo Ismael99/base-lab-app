@@ -28,7 +28,7 @@ export const examenRealizado = (Yup) => ({
         value: ''
       }
     ],
-    examen_realizado_quimicos: []
+    examen_realizado_quimico: [{ label: '', value: '' }]
   },
   tableHeaders: ['Examen', 'N° de Oeden', 'Acciones'],
   keys: ['examen_realizado_examen', 'examen_realizado_orden_examen'],
@@ -44,7 +44,7 @@ export const examenRealizado = (Yup) => ({
       label: 'Quimicos',
       placeholder: 'Quimicos',
       type: 'datalist',
-      name: 'examen_realizado_quimicos',
+      name: 'examen_realizado_quimico',
       icon: BeakerIcon,
       id: 'quimico_id',
       status: 'quimico_status',

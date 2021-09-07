@@ -11,6 +11,8 @@ export const fetchExamenesRealizados = (examenes_realizados) => ({
 export const thunkFetchExamenesRealizados = async (dispatch, _) => {
   const examenes_realizados = await client.get({ resource: resource })
   console.log({ examenes_realizados })
+  console.log('Resultado del fetch examenes realizados:')
+  console.log({ examenes_realizados })
   await dispatch({
     type: EXAMENES_REALIZADOS_ACTIONS.FETCH_EXAMENES_REALIZADOS,
     payload: examenes_realizados

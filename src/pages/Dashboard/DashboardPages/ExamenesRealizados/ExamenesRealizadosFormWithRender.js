@@ -14,6 +14,7 @@ export const ExamenesRealizadosFormWithRender = ({
   let examenRealizadoCurrent = examenesRealizados?.find((examen_realizado) => {
     return examen_realizado.examen_realizado_id.toString() === id
   })
+  console.log({ examenesRealizados })
   const quimicosSelector = createSelector(
     (state) => state.quimicos.data ?? [],
     (data) =>
