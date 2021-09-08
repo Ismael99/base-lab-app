@@ -100,13 +100,13 @@ export const ExamenesOrdenView = ({ id }) => {
         </div>
         <div
           className={`xl:w-1/2 w-full flex xl:order-2 order-1 px-3 flex-row ${
-            showBtnPrint ? 'justify-between' : 'justify-end'
-          } items-center`}
+            showBtnPrint ? ' justify-between ' : ' justify-end '
+          } items-center xl:justify-end`}
         >
           {showBtnPrint && (
             <Link
               to="/dashboard/ordenes_examenes"
-              className="flex flex-row items-center justify-center w-auto h-10 px-4 my-3 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
+              className="flex flex-row items-center justify-center w-auto h-10 px-4 my-3 mr-4 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
