@@ -56,28 +56,32 @@ export const InputFieldArray = ({
                   </div>
                 </span>
               </div>
-              <button
-                className="ml-5 text-xl text-red-600 hover:text-red-800 transform hover:scale-125"
-                type="button"
-                onClick={() => {
-                  if (values[name].length > 1) {
-                    arrayHelpers.remove(index)
-                  }
-                }} // remove a form from the list of forms
-              >
-                {'\u2717'}
-              </button>
+              {!isInterfaceView && (
+                <button
+                  className="ml-5 text-xl text-red-600 hover:text-red-800 transform hover:scale-125"
+                  type="button"
+                  onClick={() => {
+                    if (values[name].length > 1) {
+                      arrayHelpers.remove(index)
+                    }
+                  }} // remove a form from the list of forms
+                >
+                  {'\u2717'}
+                </button>
+              )}
             </div>
           ))}
-          <div className="flex justify-center w-full mt-5">
-            <button
-              className="px-2 my-2 text-white bg-blue-500 rounded-smi hover:bg-blue-600 transform hover:scale-105"
-              type="button"
-              onClick={() => arrayHelpers.push({ label: '', value: '' })} // insert an empty string at a position
-            >
-              {`Agregar campo \u271a`}
-            </button>
-          </div>
+          {!isInterfaceView && (
+            <div className="flex justify-center w-full mt-5">
+              <button
+                className="px-2 my-2 text-white bg-blue-500 rounded-smi hover:bg-blue-600 transform hover:scale-105"
+                type="button"
+                onClick={() => arrayHelpers.push({ label: '', value: '' })} // insert an empty string at a position
+              >
+                {`Agregar campo \u271a`}
+              </button>
+            </div>
+          )}
         </div>
       )}
     />

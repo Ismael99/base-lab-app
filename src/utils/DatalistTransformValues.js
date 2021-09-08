@@ -1,6 +1,4 @@
 const DATALIST_KEYS = [
-  'record_status',
-  'key',
   'user_status',
   'quimico_status',
   'orden_exam_paciente'

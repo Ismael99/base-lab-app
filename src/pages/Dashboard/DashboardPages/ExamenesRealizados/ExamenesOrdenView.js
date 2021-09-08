@@ -39,6 +39,7 @@ export const ExamenesOrdenView = ({ id }) => {
       })
   )
   const pacienteCurrent = useSelector(pacienteCurrentSelector)
+  //Examenes realizados de la orden actual
   const examenesOrden = useSelector(examenesOrdenSelector)
   const ordenesExamenesStatus = useSelector(ordenExamenesStatusSelector)
   const examenes = useSelector(examenesSelector)
@@ -56,7 +57,15 @@ export const ExamenesOrdenView = ({ id }) => {
         ).examen_nombre
       : ''
   }))
-  console.log({ data })
+  const validateResultados = (currentValue) => {
+    debugger
+    return currentValue.examen_realizado_resultados[0].value !== ''
+  }
+
+  //Validar para mostrar el boton de imprimir o no
+  const showBtnPrint = examenesOrden.every(validateResultados)
+  console.log({ showBtnPrint })
+
   return (
     <>
       <div className="flex flex-row">
@@ -93,6 +102,17 @@ export const ExamenesOrdenView = ({ id }) => {
             <p>Atras</p>
           </span>
         </Link>
+        {showBtnPrint && (
+          <Link
+            to="/dashboard/ordenes_examenes"
+            className="flex flex-row items-center justify-center w-auto h-10 px-4 py-4 my-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
+          >
+            <span className="flex flex-row">
+              <p className="mr-3">{'\u21a9'}</p>
+              <p>Atras</p>
+            </span>
+          </Link>
+        )}
       </div>
       <Table
         headers={ExamenRealizadoSchema.tableHeaders}

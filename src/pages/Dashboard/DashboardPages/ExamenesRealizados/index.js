@@ -5,6 +5,7 @@ import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
 import { ExamenRealizadoEdit } from './ExamenRealizadoEdit'
 import { ExamenesOrdenView } from './ExamenesOrdenView'
+import { ExamenRealizadoDetail } from './ExamenRealizadoDetail'
 import {
   thunkFetchExamenesRealizados,
   updateExamenRealizado
@@ -49,6 +50,7 @@ export const ExamenesRealizados = () => {
               toDispatch={updateExamenRealizado}
             />
             <ExamenesOrdenView path="examenes/:id" />
+            <ExamenRealizadoDetail path="resultados/view/:id" />
             <NotFound default />
           </Router>
         </DashboardSectionContent>

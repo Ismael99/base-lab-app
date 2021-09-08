@@ -10,6 +10,7 @@ export const DataList = ({
   module,
   label,
   name,
+  isInterfaceView = false,
   value,
   placeholder,
   isMulti = false,
@@ -39,9 +40,6 @@ export const DataList = ({
   useEffect(() => {
     let valueDefault
     if (isMulti) {
-      console.log('+++++++++++++++++++++++++++++++++++++++')
-      console.log(field.value)
-      console.log('+++++++++++++++++++++++++++++++++++++++')
       valueDefault = dataListData.filter((option) => {
         return field?.value?.find((field) => {
           console.log(field)
@@ -53,17 +51,19 @@ export const DataList = ({
         return option.value === field.value
       })
     }
-    console.log({ valueDefault })
     setValue(valueDefault)
+    debugger
   }, [])
   return (
     <div className="w-full">
       <Select
         {...field}
+        isDisabled={isInterfaceView}
         onChange={setValue}
         options={dataListData}
         name={name}
         isMulti={isMulti}
+        closeMenuOnSelect={!isMulti}
         onFocus={() => setTouched(true)}
         placeholder={placeholder}
       />

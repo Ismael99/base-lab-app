@@ -28,7 +28,7 @@ export const examenRealizado = (Yup) => ({
         value: ''
       }
     ],
-    examen_realizado_quimico: [{ label: '', value: '' }]
+    examen_realizado_quimico: undefined
   },
   tableHeaders: ['Examen', 'N° de Oeden', 'Acciones'],
   keys: ['examen_realizado_examen', 'examen_realizado_orden_examen'],

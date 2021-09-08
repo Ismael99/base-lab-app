@@ -13,6 +13,8 @@ export const FormWithRender = ({
   isInterfaceView,
   currentPath
 }) => {
+  const params = new URLSearchParams(window.location.search)
+  const backPath = params.get('path')
   const dispatch = useDispatch()
   const submitDefault = (values, { setSubmitting }) => {
     values = datalistTransform(values)
@@ -21,7 +23,9 @@ export const FormWithRender = ({
     setSubmitting(false)
     console.log('Submiting...')
     console.log(values)
-    navigate(`/dashboard/${currentPath}`, { replace: true })
+    navigate(backPath ? `../../${backPath}` : `/dashboard/${currentPath}`, {
+      replace: true
+    })
   }
   return (
     <Formik
