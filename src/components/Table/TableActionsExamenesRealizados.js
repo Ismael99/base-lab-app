@@ -18,7 +18,7 @@ export const TableActionsExamenesRealizados = ({ data, idKey }) => {
           className={`w-4 disabled-link mr-2 ${
             resultados_min === ''
               ? ' text-red-400 hover:text-red-600 '
-              : 'hover:text-blue-500'
+              : 'hover:text-blue-500 text-blue-400'
           } transform hover:scale-110`}
         >
           <ClipboardCheckIcon />

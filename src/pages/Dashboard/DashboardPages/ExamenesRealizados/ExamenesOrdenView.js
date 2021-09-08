@@ -4,7 +4,12 @@ import { Table } from '../../../../components/Table'
 import { ExamenRealizadoSchema } from '../../../../schema/'
 import { useSelector } from 'react-redux'
 import { Link } from '@reach/router'
-import { CheckCircleIcon, UsersIcon, UserIcon } from '@heroicons/react/outline'
+import {
+  CheckCircleIcon,
+  UsersIcon,
+  UserIcon,
+  PrinterIcon
+} from '@heroicons/react/outline'
 
 export const ExamenesOrdenView = ({ id }) => {
   const ordenExamenCurrentSelector = createSelector(
@@ -68,8 +73,8 @@ export const ExamenesOrdenView = ({ id }) => {
 
   return (
     <>
-      <div className="flex flex-row">
-        <div className="w-11/12 my-4 text-lg">
+      <div className="flex flex-col xl:flex-row justify-center items-center">
+        <div className="xl:w-1/2 w-full xl:order-1 order-2 px-3  my-4 text-lg">
           <p>
             <span className="flex flex-row items-center">
               <UserIcon className="w-5 h-5 mr-1" />
@@ -93,26 +98,32 @@ export const ExamenesOrdenView = ({ id }) => {
             </span>
           </p>
         </div>
-        <Link
-          to="/dashboard/ordenes_examenes"
-          className="flex flex-row items-center justify-center w-auto h-10 px-4 py-4 my-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
+        <div
+          className={`xl:w-1/2 w-full flex xl:order-2 order-1 px-3 flex-row ${
+            showBtnPrint ? 'justify-between' : 'justify-end'
+          } items-center`}
         >
-          <span className="flex flex-row">
-            <p className="mr-3">{'\u21a9'}</p>
-            <p>Atras</p>
-          </span>
-        </Link>
-        {showBtnPrint && (
+          {showBtnPrint && (
+            <Link
+              to="/dashboard/ordenes_examenes"
+              className="flex flex-row items-center justify-center w-auto h-10 px-4 my-3 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
+            >
+              <span className="flex flex-row items-center">
+                <PrinterIcon className="w-5 h-5 mr-3" />
+                <p>Imprimir</p>
+              </span>
+            </Link>
+          )}
           <Link
             to="/dashboard/ordenes_examenes"
-            className="flex flex-row items-center justify-center w-auto h-10 px-4 py-4 my-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
+            className="flex flex-row items-center justify-center w-auto h-10 px-4 py-4 my-3 w-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
           >
             <span className="flex flex-row">
               <p className="mr-3">{'\u21a9'}</p>
               <p>Atras</p>
             </span>
           </Link>
-        )}
+        </div>
       </div>
       <Table
         headers={ExamenRealizadoSchema.tableHeaders}
