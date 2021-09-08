@@ -20,7 +20,6 @@ export const CustomDataList = ({
   errorDatalist = undefined,
   ...props
 }) => {
-  debugger
   const [field, meta, helper] = useField({ ...props, name })
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ?? []
