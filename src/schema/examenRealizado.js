@@ -8,7 +8,7 @@ export const examenRealizado = (Yup) => ({
           .min(3, 'Carácteres mínimos 3')
           .required('Ingrese nombre del campo'),
         value: Yup.string()
-          .min(3, 'Carácteres mínimos 3')
+          .min(1, 'Carácteres mínimos 1')
           .required('Ingrese resultado de examen')
       })
     ).required('Campo requerido'),

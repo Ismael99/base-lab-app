@@ -16,24 +16,16 @@ export const examen = (Yup) => ({
       .positive('Precio no válido')
       .required('Campo requerido')
       .max(1000, 'Precio no Valido')
-      .test(
-        'is-decimal',
-    'invalid decimal',
-    value => (value + "").match(/^[0-9]*.?[0-9]*?$/),
-      ),
+      .test('is-decimal', 'invalid decimal', (value) =>
+        (value + '').match(/^[0-9]*.?[0-9]*?$/)
+      )
   }),
   initialValues: {
     examen_nombre: '',
-    examen_tipo_muestra: '',
-    examen_precio: 0
+    examen_tipo_muestra: ''
   },
-  tableHeaders: ['Examen', 'Tipo de Muestra', 'Precio', 'Estado', 'Acciones'],
-  keys: [
-    'examen_nombre',
-    'examen_tipo_muestra',
-    'examen_precio',
-    'examen_status'
-  ],
+  tableHeaders: ['Examen', 'Tipo de Muestra', 'Precio', 'Acciones'],
+  keys: ['examen_nombre', 'examen_tipo_muestra', 'examen_precio'],
   fields: [
     {
       label: 'Examen',

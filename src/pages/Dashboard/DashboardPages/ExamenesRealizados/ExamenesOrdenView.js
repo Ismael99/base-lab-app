@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createSelector } from 'selector'
 import { Table } from '../../../../components/Table'
 import { ExamenRealizadoSchema } from '../../../../schema/'
@@ -10,8 +10,18 @@ import {
   UserIcon,
   PrinterIcon
 } from '@heroicons/react/outline'
+import {
+  setCurrentOrdenExamen,
+  updateOrdenExamen
+} from '../../../../redux/actions/ordenesExamenesActions'
+import { useDispatch } from 'react-redux'
 
+const validateResultados = (currentValue) => {
+  return currentValue.examen_realizado_resultados[0].value !== ''
+}
 export const ExamenesOrdenView = ({ id }) => {
+  const dispatch = useDispatch()
+  const [showBtnPrint, setShowBtnPrint] = useState(false)
   const ordenExamenCurrentSelector = createSelector(
     (state) => state.ordenes_examenes.data ?? [],
     (data) =>
@@ -62,14 +72,19 @@ export const ExamenesOrdenView = ({ id }) => {
         ).examen_nombre
       : ''
   }))
-  const validateResultados = (currentValue) => {
-    debugger
-    return currentValue.examen_realizado_resultados[0].value !== ''
-  }
-
   //Validar para mostrar el boton de imprimir o no
-  const showBtnPrint = examenesOrden.every(validateResultados)
   console.log({ showBtnPrint })
+  useEffect(() => {
+    const complete = examenesOrden.every(validateResultados)
+    if (complete !== showBtnPrint) {
+      setShowBtnPrint(complete)
+      if (complete && ordenExamenCurrent) {
+        ordenExamenCurrent.orden_exam_status = 2
+        dispatch(setCurrentOrdenExamen(ordenExamenCurrent))
+        dispatch(updateOrdenExamen)
+      }
+    }
+  }, [showBtnPrint, ordenExamenCurrent, examenesOrden, dispatch])
 
   return (
     <>
@@ -83,7 +98,11 @@ export const ExamenesOrdenView = ({ id }) => {
             </span>
           </p>
           <p>
-            <span className="flex flex-row items-center">
+            <span
+              className={`flex flex-row items-center ${
+                showBtnPrint ? 'bg-green-100' : 'bg-red-100'
+              } w-max`}
+            >
               <CheckCircleIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Estado de Orden: </p>
               {currentStateOrden?.orden_exam_status_name}
