@@ -12,7 +12,7 @@ export const examenRealizado = (Yup) => ({
           .required('Ingrese resultado de examen')
       })
     ).required('Campo requerido'),
-    examen_realizado_quimicos: Yup.array(
+    examen_realizado_quimico: Yup.array(
       Yup.object().shape({
         value: Yup.number().min(1).required('Campo requerido'),
         label: Yup.string()

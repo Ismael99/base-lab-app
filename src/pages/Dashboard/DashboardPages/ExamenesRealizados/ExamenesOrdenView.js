@@ -48,11 +48,6 @@ export const ExamenesOrdenView = ({ id }) => {
       ordenExamenCurrent.orden_exam_status
     )
   })
-  console.log({ ordenExamenCurrent })
-  console.log({ ordenesExamenesStatus })
-  console.log({ currentStateOrden })
-  console.log({ examenes })
-  console.log({ examenesOrden })
   const data = examenesOrden.map((examen_orden) => ({
     ...examen_orden,
     examen_realizado_examen: examenes

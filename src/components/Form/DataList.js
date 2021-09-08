@@ -37,9 +37,23 @@ export const DataList = ({
   })
   const dataListData = useSelector(dataListSelector)
   useEffect(() => {
-    const valueDefault = dataListData.find((option) => {
-      return option.value === field.value
-    })
+    let valueDefault
+    if (isMulti) {
+      console.log('+++++++++++++++++++++++++++++++++++++++')
+      console.log(field.value)
+      console.log('+++++++++++++++++++++++++++++++++++++++')
+      valueDefault = dataListData.filter((option) => {
+        return field?.value?.find((field) => {
+          console.log(field)
+          return option.value === field.value
+        })
+      })
+    } else {
+      valueDefault = dataListData.find((option) => {
+        return option.value === field.value
+      })
+    }
+    console.log({ valueDefault })
     setValue(valueDefault)
   }, [])
   return (
