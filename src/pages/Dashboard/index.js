@@ -14,6 +14,8 @@ import { Quimicos } from './DashboardPages/Quimicos'
 import { Roles } from './DashboardPages/Roles'
 import { Logs } from './DashboardPages/Logs'
 import { Home } from './DashboardPages/Home'
+import { OrdenesExamenes } from './DashboardPages/OrdenesExamenes'
+import { ExamenesRealizados } from './DashboardPages/ExamenesRealizados'
 import { NotFound } from '../SiteStatus/NotFound'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
@@ -40,6 +42,8 @@ export const Dashboard = () => {
             <Quimicos path="quimicos/*" />
             <Test path="test" />
             <Roles path="roles" />
+            <ExamenesRealizados path="examenes_realizados/*" />
+            <OrdenesExamenes path="ordenes_examenes/*" />
             <Logs path="logs" />
             <NotFound default />
           </Router>

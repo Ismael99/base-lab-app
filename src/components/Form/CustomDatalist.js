@@ -1,32 +1,40 @@
 import React, { useEffect } from 'react'
-import { useField, ErrorMessage } from 'formik'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
-import { concatLabel } from '../../utils/concatLabel'
 import Select from 'react-select'
-export const DataList = ({
+import { useField } from 'formik'
+import { concatLabel } from '../../utils/concatLabel'
+export const CustomDataList = ({
   id,
   status,
   module,
   label,
   name,
-  isInterfaceView = false,
   value,
   placeholder,
+  isInterfaceView,
+  onChangeDatalist,
   isMulti = false,
+  valueDatalist,
+  extraValue = undefined,
+  errorDatalist = undefined,
   ...props
 }) => {
+  debugger
   const [field, meta, helper] = useField({ ...props, name })
-  const { setValue, setTouched } = helper
-  console.log({ meta })
-  console.log({ helper })
-  console.log({ field })
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ?? []
     const dataFilter = status
       ? data.map((register) => {
           const label_concat = concatLabel(value, register)
           if (register[status] !== 2) {
+            if (extraValue) {
+              return {
+                label: label_concat,
+                value: register[id],
+                [extraValue]: register[extraValue]
+              }
+            }
             return { label: label_concat, value: register[id] }
           }
           return undefined
@@ -37,40 +45,24 @@ export const DataList = ({
     return dataFilter
   })
   const dataListData = useSelector(dataListSelector)
-  useEffect(() => {
-    let valueDefault
-    if (isMulti) {
-      valueDefault = dataListData.filter((option) => {
-        return field?.value?.find((field) => {
-          console.log(field)
-          return option.value === field.value
-        })
-      })
-    } else {
-      valueDefault = dataListData.find((option) => {
-        return option.value === field.value
-      })
-    }
-    setValue(valueDefault)
-    debugger
-  }, [])
   return (
     <div className="w-full">
       <Select
         {...field}
-        isDisabled={isInterfaceView}
-        onChange={setValue}
+        onChange={onChangeDatalist}
+        value={valueDatalist}
         options={dataListData}
         name={name}
-        isMulti={isMulti}
         closeMenuOnSelect={!isMulti}
-        onFocus={() => setTouched(true)}
+        isDisabled={isInterfaceView}
+        onFocus={() => helper.setTouched(true)}
+        isMulti={isMulti}
         placeholder={placeholder}
       />
       <div className="absolute py-4 mb-10 text-xs text-red-500">
         <p>
-          {(meta.error?.value || meta.error) && meta.touched
-            ? meta.error.value ?? meta.error
+          {errorDatalist.examenes_realizados && meta.touched
+            ? errorDatalist.examenes_realizados
             : ''}
         </p>
       </div>

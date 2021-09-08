@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'formik'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
-
+import { concatLabel } from '../../utils/concatLabel'
 export const InputSelect = ({
   name,
   isInterfaceView,
@@ -13,18 +13,9 @@ export const InputSelect = ({
   placeholder,
   status
 }) => {
-  const selectDataSelector = createSelector((state) =>
-    state[module].data ? state[module].data : []
-  )
-  const selectDataSelectorTest = createSelector((state) => {
-    console.log(state)
-    return state
-  })
-
+  const selectDataSelector = createSelector((state) => state[module].data ?? [])
   const selectData = useSelector(selectDataSelector)
-  const test = useSelector(selectDataSelectorTest)
   console.log(selectData)
-  console.log(test)
   return (
     <Field
       name={name}
@@ -37,7 +28,7 @@ export const InputSelect = ({
       </option>
       {selectData.map((option) => (
         <option key={option[id]} value={option[id]}>
-          {option[value]}
+          {concatLabel(value, option)}
         </option>
       ))}
     </Field>
@@ -47,6 +38,5 @@ export const InputSelect = ({
 InputSelect.propTypes = {
   type: PropTypes.string.isRequired,
   isInterfaceView: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired
 }

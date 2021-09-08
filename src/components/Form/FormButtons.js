@@ -13,7 +13,7 @@ export const FormButtons = ({ moduleName, isInterfaceView }) => {
           {!isInterfaceView && (
             <button
               type="submit"
-              className="hover:bg-blue-100 w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white text-blue-400 bg-transparent border border-blue-400 rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
+              className="w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white text-blue-400 bg-transparent border border-blue-400 rounded-lg hover:bg-blue-100 md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
             >
               <span className="flex flex-row justify-center">
                 <SaveIcon className="w-5 mr-2" /> Guardar
@@ -27,7 +27,7 @@ export const FormButtons = ({ moduleName, isInterfaceView }) => {
         >
           <button
             type="button"
-            className="hover:bg-red-100 w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white bg-transparent border text-red-400 border-red-400 rounded-lg md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
+            className="w-5/6 p-2 mx-auto mt-5 text-base font-bold text-white text-red-400 bg-transparent border border-red-400 rounded-lg hover:bg-red-100 md:text-base lg:text-lg focus:outline-none lg:w-3/4 hover:opacity-90 transform hover:scale-105"
           >
             <span className="flex flex-row justify-center">
               <ChevronLeftIcon className="w-5 mr-2" /> Atras

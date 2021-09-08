@@ -6,6 +6,7 @@ import { TableHeaders } from './TableHeaders'
 import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
 import { ActionTypeRender } from '../../utils/ActionTypeRender'
+import { FormatDate } from '../../utils/FormatDate'
 import './index.css'
 
 export const Table = ({
@@ -48,9 +49,10 @@ export const Table = ({
                 }`}
               >
                 <span className="font-medium">
+                  {keyName.includes('precio') ? '$' : ''}
                   {keyName.includes('created_at') ||
                   keyName.includes('updated_at')
-                    ? new Date(row[keyName]).toUTCString()
+                    ? FormatDate(new Date(row[keyName]))
                     : row[keyName]}
                 </span>
               </div>
