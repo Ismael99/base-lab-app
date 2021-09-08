@@ -5,15 +5,16 @@ export const InputText = ({
   name,
   placeholder,
   type = 'text',
-  isInterfaceView
+  isInterfaceView,
+  disabled
 }) => {
   return (
     <Field
+      disabled={disabled ?? isInterfaceView}
       name={name}
       placeholder={placeholder}
       type={type}
       className={`w-full p-1 px-2 pl-9 outline-none appearance-none`}
-      disabled={isInterfaceView}
     />
   )
 }

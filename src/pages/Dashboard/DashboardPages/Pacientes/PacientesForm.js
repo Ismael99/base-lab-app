@@ -7,10 +7,6 @@ export const PacientesForm = ({ pacientes, id, isInterfaceView, ...props }) => {
   let pacienteCurrent = pacientes?.find((paciente) => {
     return paciente.paciente_id.toString() === id
   })
-  pacienteCurrent = pacienteCurrent
-    ? pacienteCurrent
-    : PacienteSchema.initialValues
-  console.log(pacienteCurrent)
   return (
     <Form
       isInterfaceView={isInterfaceView}

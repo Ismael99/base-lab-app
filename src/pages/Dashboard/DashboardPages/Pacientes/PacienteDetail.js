@@ -3,9 +3,8 @@ import { PacientesForm } from './PacientesForm'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
 
-const pacientesSelector = createSelector(
-  (state) => (state.pacientes.data ? state.pacientes.data : []),
-  (data) => data.filter((paciente) => paciente.paciente_status !== 2)
+const pacientesSelector = createSelector((state) =>
+  state.pacientes.data ? state.pacientes.data : []
 )
 export const PacienteDetail = ({ id }) => {
   const pacientes = useSelector(pacientesSelector)

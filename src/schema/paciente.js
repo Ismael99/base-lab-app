@@ -36,8 +36,7 @@ export const paciente = (Yup) => ({
     paciente_apellido: '',
     paciente_direccion: '',
     paciente_sexo: '',
-    paciente_telefono: '',
-    paciente_edad: 0
+    paciente_telefono: ''
   },
   tableHeaders: [
     'Nombre',

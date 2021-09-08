@@ -2,6 +2,13 @@ import React from 'react'
 import { useIsOpen } from '../../hooks/useIsOpen'
 // import { useIsActiveClasses } from '../../hooks/useIsActiveClasses'
 import { Transition } from '@headlessui/react'
+import { navigate } from '@reach/router'
+
+const logout = (e) => {
+  window.localStorage.removeItem('token')
+  navigate('/')
+  window.location.reload()
+}
 
 export const Avatar = () => {
   // const avatarMenuClasses = ['absolute hidden right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none', 'absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none transform transition ease-out delay-150 duration-300']
@@ -40,6 +47,7 @@ export const Avatar = () => {
           Your Profile
         </span>
         <span
+          onClick={logout}
           role="menuitem"
           className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
         >

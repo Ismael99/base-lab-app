@@ -9,8 +9,13 @@ import { DashboardMainContent } from './DashboardMainContent'
 import { Test } from './DashboardPages/Test'
 import { Users } from './DashboardPages/Users'
 import { Pacientes } from './DashboardPages/Pacientes'
+import { Examenes } from './DashboardPages/Examenes'
+import { Quimicos } from './DashboardPages/Quimicos'
 import { Roles } from './DashboardPages/Roles'
+import { Logs } from './DashboardPages/Logs'
 import { Home } from './DashboardPages/Home'
+import { OrdenesExamenes } from './DashboardPages/OrdenesExamenes'
+import { ExamenesRealizados } from './DashboardPages/ExamenesRealizados'
 import { NotFound } from '../SiteStatus/NotFound'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
@@ -33,8 +38,13 @@ export const Dashboard = () => {
             <Home path="/" />
             <Users path="users/*" />
             <Pacientes path="pacientes/*" />
+            <Examenes path="examenes/*" />
+            <Quimicos path="quimicos/*" />
             <Test path="test" />
             <Roles path="roles" />
+            <ExamenesRealizados path="examenes_realizados/*" />
+            <OrdenesExamenes path="ordenes_examenes/*" />
+            <Logs path="logs" />
             <NotFound default />
           </Router>
         </DashboardMainContent>

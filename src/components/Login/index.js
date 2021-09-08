@@ -33,6 +33,7 @@ export const Login = () => {
         setLoading(false)
         setSubmitting(false)
         navigate('/dashboard')
+        window.location.reload()
       } else {
         setLoading(false)
         setSubmitting(false)

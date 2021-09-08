@@ -3,19 +3,23 @@ import ReactPaginate from 'react-paginate'
 import PropTypes from 'prop-types'
 import { TableBody } from './TableBody'
 import { TableHeaders } from './TableHeaders'
-import { TableActions } from './TableActions'
 import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
+import { ActionTypeRender } from '../../utils/ActionTypeRender'
+import { FormatDate } from '../../utils/FormatDate'
 import './index.css'
 
 export const Table = ({
   data,
   headers,
   keys,
-  PER_PAGE = 1,
+  PER_PAGE = 8,
   idKey,
-  addActions = true
+  addActions = true,
+  actionType = 'standar'
 }) => {
+  const ActionRender = ActionTypeRender(actionType)
+
   // table search state
   const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
@@ -44,12 +48,18 @@ export const Table = ({
                   key < 1 ? ' justify-left ' : ' justify-center '
                 }`}
               >
-                <span className="font-medium">{row[keyName]}</span>
+                <span className="font-medium">
+                  {keyName.includes('precio') ? '$' : ''}
+                  {keyName.includes('created_at') ||
+                  keyName.includes('updated_at')
+                    ? FormatDate(new Date(row[keyName]))
+                    : row[keyName]}
+                </span>
               </div>
             </td>
           )
         })}
-        {addActions && <TableActions key={keyRow} data={row} idKey={idKey} />}
+        {addActions && <ActionRender key={keyRow} data={row} idKey={idKey} />}
       </tr>
     ))
 

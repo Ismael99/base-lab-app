@@ -15,24 +15,27 @@ import { saveUser, updateUser } from '../../../../redux/actions/usersActions'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
 import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
+import { thunkFetchRoles } from '../../../../redux/actions/rolesActions'
 const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
   const dispatch = useDispatch()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [mounted, setMounted] = useState(true)
   useEffect(() => {
     const fetch = async () => {
       setLoading(true)
       await dispatch(thunkFecthUsers)
       await dispatch(thunkFetchRecordsStatus)
+      await dispatch(thunkFetchRoles)
       setLoading(false)
+      console.log('fin fetch user')
     }
     if (mounted) fetch()
     return () => {
       setMounted(false)
     }
-  }, [dispatch, mounted])
+  }, [mounted, dispatch])
   const token = useSelector(tokenSelector)
   if (loading) return <LoaderPage />
   return (
