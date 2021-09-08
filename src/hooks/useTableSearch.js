@@ -29,11 +29,7 @@ export const useTableSearch = (initialData = []) => {
       const isFieldInvalid = (attribute) => {
         //Solo campos que no vayan a estar en algun formulario
         //ni en la tabla
-        if (
-          attribute.includes('updated_at') ||
-          attribute.includes('created_at') ||
-          attribute.includes('password')
-        ) {
+        if (attribute.includes('password')) {
           fieldsInvalid.push(attribute)
         }
       }
