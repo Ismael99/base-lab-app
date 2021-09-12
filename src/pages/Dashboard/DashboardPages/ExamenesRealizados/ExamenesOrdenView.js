@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { createSelector } from 'selector'
 import { Table } from '../../../../components/Table'
 import { ExamenRealizadoSchema } from '../../../../schema/'
 import { useSelector } from 'react-redux'
 import { Link } from '@reach/router'
+import ExamenToPrint from '../../../../components/ExamenToPrint'
+import { useReactToPrint } from 'react-to-print'
 import {
   CheckCircleIcon,
   UsersIcon,
   UserIcon,
   PrinterIcon
 } from '@heroicons/react/outline'
-
 export const ExamenesOrdenView = ({ id }) => {
+  const componentToPrintRef = useRef()
+  const handlePrint = useReactToPrint({
+    content: () => componentToPrintRef.current
+  })
   const ordenExamenCurrentSelector = createSelector(
     (state) => state.ordenes_examenes.data ?? [],
     (data) =>
@@ -34,7 +39,6 @@ export const ExamenesOrdenView = ({ id }) => {
     (state) => state.examenes.data ?? [],
     (data) => data.filter((examen) => examen.examen_status !== 2)
   )
-
   const ordenExamenCurrent = useSelector(ordenExamenCurrentSelector)
   const pacienteCurrentSelector = createSelector(
     (state) => state.pacientes.data ?? [],
@@ -66,13 +70,19 @@ export const ExamenesOrdenView = ({ id }) => {
     debugger
     return currentValue.examen_realizado_resultados[0].value !== ''
   }
-
   //Validar para mostrar el boton de imprimir o no
   const showBtnPrint = examenesOrden.every(validateResultados)
   console.log({ showBtnPrint })
-
   return (
     <>
+      {ordenExamenCurrent && pacienteCurrent && data && (
+        <ExamenToPrint
+          ref={componentToPrintRef}
+          ordenExamenCurrent={ordenExamenCurrent}
+          pacienteCurrent={pacienteCurrent}
+          examenesRealizadosOrden={data}
+        />
+      )}
       <div className="flex flex-col xl:flex-row justify-center items-center">
         <div className="xl:w-1/2 w-full xl:order-1 order-2 px-3  my-4 text-lg">
           <p>
@@ -104,15 +114,15 @@ export const ExamenesOrdenView = ({ id }) => {
           } items-center`}
         >
           {showBtnPrint && (
-            <Link
-              to="/dashboard/ordenes_examenes"
+            <button
+              onClick={handlePrint}
               className="flex flex-row items-center justify-center w-auto h-10 px-4 my-3 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
                 <p>Imprimir</p>
               </span>
-            </Link>
+            </button>
           )}
           <Link
             to="/dashboard/ordenes_examenes"

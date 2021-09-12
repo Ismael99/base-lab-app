@@ -16,8 +16,8 @@ export const quimico = (Yup) => ({
   initialValues: {
     quimico_nombre: ''
   },
-  tableHeaders: ['Nombre Quimico', 'Estado', 'Acciones'],
-  keys: ['quimico_nombre', 'quimico_status'],
+  tableHeaders: ['Nombre Quimico', 'Acciones'],
+  keys: ['quimico_nombre'],
   fields: [
     {
       label: 'Nombre Quimico',

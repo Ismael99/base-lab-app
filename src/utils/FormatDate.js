@@ -24,6 +24,13 @@ const getHour = (hour, minutes) => {
 }
 
 export const FormatDate = (date) => {
+  const day_num = date.getDate()
+  const month = MESES[date.getMonth()]
+  const year = date.getFullYear()
+  return `${day_num}/${month}/${year}`
+}
+
+export const FormatDateTime = (date) => {
   const day = DIAS[date.getDay()]
   const day_num = date.getDate()
   const month = MESES[date.getMonth()]

@@ -7,8 +7,6 @@ import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenes
 
 const ordenesExamenesSelector = createSelector(
   (state) => state.ordenes_examenes.data ?? [],
-  (data) =>
-    data.filter((orden_examen) => orden_examen?.orden_exam_status !== 2) ?? [],
   (data_sort) =>
     data_sort.sort((a, b) => {
       if (a.orden_exam_created_at > b.orden_exam_created_at) {
