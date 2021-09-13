@@ -1,132 +1,49 @@
 import React from 'react'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from 'recharts'
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-]
-
+import { Card } from './Card'
+import orden_examen_icon from '../../../../assets/orden_exam_icon.png'
+import quimico_icon from '../../../../assets/quimicos_icon.png'
+import pacientes_icon from '../../../../assets/pacientes_icon.png'
+import logs_icon from '../../../../assets/logs_icon.png'
+import examenes_icon from '../../../../assets/examenes_icon.png'
+import './index.css'
 export const Home = () => (
-  <div className="flex lg:flex-row flex-col justify-center items-center flex-wrap">
-    <LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
+  <div className="flex home-bg w-full h-full my-auto flex-col flex-wrap items-center justify-center lg:flex-row items-center">
+    <div className="flex flex-row flex-wrap items-center justify-center">
+      <Card
+        to="examenes"
+        border_color="gray"
+        module_name="Examenes"
+        img={examenes_icon}
+        text_color="gray"
       />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
-    <LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
+      <Card
+        to="ordenes_examenes"
+        border_color="blue"
+        module_name="Ordenes Examenes"
+        img={orden_examen_icon}
+        text_color="blue"
       />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
-    <LineChart
-      width={500}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="pv"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
+      <Card
+        to="quimicos"
+        border_color="yellow"
+        module_name="Quimicos"
+        img={quimico_icon}
+        text_color="yellow"
       />
-      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    </LineChart>
+      <Card
+        to="pacientes"
+        border_color="green"
+        module_name="Pacientes"
+        img={pacientes_icon}
+        text_color="green"
+      />
+      <Card
+        to="logs"
+        border_color="red"
+        module_name="Logs"
+        img={logs_icon}
+        text_color="red"
+      />
+    </div>
   </div>
 )
