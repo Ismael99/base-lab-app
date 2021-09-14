@@ -9,7 +9,8 @@ export const examenRealizado = (Yup) => ({
           .required('Ingrese nombre del campo'),
         value: Yup.string()
           .min(3, 'Carácteres mínimos 3')
-          .required('Ingrese resultado de examen')
+          .required('Ingrese resultado de examen'),
+        rn: Yup.string().min(2, 'Carácteres mínimos 2')
       })
     ).required('Campo requerido'),
     examen_realizado_quimico: Yup.array(
@@ -25,7 +26,8 @@ export const examenRealizado = (Yup) => ({
     examen_realizado_resultados: [
       {
         label: '',
-        value: ''
+        value: '',
+        rn: ''
       }
     ],
     examen_realizado_quimico: undefined

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { createSelector } from 'selector'
 import { Table } from '../../../../components/Table'
 import { ExamenRealizadoSchema } from '../../../../schema/'
@@ -6,6 +6,11 @@ import { useSelector } from 'react-redux'
 import { Link } from '@reach/router'
 import ExamenToPrint from '../../../../components/ExamenToPrint'
 import { useReactToPrint } from 'react-to-print'
+import { useDispatch } from 'react-redux'
+import {
+  updateOrdenExamen,
+  setCurrentOrdenExamen
+} from '../../../../redux/actions/ordenesExamenesActions'
 import {
   CheckCircleIcon,
   UsersIcon,
@@ -14,6 +19,8 @@ import {
 } from '@heroicons/react/outline'
 export const ExamenesOrdenView = ({ id }) => {
   const componentToPrintRef = useRef()
+  const dispatch = useDispatch()
+  const [showBtnPrint, setShowBtnPrint] = useState(false)
   const handlePrint = useReactToPrint({
     content: () => componentToPrintRef.current
   })
@@ -22,7 +29,7 @@ export const ExamenesOrdenView = ({ id }) => {
     (data) =>
       data.find((orden_examen) => {
         return orden_examen.orden_exam_id.toString() === id
-      })
+      }) ?? []
   )
   const examenesOrdenSelector = createSelector(
     (state) => state.examenes_realizados.data ?? [],
@@ -67,11 +74,26 @@ export const ExamenesOrdenView = ({ id }) => {
       : ''
   }))
   const validateResultados = (currentValue) => {
-    debugger
     return currentValue.examen_realizado_resultados[0].value !== ''
   }
   //Validar para mostrar el boton de imprimir o no
-  const showBtnPrint = examenesOrden.every(validateResultados)
+  useEffect(() => {
+    const fetch = async () => {
+      const completado = examenesOrden.every(validateResultados)
+      debugger
+      if (completado !== showBtnPrint) {
+        setShowBtnPrint(completado)
+        await dispatch(
+          setCurrentOrdenExamen({
+            ...ordenExamenCurrent,
+            orden_exam_status: completado ? 2 : 1
+          })
+        )
+        await dispatch(updateOrdenExamen)
+      }
+    }
+    fetch()
+  }, [showBtnPrint, ordenExamenCurrent, dispatch, examenesOrden])
   console.log({ showBtnPrint })
   return (
     <>

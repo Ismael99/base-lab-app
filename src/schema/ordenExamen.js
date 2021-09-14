@@ -29,6 +29,7 @@ export const ordenExamen = (Yup) => ({
     'Paciente',
     'Dr Responsable',
     'Total Precio',
+    'Estado',
     'Fecha/Hora',
     'Detalles'
   ],
@@ -36,6 +37,7 @@ export const ordenExamen = (Yup) => ({
     'orden_exam_paciente',
     'orden_exam_dr_responsable',
     'orden_exam_total_precio',
+    'orden_exam_status',
     'orden_exam_created_at'
   ],
   fields: [

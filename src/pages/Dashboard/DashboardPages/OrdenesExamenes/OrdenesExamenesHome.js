@@ -16,6 +16,9 @@ const ordenesExamenesSelector = createSelector(
       }
     })
 )
+const ordenExamStatusSelector = createSelector(
+  (state) => state.ordenes_examenes_status.data ?? []
+)
 const pacientesSelector = createSelector((state) => state.pacientes.data ?? [])
 export const OrdenesExamenesHome = () => {
   const dispatch = useDispatch()
@@ -31,16 +34,22 @@ export const OrdenesExamenesHome = () => {
   }, [mounted, dispatch])
   const pacientes = useSelector(pacientesSelector)
   const ordenesExamenes = useSelector(ordenesExamenesSelector)
+  const ordenesExamenesStatus = useSelector(ordenExamStatusSelector)
   console.log({ ordenesExamenes })
   console.log({ pacientes })
   const ordenesExamenesPacientesName = ordenesExamenes.map((ordenExamen) => {
+    const status = ordenesExamenesStatus.find(
+      (orden_exam_status) =>
+        ordenExamen.orden_exam_status === orden_exam_status.orden_exam_status_id
+    ).orden_exam_status_name
     const currentPaciente = pacientes.find(
       (paciente) => ordenExamen.orden_exam_paciente === paciente.paciente_id
     )
     const paciente_full_name = `${currentPaciente?.paciente_nombre} ${currentPaciente?.paciente_apellido}`
     return {
       ...ordenExamen,
-      orden_exam_paciente: paciente_full_name
+      orden_exam_paciente: paciente_full_name,
+      orden_exam_status: status
     }
   })
   return (

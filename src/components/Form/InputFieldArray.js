@@ -1,16 +1,12 @@
 import React from 'react'
 import { Field, ErrorMessage, FieldArray } from 'formik'
 import PropTypes from 'prop-types'
-import { PencilAltIcon, ClipboardListIcon } from '@heroicons/react/outline'
-export const InputFieldArray = ({
-  name,
-  placeholder,
-  placeholder_value,
-  placeholder_label,
-  type = 'text',
-  isInterfaceView,
-  values
-}) => {
+import {
+  PencilAltIcon,
+  ClipboardListIcon,
+  DocumentReportIcon
+} from '@heroicons/react/outline'
+export const InputFieldArray = ({ name, isInterfaceView, values }) => {
   return (
     <FieldArray
       name={name}
@@ -53,6 +49,24 @@ export const InputFieldArray = ({
                   />
                   <div className="w-full mx-auto text-xs text-red-500">
                     <ErrorMessage name={`${name}.${index}.value`} />
+                  </div>
+                </span>
+                <span className="flex flex-col w-full mb-4">
+                  <span className="flex flex-row">
+                    <DocumentReportIcon className="w-5 h-5 mr-2" />
+                    <label className="text-sm text-gray-700">
+                      Rango Normal
+                    </label>
+                  </span>
+                  <Field
+                    disabled={isInterfaceView}
+                    name={`${name}.${index}.rn`}
+                    placeholder={'Rango normal...'}
+                    type="text"
+                    className={`w-full p-1 px-2 my-3 outline-none appearance-none`}
+                  />
+                  <div className="w-full mx-auto text-xs text-red-500">
+                    <ErrorMessage name={`${name}.${index}.rn`} />
                   </div>
                 </span>
               </div>

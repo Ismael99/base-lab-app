@@ -8,11 +8,9 @@ import './pageStyle.css'
 //Hacer un map e imprimir varias veces el componente (una vez por cada examen)
 class ExamenToPrint extends React.Component {
   render() {
-    debugger
     return (
       <div className="hidden pages-content">
         {this.props.examenesRealizadosOrden.map((examenRealizado) => {
-          debugger
           return (
             <div>
               <div className="page">

@@ -1,40 +1,32 @@
 import React from 'react'
-const NUM_RESULT = 20
 export const ContentExam = ({ data }) => {
   const { examen_realizado_resultados = [], examen_realizado_examen } = data
-  const results_cols = []
-  for (let i = 0; i < 2; i++) {
-    results_cols[i] = examen_realizado_resultados.slice(
-      NUM_RESULT * i,
-      NUM_RESULT * (i + 1)
-    )
-  }
   return (
     <div className="content-exam">
       <div className="flex flex-col px-5 pt-1">
         <div className="flex-row">
-          <p className="font-bold text-center">{examen_realizado_examen}</p>
+          <p className="font-bold text-center underline">
+            {examen_realizado_examen}
+          </p>
         </div>
-        <div className="flex flex-row justify-between mt-5 uppercase">
-          {results_cols.map((col, index) => {
+        <div className="flex flex-col justify-between mt-5 uppercase">
+          <div className="w-full flex flex-row text-sm mb-3">
+            <p className="font-bold w-2/5">Campo</p>
+            <p className="font-bold w-2/5">Resultado</p>
+            <p className="font-bold w-1/5 text-center">Rango normal</p>
+          </div>
+          {examen_realizado_resultados.map((resultado, index) => {
             return (
-              <div className="flex flex-col w-1/2" key={index}>
-                {col.map((resultado, index) => {
-                  return (
-                    <div
-                      className="flex flex-row mb-1 w-full text-xs"
-                      key={index}
-                    >
-                      <p className="font-bold mr-1 w-full">{`${resultado.label}: `}</p>
-                      <p className="w-full">{resultado.value}</p>
-                    </div>
-                  )
-                })}
+              <div className={`flex flex-row w-full mb-1 text-xs`} key={index}>
+                <p className="mr-1 break-words w-2/5 font-bold">{`${resultado.label}: `}</p>
+                <p className="w-2/5 break-words">{resultado.value}</p>
+                <p className="w-1/5 break-words text-center">
+                  {resultado.rn ?? ''}
+                </p>
               </div>
             )
           })}
         </div>
-        <div className="flex flex-col"></div>
       </div>
     </div>
   )
