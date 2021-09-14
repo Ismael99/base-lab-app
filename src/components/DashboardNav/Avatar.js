@@ -42,20 +42,20 @@ export const Avatar = () => {
       >
         <span
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
         >
           Your Profile
         </span>
         <span
           onClick={logout}
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
         >
           Logout
         </span>
         <span
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
         >
           Settings
         </span>
