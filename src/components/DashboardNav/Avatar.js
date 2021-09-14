@@ -17,7 +17,7 @@ export const Avatar = () => {
   const [isMenuOpen, handleIsMenuOpen] = useIsOpen(false)
 
   return (
-    <div className="relative ml-auto">
+    <div className="relative ml-auto flex items-center">
       <button
         className="rounded-full transition-opacity duration-200 dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
         onClick={handleIsMenuOpen}
@@ -52,12 +52,6 @@ export const Avatar = () => {
           className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
         >
           Logout
-        </span>
-        <span
-          role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
-        >
-          Settings
         </span>
       </Transition>
     </div>
