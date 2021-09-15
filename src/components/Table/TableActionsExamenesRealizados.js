@@ -16,7 +16,7 @@ export const TableActionsExamenesRealizados = ({ data, idKey }) => {
         <Link
           to={`../../resultados/${data[idKey]}?path=examenes_realizados/examenes/${data['examen_realizado_orden_examen']}`}
           className={`w-4 disabled-link mr-2 ${
-            resultados_min === ''
+            resultados_min === '' || resultados_min === undefined
               ? ' text-red-400 hover:text-red-600 '
               : 'hover:text-blue-500 text-blue-400'
           } transform hover:scale-110`}

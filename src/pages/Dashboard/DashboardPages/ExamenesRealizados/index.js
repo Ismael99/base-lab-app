@@ -15,6 +15,7 @@ import { thunkFetchOrdenesExamenesStatus } from '../../../../redux/actions/orden
 import { thunkFetchExamenes } from '../../../../redux/actions/examenesAction'
 import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { thunkFetchQuimicos } from '../../../../redux/actions/quimicosAction'
+import { thunkFetchExamenesTemplete } from '../../../../redux/actions/examenesTemplateActions'
 import { useDispatch } from 'react-redux'
 import { NotFound } from '../../../SiteStatus/NotFound'
 import { LoaderPage } from '../../../../components/Loader/LoaderPage'
@@ -33,6 +34,7 @@ export const ExamenesRealizados = () => {
       await dispatch(thunkFetchExamenes)
       await dispatch(thunkFetchOrdenesExamenesStatus)
       await dispatch(thunkFetchQuimicos)
+      await dispatch(thunkFetchExamenesTemplete)
       setLoading(false)
     }
     if (mounted) fetch()

@@ -74,13 +74,15 @@ export const ExamenesOrdenView = ({ id }) => {
       : ''
   }))
   const validateResultados = (currentValue) => {
-    return currentValue.examen_realizado_resultados[0].value !== ''
+    return (
+      currentValue.examen_realizado_resultados[0].value !== '' &&
+      currentValue.examen_realizado_resultados[0].value !== undefined
+    )
   }
   //Validar para mostrar el boton de imprimir o no
   useEffect(() => {
     const fetch = async () => {
       const completado = examenesOrden.every(validateResultados)
-      debugger
       if (completado !== showBtnPrint) {
         setShowBtnPrint(completado)
         await dispatch(
