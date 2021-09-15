@@ -25,15 +25,6 @@ export const quimico = (Yup) => ({
       type: 'text',
       name: 'quimico_nombre',
       icon: BeakerIcon
-    },
-    {
-      label: 'Quimico Estado',
-      type: 'datalist',
-      name: 'quimico_status',
-      id: 'record_status_id',
-      value: 'record_status_name',
-      module: 'records_status',
-      placeholder: 'Status Quimico'
     }
   ]
 })
