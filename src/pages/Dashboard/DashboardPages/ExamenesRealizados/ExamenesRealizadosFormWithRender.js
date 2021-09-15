@@ -43,6 +43,7 @@ export const ExamenesRealizadosFormWithRender = ({
         ? examenRealizadoCurrent?.examen_realizado_resultados
         : examenTemplete.examen_templete_campos
   }
+  debugger
   return (
     <FormWithRender
       name_exam={name_exam}
