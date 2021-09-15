@@ -7,7 +7,7 @@ import { createSelector } from 'selector'
 
 const examenesSelector = createSelector(
   (state) => state.examenes.data ?? [],
-  (data) => data.filter((examen) => examen.examen_status !== 2)
+  (data) => data.filter((examen) => examen.examen_status !== 2) ?? []
 )
 export const ExamenesRealizadosFormWithRender = ({
   examenesRealizados,
@@ -20,9 +20,15 @@ export const ExamenesRealizadosFormWithRender = ({
   let examenRealizadoCurrent = examenesRealizados?.find((examen_realizado) => {
     return examen_realizado.examen_realizado_id.toString() === id
   })
-  const name_exam = examenes.find((examen) => {
-    return examen.examen_id === examenRealizadoCurrent.examen_realizado_examen
-  }).examen_nombre
+  debugger
+  const name_exam =
+    examenes.length > 0
+      ? examenes.find((examen) => {
+          return (
+            examen.examen_id === examenRealizadoCurrent.examen_realizado_examen
+          )
+        }).examen_nombre
+      : ''
   const examenTempleteSelector = createSelector(
     (state) => state.examenes_templete.data ?? [],
     (data) =>
@@ -43,7 +49,6 @@ export const ExamenesRealizadosFormWithRender = ({
         ? examenRealizadoCurrent?.examen_realizado_resultados
         : examenTemplete.examen_templete_campos
   }
-  debugger
   return (
     <FormWithRender
       name_exam={name_exam}
