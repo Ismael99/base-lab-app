@@ -111,6 +111,14 @@ export const ExamenesOrdenView = ({ id }) => {
         <div className="xl:w-1/2 w-full px-3  my-4 text-lg">
           <p>
             <span className="flex flex-row items-center">
+              <UsersIcon className="w-5 h-5 mr-1" />
+              <p className="mr-1 font-extrabold">Paciente: </p>
+              {pacienteCurrent?.paciente_nombre}{' '}
+              {pacienteCurrent?.paciente_apellido}
+            </span>
+          </p>
+          <p>
+            <span className="flex flex-row items-center">
               <UserIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Doctor Responsable: </p>
               {ordenExamenCurrent?.orden_exam_dr_responsable}
@@ -121,14 +129,6 @@ export const ExamenesOrdenView = ({ id }) => {
               <CheckCircleIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Estado de Orden: </p>
               {currentStateOrden?.orden_exam_status_name}
-            </span>
-          </p>
-          <p>
-            <span className="flex flex-row items-center">
-              <UsersIcon className="w-5 h-5 mr-1" />
-              <p className="mr-1 font-extrabold">Paciente: </p>
-              {pacienteCurrent?.paciente_nombre}{' '}
-              {pacienteCurrent?.paciente_apellido}
             </span>
           </p>
         </div>
