@@ -6,7 +6,7 @@ import { TableHeaders } from './TableHeaders'
 import { TableSearch } from './TableSearch'
 import { useTableSearch } from '../../hooks/useTableSearch'
 import { ActionTypeRender } from '../../utils/ActionTypeRender'
-import { FormatDate } from '../../utils/FormatDate'
+import { FormatDateTime } from '../../utils/FormatDate'
 import './index.css'
 
 export const Table = ({
@@ -52,7 +52,7 @@ export const Table = ({
                   {keyName.includes('precio') ? '$' : ''}
                   {keyName.includes('created_at') ||
                   keyName.includes('updated_at')
-                    ? FormatDate(new Date(row[keyName]))
+                    ? FormatDateTime(new Date(row[keyName]))
                     : row[keyName]}
                 </span>
               </div>

@@ -1,0 +1,28 @@
+.page {
+  background-image: url('../../assets/logo_lab_alpha.png');
+  background-repeat: no-repeat;
+  background-size: 800px;
+  background-position: center bottom;
+  background-color: white;
+  width: 216mm;
+  height: 279mm;
+  /* to centre page on screen*/
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem, 0.5rem;
+  position: relative;
+}
+.exam-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+@media print {
+  .pages-content {
+    display: block;
+  }
+}
+* {
+  -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+  color-adjust: exact !important; /*Firefox*/
+}

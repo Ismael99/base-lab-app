@@ -16,8 +16,8 @@ export const quimico = (Yup) => ({
   initialValues: {
     quimico_nombre: ''
   },
-  tableHeaders: ['Nombre Quimico', 'Estado', 'Acciones'],
-  keys: ['quimico_nombre', 'quimico_status'],
+  tableHeaders: ['Nombre Quimico', 'Acciones'],
+  keys: ['quimico_nombre'],
   fields: [
     {
       label: 'Nombre Quimico',
@@ -25,15 +25,6 @@ export const quimico = (Yup) => ({
       type: 'text',
       name: 'quimico_nombre',
       icon: BeakerIcon
-    },
-    {
-      label: 'Quimico Estado',
-      type: 'datalist',
-      name: 'quimico_status',
-      id: 'record_status_id',
-      value: 'record_status_name',
-      module: 'records_status',
-      placeholder: 'Status Quimico'
     }
   ]
 })

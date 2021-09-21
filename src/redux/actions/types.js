@@ -45,6 +45,9 @@ export const QUIMICOS_EXAMENES_ACTIONS = {
 export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
 }
+export const EXAMENES_TEMPLETE_ACTIONS = {
+  FETCH_EXAMENES_TEMPLETE: 'fetch_examenes_templete'
+}
 export const ORDENES_EXAMENES_STATUS_ACTIONS = {
   FETCH_ORDENES_EXAMENES_STATUS: 'ordenes_examenes_status'
 }

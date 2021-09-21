@@ -52,7 +52,6 @@ export const DataList = ({
       })
     }
     setValue(valueDefault)
-    debugger
   }, [])
   return (
     <div className="w-full">

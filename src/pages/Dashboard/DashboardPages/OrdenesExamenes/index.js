@@ -16,17 +16,12 @@ import {
 import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { thunkFetchExamenes } from '../../../../redux/actions/examenesAction'
 import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenesRealizadosActions'
-import { createSelector } from 'selector'
-import { useSelector } from 'react-redux'
-
-const selectorEaxmenesRealizados = (state) => state.ordenes_examenes.data
+import { thunkFetchOrdenesExamenesStatus } from '../../../../redux/actions/ordenesExamenesStatusActions'
 
 export const OrdenesExamenes = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(true)
-  const examenesRealizados = useSelector(selectorEaxmenesRealizados)
-  console.log(examenesRealizados)
   useEffect(() => {
     const fetch = async () => {
       console.log('Fetching de datos')
@@ -35,7 +30,7 @@ export const OrdenesExamenes = () => {
       await dispatch(thunkFetchOrdenesExamenes)
       await dispatch(thunkFetchExamenes)
       await dispatch(thunkFetchExamenesRealizados)
-      debugger
+      await dispatch(thunkFetchOrdenesExamenesStatus)
       setLoading(false)
     }
     if (mounted) fetch()
