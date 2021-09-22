@@ -17,6 +17,8 @@ import { Home } from './DashboardPages/Home'
 import { OrdenesExamenes } from './DashboardPages/OrdenesExamenes'
 import { ExamenesRealizados } from './DashboardPages/ExamenesRealizados'
 import { NotFound } from '../SiteStatus/NotFound'
+import { useDispatch } from 'react-redux'
+import { setLoggedUser } from '../../redux/actions/loginActions'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
     <h1 className="text-2xl">{title}</h1>
@@ -28,6 +30,9 @@ Section.propTypes = {
 }
 
 export const Dashboard = () => {
+  const dispatch = useDispatch()
+  const user = JSON.parse(window.localStorage.getItem('user'));
+  dispatch(setLoggedUser(user))
   return (
     <DashboardContainer>
       <DashboardSidebar />

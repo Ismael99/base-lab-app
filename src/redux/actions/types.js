@@ -65,3 +65,8 @@ export const ORDENES_EXAMENES_ACTIONS = {
   UPDATE_ORDEN_EXAMEN: 'update_orden_examen',
   SET_CURRENT_ORDEN_EXAMEN: 'set_current_orden_examen'
 }
+
+export const LOGIN_ACTIONS = {
+  LOGIN_USER: 'login_user',
+  LOGOUT_USER: 'logout_user',
+}
