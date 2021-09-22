@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Router } from '@reach/router'
 import { DashboardNav } from '../../components/DashboardNav'
@@ -19,6 +19,7 @@ import { ExamenesRealizados } from './DashboardPages/ExamenesRealizados'
 import { NotFound } from '../SiteStatus/NotFound'
 import { useDispatch } from 'react-redux'
 import { setLoggedUser } from '../../redux/actions/loginActions'
+import { Me } from './DashboardPages/Me'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
     <h1 className="text-2xl">{title}</h1>
@@ -33,11 +34,14 @@ export const Dashboard = () => {
   const dispatch = useDispatch()
   const user = JSON.parse(window.localStorage.getItem('user'));
   dispatch(setLoggedUser(user))
+
+  const [path, setPath] = useState('')
+
   return (
     <DashboardContainer>
       <DashboardSidebar />
       <DashboardContent>
-        <DashboardNav />
+        <DashboardNav setPath={setPath}/>
         <DashboardMainContent>
           <Router className="h-full">
             <Home path="/" />
@@ -50,6 +54,7 @@ export const Dashboard = () => {
             <ExamenesRealizados path="examenes_realizados/*" />
             <OrdenesExamenes path="ordenes_examenes/*" />
             <Logs path="logs" />
+            <Me path="me" currentPath={path}/>
             <NotFound default />
           </Router>
         </DashboardMainContent>

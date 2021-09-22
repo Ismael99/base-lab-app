@@ -1,10 +1,10 @@
 import React from 'react'
 import { Avatar } from './Avatar'
 
-export const SubMenu = () => {
+export const SubMenu = (props) => {
   return (
     <nav className="hidden space-x-2 md:flex md:items-center">
-      <Avatar />
+      <Avatar {...props} />
     </nav>
   )
 }

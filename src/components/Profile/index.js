@@ -7,20 +7,22 @@ import { ModalDetail } from './ModalDetail'
 import { ModalButtons } from './ModalButtons'
 import { ModalAction } from './ModalAction'
 
-export const Modal = (props) => {
+export const Profile = (props) => {
   return (
-    <ModalContainer static open={props.isOpen}>
+    <ModalContainer static>
       <ModalInfo>
         <ModalIcon {...props} />
         <ModalDetail {...props} />
       </ModalInfo>
       <ModalButtons>
-        <ModalAction>Cerrar</ModalAction>
+        <ModalAction {...props} >Cerrar</ModalAction>
       </ModalButtons>
     </ModalContainer>
   )
 }
 
-Modal.propTypes = {
+Profile.propTypes = {
   user: PropTypes.object.isRequired,
+  role: PropTypes.object.isRequired,
+  path: PropTypes.string.isRequired
 }

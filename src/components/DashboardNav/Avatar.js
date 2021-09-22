@@ -2,7 +2,7 @@ import React from 'react'
 import { useIsOpen } from '../../hooks/useIsOpen'
 // import { useIsActiveClasses } from '../../hooks/useIsActiveClasses'
 import { Transition } from '@headlessui/react'
-import { navigate } from '@reach/router'
+import { navigate, useLocation } from '@reach/router'
 
 const logout = (e) => {
   window.localStorage.removeItem('token')
@@ -10,11 +10,12 @@ const logout = (e) => {
   window.location.reload()
 }
 
-export const Avatar = () => {
+export const Avatar = ({ setPath }) => {
   // const avatarMenuClasses = ['absolute hidden right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none', 'absolute right-0 w-48 py-1 bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark focus:outline-none transform transition ease-out delay-150 duration-300']
 
   // const [classes] = useIsActiveClasses(avatarMenuClasses)
   const [isMenuOpen, handleIsMenuOpen] = useIsOpen(false)
+  const location = useLocation();
 
   return (
     <div className="relative ml-auto flex items-center">
@@ -43,6 +44,10 @@ export const Avatar = () => {
         <span
           role="menuitem"
           className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
+          onClick={(e) => {
+            setPath(location.pathname)
+            navigate('me')
+          }}
         >
           Your Profile
         </span>

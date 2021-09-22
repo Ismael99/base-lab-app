@@ -1,11 +1,12 @@
 import React from 'react'
 import { useNavigate } from '@reach/router'
 
-export const ModalAction = ({ children }) => {
+export const ModalAction = ({ children, ...props }) => {
 	const navigate = useNavigate()
+	console.log('button',props)
 
 	const handleAction = () => {
-			navigate('../', { replace: true })
+			navigate(`${props.path}`, { replace: true })
 	}
 
 	return (
