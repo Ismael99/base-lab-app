@@ -6,6 +6,7 @@ import { navigate, useLocation } from '@reach/router'
 
 const logout = (e) => {
   window.localStorage.removeItem('token')
+  window.localStorage.removeItem('user')
   navigate('/')
   window.location.reload()
 }
@@ -15,7 +16,7 @@ export const Avatar = ({ setPath }) => {
 
   // const [classes] = useIsActiveClasses(avatarMenuClasses)
   const [isMenuOpen, handleIsMenuOpen] = useIsOpen(false)
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <div className="relative ml-auto flex items-center">
@@ -45,8 +46,9 @@ export const Avatar = ({ setPath }) => {
           role="menuitem"
           className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
           onClick={(e) => {
-            setPath(location.pathname)
-            navigate('me')
+            const path = location.pathname
+            setPath(path)
+            navigate('/dashboard/me')
           }}
         >
           Your Profile
