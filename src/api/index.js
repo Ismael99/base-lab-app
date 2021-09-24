@@ -28,7 +28,6 @@ const makeRequest = async (conf) => {
     } else {
       data = parsedResponse.result[`${conf.resource}`]
     }
-    console.log(data)
     return data
   } catch (e) {
     console.error(e)
