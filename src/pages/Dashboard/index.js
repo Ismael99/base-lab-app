@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Router, useNavigate } from '@reach/router'
 import { DashboardNav } from '../../components/DashboardNav'
@@ -21,6 +21,7 @@ import { NotFound } from '../SiteStatus/NotFound'
 import { useDispatch } from 'react-redux'
 import { setLoggedUser } from '../../redux/actions/loginActions'
 import { Me } from './DashboardPages/Me'
+import { thunkFecthRole } from '../../redux/actions/rolesActions'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
     <h1 className="text-2xl">{title}</h1>
@@ -38,6 +39,14 @@ export const Dashboard = () => {
 
   const user = JSON.parse(window.localStorage.getItem('user'))
   const token = window.localStorage.getItem('token')
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      await dispatch(thunkFecthRole(user.user_role))
+    }
+
+    fetchRole()
+  }, [])
 
   if (!token || !user) {
     navigate('/')

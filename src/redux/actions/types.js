@@ -36,7 +36,8 @@ export const QUIMICOS_ACTIONS = {
 }
 
 export const ROLES_ACTIONS = {
-  FETCH_ROLES: 'fetch_roles'
+  FETCH_ROLES: 'fetch_roles',
+  FETCH_ROLE: 'fetch_role'
 }
 
 export const QUIMICOS_EXAMENES_ACTIONS = {
@@ -68,5 +69,5 @@ export const ORDENES_EXAMENES_ACTIONS = {
 
 export const LOGIN_ACTIONS = {
   LOGIN_USER: 'login_user',
-  LOGOUT_USER: 'logout_user',
+  LOGOUT_USER: 'logout_user'
 }

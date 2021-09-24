@@ -11,7 +11,5 @@ export const Me = ({ currentPath }) => {
   // TODO: hacer fetch de los roles
   const role = useSelector(roleSelector)
 
-  return(
-    <Profile user={user} role={role} path={currentPath} />
-  )
+  return <Profile user={user} role={role} path={currentPath} />
 }
