@@ -8,13 +8,14 @@ export const InputRadio = ({ name, type, isInterfaceView, options }) => {
       {options.map((option, key) => (
         <div className="mr-4" key={key}>
           <Field
+            id={`sexo-${key}`}
             type={type}
             name={name}
             value={option.value}
             disabled={isInterfaceView}
             className="mr-1"
           />
-          <label>{option.text}</label>
+          <label htmlFor={`sexo-${key}`}>{option.text}</label>
         </div>
       ))}
     </div>
