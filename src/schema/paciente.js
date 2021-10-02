@@ -22,8 +22,8 @@ export const paciente = (Yup) => ({
       .required('Campo requerido'),
     paciente_edad: Yup.number()
       .min(1, 'Dígitos mínimos 1')
-      .integer()
-      .positive()
+      .integer('Formato no valido')
+      .positive('Valor no válido')
       .required('Campo requerido')
       .max(130, 'Edad no válida'),
     paciente_sexo: Yup.string()
@@ -36,8 +36,7 @@ export const paciente = (Yup) => ({
     paciente_apellido: '',
     paciente_direccion: '',
     paciente_sexo: '',
-    paciente_telefono: '',
-    paciente_edad: 0
+    paciente_telefono: ''
   },
   tableHeaders: [
     'Nombre',
