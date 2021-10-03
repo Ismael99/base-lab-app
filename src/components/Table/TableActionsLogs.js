@@ -11,6 +11,7 @@ export const TableActionsLogs = ({ data }) => {
       <div className="flex items-center justify-center">
         <Link
           to={`/dashboard/${log_register_module}/view/${log_register_id}?path=logs`}
+          title="Ver datalles de log"
           className="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
         >
           <ClipboardListIcon />
