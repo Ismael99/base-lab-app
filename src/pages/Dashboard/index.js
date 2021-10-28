@@ -42,7 +42,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     const fetchRole = async () => {
-      await dispatch(thunkFecthRole(user.user_role))
+      await dispatch(thunkFecthRole(user?.user_role))
     }
 
     fetchRole()
