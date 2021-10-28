@@ -31,6 +31,7 @@ export const ordenExamen = (Yup) => ({
     'Total Precio',
     'Estado',
     'Fecha/Hora',
+    'Estado',
     'Detalles'
   ],
   keys: [

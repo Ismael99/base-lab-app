@@ -125,7 +125,11 @@ export const ExamenesOrdenView = ({ id }) => {
             </span>
           </p>
           <p>
-            <span className="flex flex-row items-center">
+            <span
+              className={`flex flex-row items-center ${
+                showBtnPrint ? 'bg-green-100' : 'bg-red-100'
+              } w-max`}
+            >
               <CheckCircleIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Estado de Orden: </p>
               {currentStateOrden?.orden_exam_status_name}
