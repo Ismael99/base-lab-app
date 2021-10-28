@@ -9,12 +9,14 @@ export const TableActionsExamenesRealizados = ({ data, idKey }) => {
       <div className="flex items-center justify-center">
         <Link
           to={`../../resultados/view/${data[idKey]}?path=examenes_realizados/examenes/${data['examen_realizado_orden_examen']}`}
+          title="Ver detalles de examen realizado"
           className="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
         >
           <EyeIcon />
         </Link>
         <Link
           to={`../../resultados/${data[idKey]}?path=examenes_realizados/examenes/${data['examen_realizado_orden_examen']}`}
+          title="Agregar resultados a examen realizado"
           className={`w-4 disabled-link mr-2 ${
             resultados_min === '' || resultados_min === undefined
               ? ' text-red-400 hover:text-red-600 '

@@ -22,8 +22,6 @@ export const FormWithRender = ({
     dispatch(setCurrent(values))
     dispatch(toDispatch)
     setSubmitting(false)
-    console.log('Submiting...')
-    console.log(values)
     navigate(backPath ? `../../${backPath}` : `/dashboard/${currentPath}`, {
       replace: true
     })

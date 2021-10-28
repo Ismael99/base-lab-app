@@ -32,6 +32,7 @@ export const DataList = ({
           return undefined
         })
       : data.map((register) => {
+          debugger
           return { label: register[value], value: register[id] }
         })
     return dataFilter
