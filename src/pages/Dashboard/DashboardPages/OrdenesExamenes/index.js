@@ -17,16 +17,11 @@ import { thunkFetchPacientes } from '../../../../redux/actions/pacientesAction'
 import { thunkFetchExamenes } from '../../../../redux/actions/examenesAction'
 import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenesRealizadosActions'
 import { thunkFetchOrdenesExamenesStatus } from '../../../../redux/actions/ordenesExamenesStatusActions'
-import { useSelector } from 'react-redux'
-
-const selectorEaxmenesRealizados = (state) => state.ordenes_examenes.data
 
 export const OrdenesExamenes = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(true)
-  const examenesRealizados = useSelector(selectorEaxmenesRealizados)
-  console.log(examenesRealizados)
   useEffect(() => {
     const fetch = async () => {
       console.log('Fetching de datos')

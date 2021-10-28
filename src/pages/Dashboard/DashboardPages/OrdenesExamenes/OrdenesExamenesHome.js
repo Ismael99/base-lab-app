@@ -7,8 +7,8 @@ import { thunkFetchExamenesRealizados } from '../../../../redux/actions/examenes
 
 const ordenesExamenesSelector = createSelector(
   (state) => state.ordenes_examenes.data ?? [],
-  (data) =>
-    data.sort((a, b) => {
+  (data_sort) =>
+    data_sort.sort((a, b) => {
       if (a.orden_exam_created_at > b.orden_exam_created_at) {
         return -1
       } else {
@@ -16,7 +16,7 @@ const ordenesExamenesSelector = createSelector(
       }
     })
 )
-const ordenesExamenesStatusSelector = createSelector(
+const ordenExamStatusSelector = createSelector(
   (state) => state.ordenes_examenes_status.data ?? []
 )
 const pacientesSelector = createSelector((state) => state.pacientes.data ?? [])
@@ -34,10 +34,14 @@ export const OrdenesExamenesHome = () => {
   }, [mounted, dispatch])
   const pacientes = useSelector(pacientesSelector)
   const ordenesExamenes = useSelector(ordenesExamenesSelector)
-  const ordenesExamenesStatus = useSelector(ordenesExamenesStatusSelector)
+  const ordenesExamenesStatus = useSelector(ordenExamStatusSelector)
   console.log({ ordenesExamenes })
   console.log({ pacientes })
   const ordenesExamenesPacientesName = ordenesExamenes.map((ordenExamen) => {
+    const status = ordenesExamenesStatus.find(
+      (orden_exam_status) =>
+        ordenExamen.orden_exam_status === orden_exam_status.orden_exam_status_id
+    ).orden_exam_status_name
     const currentPaciente = pacientes.find(
       (paciente) => ordenExamen.orden_exam_paciente === paciente.paciente_id
     )
@@ -49,7 +53,7 @@ export const OrdenesExamenesHome = () => {
     return {
       ...ordenExamen,
       orden_exam_paciente: paciente_full_name,
-      orden_exam_status: currentState.orden_exam_status_name
+      orden_exam_status: status
     }
   })
   console.log({ ordenesExamenesPacientesName })

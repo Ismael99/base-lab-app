@@ -36,7 +36,8 @@ export const QUIMICOS_ACTIONS = {
 }
 
 export const ROLES_ACTIONS = {
-  FETCH_ROLES: 'fetch_roles'
+  FETCH_ROLES: 'fetch_roles',
+  FETCH_ROLE: 'fetch_role'
 }
 
 export const QUIMICOS_EXAMENES_ACTIONS = {
@@ -44,6 +45,9 @@ export const QUIMICOS_EXAMENES_ACTIONS = {
 }
 export const LOGS_ACTIONS = {
   FETCH_LOGS: 'fetch_logs'
+}
+export const EXAMENES_TEMPLETE_ACTIONS = {
+  FETCH_EXAMENES_TEMPLETE: 'fetch_examenes_templete'
 }
 export const ORDENES_EXAMENES_STATUS_ACTIONS = {
   FETCH_ORDENES_EXAMENES_STATUS: 'ordenes_examenes_status'
@@ -61,4 +65,9 @@ export const ORDENES_EXAMENES_ACTIONS = {
   DELETE_ORDEN_EXAMEN: 'delete_orden_examen',
   UPDATE_ORDEN_EXAMEN: 'update_orden_examen',
   SET_CURRENT_ORDEN_EXAMEN: 'set_current_orden_examen'
+}
+
+export const LOGIN_ACTIONS = {
+  LOGIN_USER: 'login_user',
+  LOGOUT_USER: 'logout_user'
 }

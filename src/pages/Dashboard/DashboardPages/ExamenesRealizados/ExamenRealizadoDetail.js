@@ -6,6 +6,7 @@ import { createSelector } from 'selector'
 const examenesRealizadosSelector = createSelector(
   (state) => state.examenes_realizados.data ?? []
 )
+
 export const ExamenRealizadoDetail = ({ id, ...props }) => {
   const examenes_realizados = useSelector(examenesRealizadosSelector)
   console.log({ examenes_realizados })

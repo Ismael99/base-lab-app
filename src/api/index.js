@@ -20,9 +20,15 @@ const makeRequest = async (conf) => {
       config
     )
     const parsedResponse = await response.json()
-    return conf.resource === 'users/signin'
-      ? parsedResponse.result['users']
-      : parsedResponse.result[`${conf.resource}`]
+    let data
+    if (conf.resource === 'users/signin') {
+      data = parsedResponse.result['users']
+    } else if (/roles\/\d/.test(conf.resource)) {
+      data = parsedResponse.result['roles']
+    } else {
+      data = parsedResponse.result[`${conf.resource}`]
+    }
+    return data
   } catch (e) {
     console.error(e)
     return []

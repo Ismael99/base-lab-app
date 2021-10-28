@@ -1,7 +1,7 @@
-import React from 'react'
-import { Form } from '../../../../components/Form'
-import { ExamenRealizadoSchema } from '../../../../schema'
-import { setCurrentExamenRealizado } from '../../../../redux/actions/examenesRealizadosActions'
+import React from "react";
+import { Form } from "../../../../components/Form";
+import { ExamenRealizadoSchema } from "../../../../schema";
+import { setCurrentExamenRealizado } from "../../../../redux/actions/examenesRealizadosActions";
 
 export const ExamenesRealizadosForm = ({
   examenesRealizados,
@@ -11,8 +11,8 @@ export const ExamenesRealizadosForm = ({
   ...props
 }) => {
   let examenRealizadoCurrent = examenesRealizados?.find((examen_realizado) => {
-    return examen_realizado.examen_realizado_id.toString() === id
-  })
+    return examen_realizado.examen_realizado_id.toString() === id;
+  });
   return (
     <Form
       isInterfaceView={isInterfaceView}
@@ -22,5 +22,5 @@ export const ExamenesRealizadosForm = ({
       currentPath="examenes_realizados"
       {...props}
     />
-  )
-}
+  );
+};

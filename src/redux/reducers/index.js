@@ -9,7 +9,10 @@ import { ordenesExamenesReducer } from './ordenesExamenesReducer'
 import { examenesRealizadosReducer } from './examenesRealizadosReducer'
 import { ordenesExamenesStatusReducer } from './ordenesExameneStatusReducer'
 import { quimicosExamenesReducer } from './quimicosExamenesReducer'
+import { examenesTempleteReducer } from './examenesTempleteReducer'
+import { loginReducer } from './loginReducer'
 
+export const examenes_templete = examenesTempleteReducer
 export const quimicos_examenes = quimicosExamenesReducer
 export const ordenes_examenes_status = ordenesExamenesStatusReducer
 export const examenes_realizados = examenesRealizadosReducer
@@ -21,3 +24,4 @@ export const users = usersReducer
 export const records_status = recordsStatusReducer
 export const examenes = examenesReducer
 export const quimicos = quimicosReducer
+export const login = loginReducer

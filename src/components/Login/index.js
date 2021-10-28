@@ -9,6 +9,7 @@ export const Login = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(undefined)
   const [storedValue, setStoredValue] = useLocalStorage('token', 'token')
+  const [_, setUser] = useLocalStorage('user', {})
   const dispatch = useDispatch()
   const handledSubmit = async (values, { setSubmitting }) => {
     setLoading(true)
@@ -28,7 +29,9 @@ export const Login = () => {
       )
       const data = await res.json()
       if (data.status_code === 200) {
-        await setStoredValue(data.result.token)
+        const { result } = data
+        await setStoredValue(result.token)
+        await setUser(JSON.stringify(result.users))
         dispatch(setToken(storedValue))
         setLoading(false)
         setSubmitting(false)

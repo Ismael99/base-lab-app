@@ -1,6 +1,6 @@
 import { ROLES_ACTIONS } from '../actions/types'
 
-const INITIAL_STATE = { data: [] }
+const INITIAL_STATE = { data: [], roleUser: {} }
 
 export const rolesReducer = (state = INITIAL_STATE, action) => {
   console.log(action.type, ROLES_ACTIONS.FETCH_ROLES)
@@ -11,6 +11,13 @@ export const rolesReducer = (state = INITIAL_STATE, action) => {
         data: action.payload
       }
     }
+
+    case ROLES_ACTIONS.FETCH_ROLE:
+      return {
+        ...state,
+        roleUser: action.payload
+      }
+
     default: {
       return {
         ...state

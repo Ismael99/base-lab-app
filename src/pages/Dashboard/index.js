@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Router } from '@reach/router'
+import { Router, useNavigate } from '@reach/router'
 import { DashboardNav } from '../../components/DashboardNav'
 import { DashboardSidebar } from '../../components/DashboardSidebar'
 import { DashboardContainer } from './DashboardContainer'
@@ -14,9 +14,14 @@ import { Quimicos } from './DashboardPages/Quimicos'
 import { Roles } from './DashboardPages/Roles'
 import { Logs } from './DashboardPages/Logs'
 import { Home } from './DashboardPages/Home'
+import { Home as Login } from '../Home'
 import { OrdenesExamenes } from './DashboardPages/OrdenesExamenes'
 import { ExamenesRealizados } from './DashboardPages/ExamenesRealizados'
 import { NotFound } from '../SiteStatus/NotFound'
+import { useDispatch } from 'react-redux'
+import { setLoggedUser } from '../../redux/actions/loginActions'
+import { Me } from './DashboardPages/Me'
+import { thunkFecthRole } from '../../redux/actions/rolesActions'
 const Section = ({ title }) => (
   <div className="bg-gray-50">
     <h1 className="text-2xl">{title}</h1>
@@ -28,11 +33,33 @@ Section.propTypes = {
 }
 
 export const Dashboard = () => {
+  const dispatch = useDispatch()
+  const [path, setPath] = useState('')
+  const navigate = useNavigate()
+
+  const user = JSON.parse(window.localStorage.getItem('user'))
+  const token = window.localStorage.getItem('token')
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      await dispatch(thunkFecthRole(user?.user_role))
+    }
+
+    fetchRole()
+  }, [])
+
+  if (!token || !user) {
+    navigate('/')
+    return <Login />
+  }
+
+  dispatch(setLoggedUser(user))
+
   return (
     <DashboardContainer>
       <DashboardSidebar />
       <DashboardContent>
-        <DashboardNav />
+        <DashboardNav setPath={setPath} />
         <DashboardMainContent>
           <Router className="h-full">
             <Home path="/" />
@@ -45,6 +72,7 @@ export const Dashboard = () => {
             <ExamenesRealizados path="examenes_realizados/*" />
             <OrdenesExamenes path="ordenes_examenes/*" />
             <Logs path="logs" />
+            <Me path="me" currentPath={path} />
             <NotFound default />
           </Router>
         </DashboardMainContent>

@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { createSelector } from 'selector'
 import { Table } from '../../../../components/Table'
 import { ExamenRealizadoSchema } from '../../../../schema/'
 import { useSelector } from 'react-redux'
 import { Link } from '@reach/router'
+import ExamenToPrint from '../../../../components/ExamenToPrint'
+import { useReactToPrint } from 'react-to-print'
+import { useDispatch } from 'react-redux'
+import {
+  updateOrdenExamen,
+  setCurrentOrdenExamen
+} from '../../../../redux/actions/ordenesExamenesActions'
 import {
   CheckCircleIcon,
   UsersIcon,
   UserIcon,
   PrinterIcon
 } from '@heroicons/react/outline'
-import {
-  setCurrentOrdenExamen,
-  updateOrdenExamen
-} from '../../../../redux/actions/ordenesExamenesActions'
-import { useDispatch } from 'react-redux'
-
-const validateResultados = (currentValue) => {
-  return currentValue.examen_realizado_resultados[0].value !== ''
-}
 export const ExamenesOrdenView = ({ id }) => {
+  const componentToPrintRef = useRef()
   const dispatch = useDispatch()
   const [showBtnPrint, setShowBtnPrint] = useState(false)
+  const handlePrint = useReactToPrint({
+    content: () => componentToPrintRef.current
+  })
   const ordenExamenCurrentSelector = createSelector(
     (state) => state.ordenes_examenes.data ?? [],
     (data) =>
       data.find((orden_examen) => {
         return orden_examen.orden_exam_id.toString() === id
-      })
+      }) ?? []
   )
   const examenesOrdenSelector = createSelector(
     (state) => state.examenes_realizados.data ?? [],
@@ -44,7 +46,6 @@ export const ExamenesOrdenView = ({ id }) => {
     (state) => state.examenes.data ?? [],
     (data) => data.filter((examen) => examen.examen_status !== 2)
   )
-
   const ordenExamenCurrent = useSelector(ordenExamenCurrentSelector)
   const pacienteCurrentSelector = createSelector(
     (state) => state.pacientes.data ?? [],
@@ -72,24 +73,50 @@ export const ExamenesOrdenView = ({ id }) => {
         ).examen_nombre
       : ''
   }))
+  const validateResultados = (currentValue) => {
+    return (
+      currentValue.examen_realizado_resultados[0].value !== '' &&
+      currentValue.examen_realizado_resultados[0].value !== undefined
+    )
+  }
   //Validar para mostrar el boton de imprimir o no
-  console.log({ showBtnPrint })
   useEffect(() => {
-    const complete = examenesOrden.every(validateResultados)
-    if (complete !== showBtnPrint) {
-      setShowBtnPrint(complete)
-      if (complete && ordenExamenCurrent) {
-        ordenExamenCurrent.orden_exam_status = 2
-        dispatch(setCurrentOrdenExamen(ordenExamenCurrent))
-        dispatch(updateOrdenExamen)
+    const fetch = async () => {
+      const completado = examenesOrden.every(validateResultados)
+      if (completado !== showBtnPrint) {
+        setShowBtnPrint(completado)
+        await dispatch(
+          setCurrentOrdenExamen({
+            ...ordenExamenCurrent,
+            orden_exam_status: completado ? 2 : 1
+          })
+        )
+        await dispatch(updateOrdenExamen)
       }
     }
-  }, [showBtnPrint, ordenExamenCurrent, examenesOrden, dispatch])
-
+    fetch()
+  }, [showBtnPrint, ordenExamenCurrent, dispatch, examenesOrden])
+  console.log({ showBtnPrint })
   return (
     <>
-      <div className="flex flex-col xl:flex-row justify-center items-center">
-        <div className="xl:w-1/2 w-full xl:order-1 order-2 px-3  my-4 text-lg">
+      {ordenExamenCurrent && pacienteCurrent && data && (
+        <ExamenToPrint
+          ref={componentToPrintRef}
+          ordenExamenCurrent={ordenExamenCurrent}
+          pacienteCurrent={pacienteCurrent}
+          examenesRealizadosOrden={data}
+        />
+      )}
+      <div className="flex flex-col lg:flex-row justify-center items-center">
+        <div className="xl:w-1/2 w-full px-3  my-4 text-lg">
+          <p>
+            <span className="flex flex-row items-center">
+              <UsersIcon className="w-5 h-5 mr-1" />
+              <p className="mr-1 font-extrabold">Paciente: </p>
+              {pacienteCurrent?.paciente_nombre}{' '}
+              {pacienteCurrent?.paciente_apellido}
+            </span>
+          </p>
           <p>
             <span className="flex flex-row items-center">
               <UserIcon className="w-5 h-5 mr-1" />
@@ -108,34 +135,24 @@ export const ExamenesOrdenView = ({ id }) => {
               {currentStateOrden?.orden_exam_status_name}
             </span>
           </p>
-          <p>
-            <span className="flex flex-row items-center">
-              <UsersIcon className="w-5 h-5 mr-1" />
-              <p className="mr-1 font-extrabold">Paciente: </p>
-              {pacienteCurrent?.paciente_nombre}{' '}
-              {pacienteCurrent?.paciente_apellido}
-            </span>
-          </p>
         </div>
         <div
-          className={`xl:w-1/2 w-full flex xl:order-2 order-1 px-3 flex-row ${
-            showBtnPrint ? ' justify-between ' : ' justify-end '
-          } items-center xl:justify-end`}
+          className={`lg:w-1/2 w-full mb-3 flex px-3 lg:flex-row flex-col justify-end items-center`}
         >
           {showBtnPrint && (
-            <Link
-              to="/dashboard/ordenes_examenes"
-              className="flex flex-row items-center justify-center w-auto h-10 px-4 my-3 mr-4 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
+            <button
+              onClick={handlePrint}
+              className="flex flex-row w-2/3 hover:bg-green-50 lg:w-auto items-center justify-center w-auto h-10 mr-3 px-4 my-3 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
                 <p>Imprimir</p>
               </span>
-            </Link>
+            </button>
           )}
           <Link
             to="/dashboard/ordenes_examenes"
-            className="flex flex-row items-center justify-center w-auto h-10 px-4 py-4 my-3 w-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
+            className="flex flex-row items-center w-2/3 hover:bg-red-50 lg:w-auto justify-center w-auto h-10 px-4 py-4 my-3 w-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
           >
             <span className="flex flex-row">
               <p className="mr-3">{'\u21a9'}</p>

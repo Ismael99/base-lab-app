@@ -11,7 +11,8 @@ export const FormWithRender = ({
   toDispatch,
   setCurrent,
   isInterfaceView,
-  currentPath
+  currentPath,
+  name_exam
 }) => {
   const params = new URLSearchParams(window.location.search)
   const backPath = params.get('path')
@@ -21,8 +22,6 @@ export const FormWithRender = ({
     dispatch(setCurrent(values))
     dispatch(toDispatch)
     setSubmitting(false)
-    console.log('Submiting...')
-    console.log(values)
     navigate(backPath ? `../../${backPath}` : `/dashboard/${currentPath}`, {
       replace: true
     })
@@ -38,20 +37,23 @@ export const FormWithRender = ({
       }}
       className="flex flex-col justify-center min-h-screen px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32"
       render={({ values }) => (
-        <Formk className="flex flex-col pt-3 md:pt-2">
-          {schema.fields.map((field, key) => (
-            <Input
-              {...field}
-              values={values}
-              key={key}
+        <>
+          <p className="font-bold underline">{name_exam}</p>
+          <Formk className="flex flex-col pt-3 md:pt-2">
+            {schema.fields.map((field, key) => (
+              <Input
+                {...field}
+                values={values}
+                key={key}
+                isInterfaceView={isInterfaceView}
+              />
+            ))}
+            <FormButtons
+              moduleName={currentPath}
               isInterfaceView={isInterfaceView}
             />
-          ))}
-          <FormButtons
-            moduleName={currentPath}
-            isInterfaceView={isInterfaceView}
-          />
-        </Formk>
+          </Formk>
+        </>
       )}
     />
   )

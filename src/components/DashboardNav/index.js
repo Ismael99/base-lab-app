@@ -9,7 +9,7 @@ import { MobileMenu } from './MobileMenu'
 import { MobileSubMenu } from './MobileSubMenu'
 import { infoCompanyData } from '../../data_test/company_info'
 
-export const DashboardNav = () => {
+export const DashboardNav = (props) => {
   const [isMenuOpen, handleIsMenuOpen] = useIsOpen(false)
   const [isSubMenuOpen, handleIsSubMenuOpen] = useIsOpen(false)
 
@@ -19,7 +19,7 @@ export const DashboardNav = () => {
         <MobileMenuButton onClickMenu={handleIsMenuOpen} />
         <Brand {...infoCompanyData} />
         <MobileSubMenuButton onClickSubMenu={handleIsSubMenuOpen} />
-        <SubMenu />
+        <SubMenu {...props}/>
       </Nav>
       <MobileMenu isMenuOpen={isMenuOpen} />
       <MobileSubMenu isSubMenuOpen={isSubMenuOpen} />

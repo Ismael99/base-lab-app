@@ -21,3 +21,12 @@ export const thunkFetchRoles = (dispatch, _) => {
     })
   })
 }
+
+export const thunkFecthRole = (id) => (dispatch, _) => {
+  client.get({ resource: `${resource}/${id}` }).then((role) => {
+    dispatch({
+      type: ROLES_ACTIONS.FETCH_ROLE,
+      payload: role
+    })
+  })
+}
