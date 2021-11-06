@@ -14,7 +14,6 @@ const logsSelector = createSelector(
       }
     })
 )
-
 const usersSelector = createSelector((state) => state.users.data ?? [])
 
 export const LogsHome = () => {

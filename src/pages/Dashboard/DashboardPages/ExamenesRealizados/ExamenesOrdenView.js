@@ -74,6 +74,7 @@ export const ExamenesOrdenView = ({ id }) => {
       : ''
   }))
   const validateResultados = (currentValue) => {
+    console.log({ currentValue })
     return (
       currentValue.examen_realizado_resultados[0].value !== '' &&
       currentValue.examen_realizado_resultados[0].value !== undefined
@@ -83,12 +84,14 @@ export const ExamenesOrdenView = ({ id }) => {
   useEffect(() => {
     const fetch = async () => {
       const completado = examenesOrden.every(validateResultados)
+      console.log({ completado })
+      console.log({ ordenExamenCurrent })
       if (completado !== showBtnPrint) {
         setShowBtnPrint(completado)
         await dispatch(
           setCurrentOrdenExamen({
             ...ordenExamenCurrent,
-            orden_exam_status: completado ? 2 : 1
+            orden_exam_status: completado === false ? 1 : 2
           })
         )
         await dispatch(updateOrdenExamen)
@@ -108,7 +111,7 @@ export const ExamenesOrdenView = ({ id }) => {
         />
       )}
       <div className="flex flex-col lg:flex-row justify-center items-center">
-        <div className="xl:w-1/2 w-full px-3  my-4 text-lg">
+        <div className="w-full px-3 my-4 text-lg xl:w-1/2">
           <p>
             <span className="flex flex-row items-center">
               <UsersIcon className="w-5 h-5 mr-1" />
@@ -142,7 +145,7 @@ export const ExamenesOrdenView = ({ id }) => {
           {showBtnPrint && (
             <button
               onClick={handlePrint}
-              className="flex flex-row w-2/3 hover:bg-green-50 lg:w-auto items-center justify-center w-auto h-10 mr-3 px-4 my-3 py-4 w-auto text-xl text-green-300 border border-green-400 rounded-md transform hover:scale-110 hover:text-green-400"
+              className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 mr-3 text-xl text-green-300 border border-green-400 hover:bg-green-50 lg:w-auto rounded-md transform hover:scale-110 hover:text-green-400"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
@@ -152,7 +155,7 @@ export const ExamenesOrdenView = ({ id }) => {
           )}
           <Link
             to="/dashboard/ordenes_examenes"
-            className="flex flex-row items-center w-2/3 hover:bg-red-50 lg:w-auto justify-center w-auto h-10 px-4 py-4 my-3 w-auto text-xl text-red-300 border border-red-400 rounded-md transform hover:scale-110 hover:text-red-400"
+            className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 text-xl text-red-300 border border-red-400 hover:bg-red-50 lg:w-auto rounded-md transform hover:scale-110 hover:text-red-400"
           >
             <span className="flex flex-row">
               <p className="mr-3">{'\u21a9'}</p>
