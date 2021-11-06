@@ -1,6 +1,7 @@
 import React from 'react'
 import { useIsOpen } from '../../hooks/useIsOpen'
 // import { useIsActiveClasses } from '../../hooks/useIsActiveClasses'
+import user_icon from '../../assets/user_icon.png'
 import { Transition } from '@headlessui/react'
 import { navigate, useLocation } from '@reach/router'
 
@@ -25,11 +26,7 @@ export const Avatar = ({ setPath }) => {
         onClick={handleIsMenuOpen}
       >
         <span className="sr-only">User menu</span>
-        <img
-          className="w-10 h-10 rounded-full"
-          src="https://avatars.githubusercontent.com/u/57622665?s=460&amp;u=8f581f4c4acd4c18c33a87b3e6476112325e8b38&amp;v=4"
-          alt="Ahmed Kamel"
-        />
+        <img className="w-8 h-10" src={user_icon} alt="Ahmed Kamel" />
       </button>
       {/*Avatar menu dropdown*/}
       <Transition
@@ -44,7 +41,7 @@ export const Avatar = ({ setPath }) => {
       >
         <span
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 cursor-default transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
           onClick={(e) => {
             const path = location.pathname
             setPath(path)
@@ -56,7 +53,7 @@ export const Avatar = ({ setPath }) => {
         <span
           onClick={logout}
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light cursor-default dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 cursor-default transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
         >
           Logout
         </span>
