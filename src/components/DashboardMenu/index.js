@@ -2,7 +2,6 @@ import React from 'react'
 import { infoCompanyData } from '../../data_test/company_info'
 import {
   PacientesRoutes,
-  RolesRoutes,
   ExamenesRoutes,
   QuimicosRoutes,
   LogsRoutes,
@@ -54,12 +53,6 @@ export const DashboardMenu = () => (
       path="quimicos"
       links={QuimicosRoutes}
       icon={BeakerIcon}
-    />
-    <DashboardMenuItem
-      title="Roles"
-      path="roles"
-      links={RolesRoutes}
-      icon={BriefcaseIcon}
     />
     <DashboardMenuItem
       title="Ordenes Examenes"

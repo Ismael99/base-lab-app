@@ -29,10 +29,7 @@ export const OrdenesExamenesForm = ({
         )
       })
   )
-  const selectorExamenes = createSelector(
-    (state) => state.examenes.data ?? [],
-    (data) => data.filter((examen) => examen.examen_status !== 2)
-  )
+  const selectorExamenes = createSelector((state) => state.examenes.data ?? [])
   //DATA
   const examenes = useSelector(selectorExamenes)
   const examenesRealizados = useSelector(selectorExamenesRealizados)

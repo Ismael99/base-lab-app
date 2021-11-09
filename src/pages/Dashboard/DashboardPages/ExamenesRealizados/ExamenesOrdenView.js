@@ -15,7 +15,8 @@ import {
   CheckCircleIcon,
   UsersIcon,
   UserIcon,
-  PrinterIcon
+  PrinterIcon,
+  ArrowLeftIcon
 } from '@heroicons/react/outline'
 export const ExamenesOrdenView = ({ id }) => {
   const componentToPrintRef = useRef()
@@ -42,10 +43,7 @@ export const ExamenesOrdenView = ({ id }) => {
   const ordenExamenesStatusSelector = createSelector(
     (state) => state.ordenes_examenes_status.data ?? []
   )
-  const examenesSelector = createSelector(
-    (state) => state.examenes.data ?? [],
-    (data) => data.filter((examen) => examen.examen_status !== 2)
-  )
+  const examenesSelector = createSelector((state) => state.examenes.data ?? [])
   const ordenExamenCurrent = useSelector(ordenExamenCurrentSelector)
   const pacienteCurrentSelector = createSelector(
     (state) => state.pacientes.data ?? [],
@@ -59,6 +57,7 @@ export const ExamenesOrdenView = ({ id }) => {
   const examenesOrden = useSelector(examenesOrdenSelector)
   const ordenesExamenesStatus = useSelector(ordenExamenesStatusSelector)
   const examenes = useSelector(examenesSelector)
+  console.log({ examenes })
   const currentStateOrden = ordenesExamenesStatus.find((orden_exam_status) => {
     return (
       orden_exam_status.orden_exam_status_id ===
@@ -129,8 +128,8 @@ export const ExamenesOrdenView = ({ id }) => {
           </p>
           <p>
             <span
-              className={`flex flex-row items-center ${
-                showBtnPrint ? 'bg-green-100' : 'bg-red-100'
+              className={`flex flex-row items-center text-white p-1 ${
+                showBtnPrint ? 'bg-green-600' : 'bg-red-600'
               } w-max`}
             >
               <CheckCircleIcon className="w-5 h-5 mr-1" />
@@ -145,7 +144,7 @@ export const ExamenesOrdenView = ({ id }) => {
           {showBtnPrint && (
             <button
               onClick={handlePrint}
-              className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 mr-3 text-xl text-green-300 border border-green-400 hover:bg-green-50 lg:w-auto rounded-md transform hover:scale-110 hover:text-green-400"
+              className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 mr-3 text-xl text-white bg-green-600 border border-green-400 lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
@@ -155,10 +154,10 @@ export const ExamenesOrdenView = ({ id }) => {
           )}
           <Link
             to="/dashboard/ordenes_examenes"
-            className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 text-xl text-red-300 border border-red-400 hover:bg-red-50 lg:w-auto rounded-md transform hover:scale-110 hover:text-red-400"
+            className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 text-xl text-white bg-red-600 border border-red-400 lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
           >
             <span className="flex flex-row">
-              <p className="mr-3">{'\u21a9'}</p>
+              <ArrowLeftIcon className="w-5" />
               <p>Atras</p>
             </span>
           </Link>

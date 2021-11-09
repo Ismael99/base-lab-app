@@ -10,7 +10,7 @@ export const fetchExamenes = (examenes) => ({
 
 export const thunkFetchExamenes = async (dispatch, _) => {
   const examenes = await client.get({ resource: resource })
-  console.log(examenes)
+  console.log({ examenes })
   await dispatch({
     type: EXAMENES_ACTIONS.FETCH_EXAMENES,
     payload: examenes

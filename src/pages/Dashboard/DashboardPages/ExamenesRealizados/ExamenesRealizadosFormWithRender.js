@@ -5,10 +5,7 @@ import { setCurrentExamenRealizado } from '../../../../redux/actions/examenesRea
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
 
-const examenesSelector = createSelector(
-  (state) => state.examenes.data ?? [],
-  (data) => data.filter((examen) => examen.examen_status !== 2) ?? []
-)
+const examenesSelector = createSelector((state) => state.examenes.data ?? [])
 export const ExamenesRealizadosFormWithRender = ({
   examenesRealizados,
   id,

@@ -23,17 +23,17 @@ export const DataList = ({
   console.log({ field })
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ?? []
-    const dataFilter = status
-      ? data.map((register) => {
+    const dataFilter = []
+    status
+      ? data.forEach((register) => {
           const label_concat = concatLabel(value, register)
-          if (register[status] !== 2) {
-            return { label: label_concat, value: register[id] }
+          if (register[status] !== 2 || isInterfaceView) {
+            dataFilter.push({ label: label_concat, value: register[id] })
           }
-          return undefined
         })
-      : data.map((register) => {
-          debugger
-          return { label: register[value], value: register[id] }
+      : data.forEach((register) => {
+          const label_concat = concatLabel(value, register)
+          dataFilter.push({ label: label_concat, value: register[id] })
         })
     return dataFilter
   })
