@@ -4,8 +4,8 @@
   background-size: 800px;
   background-position: center bottom;
   background-color: white;
-  width: 216mm;
-  height: 279mm;
+  width: 100%;
+  min-height: 100%;
   /* to centre page on screen*/
   margin-left: auto;
   margin-right: auto;
