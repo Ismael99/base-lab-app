@@ -1,24 +1,34 @@
 import { useState, useEffect } from 'react'
 
-export const useTableSearch = (initialData = []) => {
+export const useTableSearch = (
+  initialData = [],
+  PER_PAGE,
+  currentPage,
+  setCurrentPage
+) => {
   const [search, setSearch] = useState('')
   const [data, setData] = useState(initialData)
+  const [offset, setOffset] = useState(0)
   //Actualiza el estado cuando detecta mofificaciones en initialData (Actualizaciones de registros,
   //etc)
   useEffect(() => {
     setData(initialData)
   }, [initialData])
-  /* const checkIfContains = (object, searchValue) => {
-    //  Object.values(object).map(value => value.indexOf(searchValue) !== -1)
-    let founded = false 
-    Object.values(object).forEach(value => {
-      if (typeof value == "string" && value.indexOf(searchValue) > -1) {
-        founded = true
-      }
-    })
-    return founded
-  }*/
-
+  useEffect(() => {
+    const dataLength = data.length
+    const isInt = Number.isInteger(dataLength / PER_PAGE)
+    const countPages = !isInt
+      ? ((dataLength / PER_PAGE) | 0) + 1
+      : dataLength / PER_PAGE
+    if (currentPage > countPages - 1) {
+      setCurrentPage(countPages - 1)
+    }
+    console.log({ countPages })
+    console.log({ dataLength })
+    console.log({ currentPage })
+    const valueOffset = currentPage * PER_PAGE
+    setOffset(valueOffset)
+  }, [search, currentPage, data])
   const handleTableSearch = ({ target }) => {
     const { value } = target
     setSearch(value)
@@ -52,5 +62,5 @@ export const useTableSearch = (initialData = []) => {
       else setData([])
     }
   }
-  return [data, search, handleTableSearch]
+  return [data, search, handleTableSearch, offset]
 }

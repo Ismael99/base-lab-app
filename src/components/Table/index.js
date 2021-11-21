@@ -19,18 +19,21 @@ export const Table = ({
   actionType = 'standar'
 }) => {
   const ActionRender = ActionTypeRender(actionType)
-
-  // table search state
-  const [searchResult, search, handleSearchResult] = useTableSearch(data)
   // paginator state
   const [currentPage, setCurrentPage] = useState(0)
+  // table search state
+  const [searchResult, search, handleSearchResult, offset] = useTableSearch(
+    data,
+    PER_PAGE,
+    currentPage,
+    setCurrentPage
+  )
   // Paginator handler
   const handlePageClick = ({ selected: selectedPage }) => {
     setCurrentPage(selectedPage)
   }
 
   // const offset = currentPage * PER_PAGE
-  const offset = search.length > 0 ? 0 : currentPage * PER_PAGE
   const currentPageData = searchResult
     .slice(offset, offset + PER_PAGE)
     .map((row, keyRow) => (
@@ -85,6 +88,7 @@ export const Table = ({
         </div>
       </div>
       <ReactPaginate
+        forcePage={currentPage}
         previousLabel={'\u2770 Previous'}
         nextLabel={'Next \u2771'}
         pageCount={pageCount}
