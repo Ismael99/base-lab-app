@@ -24,7 +24,6 @@ export const OrdenesExamenes = () => {
   const [mounted, setMounted] = useState(true)
   useEffect(() => {
     const fetch = async () => {
-      console.log('Fetching de datos')
       setLoading(true)
       await dispatch(thunkFetchPacientes)
       await dispatch(thunkFetchOrdenesExamenes)

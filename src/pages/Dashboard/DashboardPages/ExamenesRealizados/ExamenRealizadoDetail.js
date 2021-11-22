@@ -9,7 +9,6 @@ const examenesRealizadosSelector = createSelector(
 
 export const ExamenRealizadoDetail = ({ id, ...props }) => {
   const examenes_realizados = useSelector(examenesRealizadosSelector)
-  console.log({ examenes_realizados })
   return (
     <ExamenesRealizadosFormWithRender
       examenesRealizados={examenes_realizados}

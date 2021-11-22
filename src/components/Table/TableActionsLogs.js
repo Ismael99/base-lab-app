@@ -3,7 +3,6 @@ import { ClipboardListIcon } from '@heroicons/react/outline'
 import { Link } from '@reach/router'
 
 export const TableActionsLogs = ({ data }) => {
-  console.log(data)
   const { log_register_id, log_register_module } = data
   if (data.log_action === 'delete') return <></>
   return (

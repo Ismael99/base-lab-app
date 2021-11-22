@@ -19,7 +19,6 @@ export const Footer = (props) => {
       {children}
     </div>
   )
-  console.log(props)
   return (
     <FooterMain>
       <FooterInfo>

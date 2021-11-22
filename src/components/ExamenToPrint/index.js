@@ -9,10 +9,10 @@ import './pageStyle.css'
 class ExamenToPrint extends React.Component {
   render() {
     return (
-      <div className="hidden pages-content">
-        {this.props.examenesRealizadosOrden.map((examenRealizado) => {
+      <div className="pages-content hidden">
+        {this.props.examenesRealizadosOrden.map((examenRealizado, index) => {
           return (
-            <div>
+            <div key={index}>
               <div className="page">
                 <HeadExam {...this.props} />
                 <ContentExam data={examenRealizado} />

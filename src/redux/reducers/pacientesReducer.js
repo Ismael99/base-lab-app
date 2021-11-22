@@ -2,7 +2,6 @@ import { PACIENTES_ACTIONS } from '../actions/types'
 const INITIAL_STATE = { data: [], current: {} }
 
 export const pacientesReducer = (state = INITIAL_STATE, action) => {
-  console.log(action.type, PACIENTES_ACTIONS.FETCH_PACIENTES)
   switch (action.type) {
     case PACIENTES_ACTIONS.FETCH_PACIENTES: {
       return { ...state, data: action.payload }

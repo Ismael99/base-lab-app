@@ -2,7 +2,6 @@ import { USER_ACTIONS } from '../actions/types'
 const INITIAL_STATE = { token: '', data: [], current: {} }
 
 export const usersReducer = (state = INITIAL_STATE, action) => {
-  console.log(action.type, USER_ACTIONS.FETCH_USERS)
   switch (action.type) {
     case USER_ACTIONS.SET_TOKEN:
       return {

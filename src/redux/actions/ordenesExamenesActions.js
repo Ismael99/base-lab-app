@@ -10,7 +10,6 @@ export const fetchExamenes = (ordenes_examenes) => ({
 
 export const thunkFetchOrdenesExamenes = async (dispatch, _) => {
   const ordenes_examenes = await client.get({ resource: resource })
-  console.log({ ordenes_examenes })
   await dispatch({
     type: ORDENES_EXAMENES_ACTIONS.FETCH_ORDENES_EXAMENES,
     payload: ordenes_examenes
@@ -37,7 +36,6 @@ export const updateOrdenExamen = async (dispatch, getState) => {
     resource: resource,
     body: ordenExamenData
   })
-  console.log(updateOrdenExamen)
   dispatch({
     type: ORDENES_EXAMENES_ACTIONS.UPDATE_ORDEN_EXAMEN,
     payload: updateOrdenExamen

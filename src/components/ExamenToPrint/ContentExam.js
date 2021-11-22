@@ -11,16 +11,16 @@ export const ContentExam = ({ data }) => {
         </div>
         <div className="flex flex-col justify-between mt-5 uppercase">
           <div className="w-full flex flex-row text-sm mb-3">
-            <p className="font-bold w-2/5">Campo</p>
-            <p className="font-bold w-2/5">Resultado</p>
-            <p className="font-bold w-1/5 text-center">Rango normal</p>
+            <p className="w-2/5 font-bold">Campo</p>
+            <p className="w-2/5 font-bold">Resultado</p>
+            <p className="w-1/5 font-bold text-center">Rango normal</p>
           </div>
           {examen_realizado_resultados.map((resultado, index) => {
             return (
               <div className={`flex flex-row w-full mb-1 text-xs`} key={index}>
-                <p className="mr-1 break-words w-2/5 font-bold">{`${resultado.label}: `}</p>
+                <p className="w-2/5 mr-1 font-bold break-words">{`${resultado.label}: `}</p>
                 <p className="w-2/5 break-words">{resultado.value}</p>
-                <p className="w-1/5 break-words text-center">
+                <p className="w-1/5 text-center break-words">
                   {resultado.rn ?? ''}
                 </p>
               </div>

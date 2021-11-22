@@ -15,7 +15,6 @@ export const InputSelect = ({
 }) => {
   const selectDataSelector = createSelector((state) => state[module].data ?? [])
   const selectData = useSelector(selectDataSelector)
-  console.log(selectData)
   return (
     <Field
       name={name}

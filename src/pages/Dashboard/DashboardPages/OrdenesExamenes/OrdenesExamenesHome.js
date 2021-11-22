@@ -35,8 +35,6 @@ export const OrdenesExamenesHome = () => {
   const pacientes = useSelector(pacientesSelector)
   const ordenesExamenes = useSelector(ordenesExamenesSelector)
   const ordenesExamenesStatus = useSelector(ordenExamStatusSelector)
-  console.log({ ordenesExamenes })
-  console.log({ pacientes })
   const ordenesExamenesPacientesName = ordenesExamenes.map((ordenExamen) => {
     const status = ordenesExamenesStatus.find(
       (orden_exam_status) =>
@@ -56,7 +54,6 @@ export const OrdenesExamenesHome = () => {
       orden_exam_status: status
     }
   })
-  console.log({ ordenesExamenesPacientesName })
   return (
     <>
       <Table

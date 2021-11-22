@@ -23,7 +23,6 @@ export const Pacientes = () => {
   const [mounted, setMounted] = useState(true)
   useEffect(() => {
     const fetch = async () => {
-      console.log('Fetching de datos')
       setLoading(true)
       await dispatch(thunkFetchPacientes)
       setLoading(false)

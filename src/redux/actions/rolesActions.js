@@ -14,7 +14,6 @@ export const thunkFetchRoles = async (dispatch, _) => {
     */
 export const thunkFetchRoles = (dispatch, _) => {
   client.get({ resource: resource }).then((roles_get) => {
-    console.log(roles_get)
     dispatch({
       type: ROLES_ACTIONS.FETCH_ROLES,
       payload: roles_get

@@ -1,8 +1,4 @@
-const DATALIST_KEYS = [
-  'user_status',
-  'quimico_status',
-  'orden_exam_paciente'
-]
+const DATALIST_KEYS = ['user_status', 'quimico_status', 'orden_exam_paciente']
 
 export function datalistTransform(values) {
   const keys = Object.keys(values)
@@ -15,14 +11,3 @@ export function datalistTransform(values) {
   }, {})
   return transformedValues
 }
-
-const data = {
-  key: {
-    value: 'value'
-  },
-  record_status: {
-    value: 'record_status'
-  },
-  is_not_datalist: 'should work too'
-}
-console.log(datalistTransform(data))

@@ -35,6 +35,7 @@ Section.propTypes = {
 export const Dashboard = () => {
   const dispatch = useDispatch()
   const [path, setPath] = useState('')
+  const [mounted, setMounted] = useState(true)
   const navigate = useNavigate()
 
   const user = JSON.parse(window.localStorage.getItem('user'))
@@ -44,8 +45,11 @@ export const Dashboard = () => {
     const fetchRole = async () => {
       await dispatch(thunkFecthRole(user?.user_role))
     }
+    if (mounted) fetchRole()
 
-    fetchRole()
+    return () => {
+      setMounted(false)
+    }
   }, [])
 
   if (!token || !user) {

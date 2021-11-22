@@ -49,8 +49,6 @@ export const ExamenesRealizadosFormWithRender = ({
         ? examenRealizadoCurrent?.examen_realizado_quimico
         : examenTemplete.examen_templete_quimicos
   }
-  console.log({ examenRealizadoCurrent })
-  console.log({ examenTemplete })
   return (
     <FormWithRender
       name_exam={name_exam}

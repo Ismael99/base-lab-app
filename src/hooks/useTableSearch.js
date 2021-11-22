@@ -21,11 +21,12 @@ export const useTableSearch = (
       ? ((dataLength / PER_PAGE) | 0) + 1
       : dataLength / PER_PAGE
     if (currentPage > countPages - 1) {
-      setCurrentPage(countPages - 1)
+      if (countPages === 0) {
+        setCurrentPage(0)
+      } else {
+        setCurrentPage(countPages - 1)
+      }
     }
-    console.log({ countPages })
-    console.log({ dataLength })
-    console.log({ currentPage })
     const valueOffset = currentPage * PER_PAGE
     setOffset(valueOffset)
   }, [search, currentPage, data])
@@ -53,8 +54,6 @@ export const useTableSearch = (
       initialData.forEach((object) => {
         fieldsInvalid.forEach((field) => {
           delete object[field]
-          console.log('Delete attr')
-          console.log(object)
         })
         if (Object.values(object).some(isSubString)) result.push(object)
       })

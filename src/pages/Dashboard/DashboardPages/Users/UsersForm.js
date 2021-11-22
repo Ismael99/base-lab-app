@@ -7,7 +7,6 @@ export const UsersForm = ({ users, id, isInterfaceView, ...props }) => {
     return user.user_id.toString() === id
   })
   userCurrent = userCurrent ?? UserSchema.initialValues
-  console.log(id, userCurrent)
   return (
     <Form
       isInterfaceView={isInterfaceView}

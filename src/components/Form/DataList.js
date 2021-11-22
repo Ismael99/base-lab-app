@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useField, ErrorMessage } from 'formik'
+import React, { useEffect, useState } from 'react'
+import { useField } from 'formik'
 import { useSelector } from 'react-redux'
 import { createSelector } from 'selector'
 import { concatLabel } from '../../utils/concatLabel'
@@ -17,10 +17,8 @@ export const DataList = ({
   ...props
 }) => {
   const [field, meta, helper] = useField({ ...props, name })
+  const [mount, setMount] = useState(true)
   const { setValue, setTouched } = helper
-  console.log({ meta })
-  console.log({ helper })
-  console.log({ field })
   const dataListSelector = createSelector((state) => {
     const data = state[module].data ?? []
     const dataFilter = []
@@ -39,20 +37,24 @@ export const DataList = ({
   })
   const dataListData = useSelector(dataListSelector)
   useEffect(() => {
-    let valueDefault
-    if (isMulti) {
-      valueDefault = dataListData.filter((option) => {
-        return field?.value?.find((field) => {
-          console.log(field)
+    if (mount) {
+      let valueDefault
+      if (isMulti) {
+        valueDefault = dataListData.filter((option) => {
+          return field?.value?.find((field) => {
+            return option.value === field.value
+          })
+        })
+      } else {
+        valueDefault = dataListData.find((option) => {
           return option.value === field.value
         })
-      })
-    } else {
-      valueDefault = dataListData.find((option) => {
-        return option.value === field.value
-      })
+      }
+      setValue(valueDefault)
     }
-    setValue(valueDefault)
+    return () => {
+      setMount(false)
+    }
   }, [])
   return (
     <div className="w-full">

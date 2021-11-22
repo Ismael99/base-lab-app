@@ -29,7 +29,6 @@ export const Users = () => {
       await dispatch(thunkFetchRecordsStatus)
       await dispatch(thunkFetchRoles)
       setLoading(false)
-      console.log('fin fetch user')
     }
     if (mounted) fetch()
     return () => {

@@ -43,7 +43,6 @@ export const saveUser = async (dispatch, getState) => {
 export const updateUser = async (dispatch, getState) => {
   const state = getState()
   const userData = state.users.current
-  console.log('ouhnfailu')
   const updatedUser = await client.put({ body: userData, resource: 'users' })
   dispatch({
     type: USER_ACTIONS.UPDATE_USER,
@@ -65,7 +64,6 @@ export const deleteUser = async (dispatch, getState) => {
 }
 
 export const setCurrentUser = (user) => {
-  console.log(user, 'kbsdfiybw')
   return {
     type: USER_ACTIONS.SET_CURRENT_USER,
     payload: user

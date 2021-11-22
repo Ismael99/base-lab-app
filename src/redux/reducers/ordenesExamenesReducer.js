@@ -2,7 +2,6 @@ import { ORDENES_EXAMENES_ACTIONS } from '../actions/types'
 const INITIAL_STATE = { data: [], current: {} }
 
 export const ordenesExamenesReducer = (state = INITIAL_STATE, action) => {
-  console.log(action.type, ORDENES_EXAMENES_ACTIONS.FETCH_ORDENES_EXAMENES)
   switch (action.type) {
     case ORDENES_EXAMENES_ACTIONS.FETCH_ORDENES_EXAMENES: {
       return { ...state, data: action.payload }

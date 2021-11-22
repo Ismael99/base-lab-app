@@ -33,7 +33,6 @@ export const OrdenesExamenesForm = ({
   //DATA
   const examenes = useSelector(selectorExamenes)
   const examenesRealizados = useSelector(selectorExamenesRealizados)
-  console.log(examenesRealizados)
   //STATES
   const [errors, setErrors] = useState({
     examenes_realizados: 'Campo Requerido'
@@ -48,7 +47,6 @@ export const OrdenesExamenesForm = ({
       const currentValueDatalist = examenesRealizados.map(
         (examen_realizado) => {
           let label = examenes.find((examen) => {
-            console.log(examen.examen_id, examen_realizado.examen_realizado_id)
             return examen.examen_id === examen_realizado.examen_realizado_examen
           })
           label = concatLabel(['examen_nombre', 'examen_precio'], label)
@@ -63,7 +61,6 @@ export const OrdenesExamenesForm = ({
       })
       if (currentValueDatalist) setStateForm(currentValueDatalist)
       else setStateForm([])
-      console.log({ examenes })
     }
     return () => {
       setMounted(false)
@@ -104,8 +101,6 @@ export const OrdenesExamenesForm = ({
       dispatch(setCurrent(values))
       dispatch(toDispatch)
       setSubmitting(false)
-      console.log('Submiting...')
-      console.log(values)
       navigate(`/dashboard/${currentPath}`, { replace: true })
     }
   }

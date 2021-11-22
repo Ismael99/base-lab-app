@@ -10,7 +10,6 @@ const quimicosSelector = createSelector(
 
 export const QuimicosHome = () => {
   const quimicos = useSelector(quimicosSelector)
-  console.log(quimicos)
   return (
     <>
       <Table

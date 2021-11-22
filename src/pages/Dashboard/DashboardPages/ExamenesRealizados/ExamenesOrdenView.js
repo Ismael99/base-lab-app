@@ -57,7 +57,6 @@ export const ExamenesOrdenView = ({ id }) => {
   const examenesOrden = useSelector(examenesOrdenSelector)
   const ordenesExamenesStatus = useSelector(ordenExamenesStatusSelector)
   const examenes = useSelector(examenesSelector)
-  console.log({ examenes })
   const currentStateOrden = ordenesExamenesStatus.find((orden_exam_status) => {
     return (
       orden_exam_status.orden_exam_status_id ===
@@ -73,7 +72,6 @@ export const ExamenesOrdenView = ({ id }) => {
       : ''
   }))
   const validateResultados = (currentValue) => {
-    console.log({ currentValue })
     return (
       currentValue.examen_realizado_resultados[0].value !== '' &&
       currentValue.examen_realizado_resultados[0].value !== undefined
@@ -83,9 +81,10 @@ export const ExamenesOrdenView = ({ id }) => {
   useEffect(() => {
     const fetch = async () => {
       const completado = examenesOrden.every(validateResultados)
+      console.log({ examenesOrden })
       console.log({ completado })
-      console.log({ ordenExamenCurrent })
-      if (completado !== showBtnPrint) {
+      console.log({ showBtnPrint })
+      if (completado !== showBtnPrint && examenesOrden.length > 0) {
         setShowBtnPrint(completado)
         await dispatch(
           setCurrentOrdenExamen({
@@ -97,8 +96,7 @@ export const ExamenesOrdenView = ({ id }) => {
       }
     }
     fetch()
-  }, [showBtnPrint, ordenExamenCurrent, dispatch, examenesOrden])
-  console.log({ showBtnPrint })
+  }, [ordenExamenCurrent, examenesOrden])
   return (
     <>
       {ordenExamenCurrent && pacienteCurrent && data && (
@@ -109,7 +107,7 @@ export const ExamenesOrdenView = ({ id }) => {
           examenesRealizadosOrden={data}
         />
       )}
-      <div className="flex flex-col lg:flex-row justify-center items-center">
+      <div className="flex flex-col items-center justify-center lg:flex-row">
         <div className="w-full px-3 my-4 text-lg xl:w-1/2">
           <p>
             <span className="flex flex-row items-center">

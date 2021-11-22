@@ -8,7 +8,6 @@ export const fetchRecordsStatus = (recordsStatus) => ({
 
 export const thunkFetchRecordsStatus = (dispatch, _) => {
   client.get({ resource: 'records_status' }).then((recordsStatus) => {
-    console.log(recordsStatus)
     dispatch({
       type: RECORD_STATUS_ACTIONS.FETCH_RECORD_STATUS,
       payload: recordsStatus

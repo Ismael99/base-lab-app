@@ -3,7 +3,7 @@ import './pageStyle.css'
 export const ExamFooter = () => {
   return (
     <>
-      <div className="absolute flex flex-row w-full px-10 mb-5 exam-footer">
+      <div className=" flex flex-row w-full px-10 mb-5 exam-footer items-end absolute bottom-5">
         <p className="text-sm font-bold text-center">
           Responsable: _______________________
         </p>

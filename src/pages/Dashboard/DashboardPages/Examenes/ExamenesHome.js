@@ -10,7 +10,6 @@ const examenesSelector = createSelector(
 
 export const ExamenesHome = () => {
   const examenes = useSelector(examenesSelector)
-  console.log(examenes)
   return (
     <>
       <Table

@@ -24,8 +24,6 @@ export const Form = ({
     dispatch(setCurrent(values))
     dispatch(toDispatch)
     setSubmitting(false)
-    console.log('Submiting...')
-    console.log(values)
     navigate(`/dashboard/${currentPath}`, { replace: true })
   }
   return (

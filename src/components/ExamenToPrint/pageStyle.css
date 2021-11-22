@@ -4,17 +4,17 @@
   background-size: 800px;
   background-position: center bottom;
   background-color: white;
-  width: 100%;
-  min-height: 100%;
   /* to centre page on screen*/
   margin-left: auto;
+  height: 100%;
   margin-right: auto;
   padding: 1rem, 0.5rem;
   position: relative;
 }
-.exam-footer {
-  position: absolute;
-  bottom: 0;
+
+.pages-content {
+  min-width: 210mm;
+  min-height: 100%;
 }
 
 @media print {

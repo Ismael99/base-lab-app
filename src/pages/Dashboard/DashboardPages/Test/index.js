@@ -4,7 +4,6 @@ import { useIsOpen } from '../../../../hooks/useIsOpen'
 
 export const Test = () => {
   const [isOpen, handleIsOpen] = useIsOpen(false)
-  console.log(isOpen)
 
   return (
     <>

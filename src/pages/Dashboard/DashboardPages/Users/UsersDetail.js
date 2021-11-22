@@ -10,6 +10,5 @@ const usersSelector = createSelector(
 
 export const UserDetail = ({ id }) => {
   const users = useSelector(usersSelector)
-  console.log('User Detail')
   return <UsersForm users={users} id={id} isInterfaceView={true} />
 }
