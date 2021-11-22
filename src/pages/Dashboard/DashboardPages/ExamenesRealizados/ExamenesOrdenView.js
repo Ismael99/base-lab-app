@@ -81,9 +81,6 @@ export const ExamenesOrdenView = ({ id }) => {
   useEffect(() => {
     const fetch = async () => {
       const completado = examenesOrden.every(validateResultados)
-      console.log({ examenesOrden })
-      console.log({ completado })
-      console.log({ showBtnPrint })
       if (completado !== showBtnPrint && examenesOrden.length > 0) {
         setShowBtnPrint(completado)
         await dispatch(
@@ -109,22 +106,22 @@ export const ExamenesOrdenView = ({ id }) => {
       )}
       <div className="flex flex-col items-center justify-center lg:flex-row">
         <div className="w-full px-3 my-4 text-lg xl:w-1/2">
-          <p>
+          <div>
             <span className="flex flex-row items-center">
               <UsersIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Paciente: </p>
               {pacienteCurrent?.paciente_nombre}{' '}
               {pacienteCurrent?.paciente_apellido}
             </span>
-          </p>
-          <p>
+          </div>
+          <div>
             <span className="flex flex-row items-center">
               <UserIcon className="w-5 h-5 mr-1" />
               <p className="mr-1 font-extrabold">Doctor Responsable: </p>
               {ordenExamenCurrent?.orden_exam_dr_responsable}
             </span>
-          </p>
-          <p>
+          </div>
+          <div>
             <span
               className={`flex flex-row items-center text-white p-1 ${
                 showBtnPrint ? 'bg-green-600' : 'bg-red-600'
@@ -134,7 +131,7 @@ export const ExamenesOrdenView = ({ id }) => {
               <p className="mr-1 font-extrabold">Estado de Orden: </p>
               {currentStateOrden?.orden_exam_status_name}
             </span>
-          </p>
+          </div>
         </div>
         <div
           className={`lg:w-1/2 w-full mb-3 flex px-3 lg:flex-row flex-col justify-end items-center`}

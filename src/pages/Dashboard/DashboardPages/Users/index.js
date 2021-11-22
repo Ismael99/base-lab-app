@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Router } from '@reach/router'
-import { useSelector, useDispatch } from 'react-redux'
-import { createSelector } from 'selector'
+import { useDispatch } from 'react-redux'
 import { DashboardSection } from '../../DashboardSection'
 import { DashboardSectionTitle } from '../../DashboardSectionTitle'
 import { DashboardSectionContent } from '../../DashboardSectionContent'
@@ -16,7 +15,6 @@ import { LoaderPage } from '../../../../components/Loader/LoaderPage'
 import { thunkFecthUsers } from '../../../../redux/actions/usersActions'
 import { thunkFetchRecordsStatus } from '../../../../redux/actions/recordsStatusAction'
 import { thunkFetchRoles } from '../../../../redux/actions/rolesActions'
-const tokenSelector = createSelector((state) => state.users.token)
 
 export const Users = () => {
   const dispatch = useDispatch()
@@ -35,7 +33,6 @@ export const Users = () => {
       setMounted(false)
     }
   }, [mounted, dispatch])
-  const token = useSelector(tokenSelector)
   if (loading) return <LoaderPage />
   return (
     <DashboardSection>

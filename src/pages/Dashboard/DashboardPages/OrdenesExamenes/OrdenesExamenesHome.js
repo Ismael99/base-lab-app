@@ -44,10 +44,6 @@ export const OrdenesExamenesHome = () => {
       (paciente) => ordenExamen.orden_exam_paciente === paciente.paciente_id
     )
     const paciente_full_name = `${currentPaciente?.paciente_nombre} ${currentPaciente?.paciente_apellido}`
-    const currentState = ordenesExamenesStatus.find(
-      (ordenExamenStatus) =>
-        ordenExamen.orden_exam_status === ordenExamenStatus.orden_exam_status_id
-    )
     return {
       ...ordenExamen,
       orden_exam_paciente: paciente_full_name,

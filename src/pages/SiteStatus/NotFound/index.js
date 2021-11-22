@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from '@reach/router'
-import { ArrowLeftIcon, HomeIcon } from '@heroicons/react/outline'
 import './index.css'
 export const NotFound = () => {
   return (

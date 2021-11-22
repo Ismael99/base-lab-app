@@ -11,7 +11,6 @@ import { DashboardMenuItem } from './DashboardMenuItem'
 import {
   HomeIcon,
   UsersIcon,
-  BriefcaseIcon,
   BeakerIcon,
   ClipboardListIcon,
   FolderOpenIcon

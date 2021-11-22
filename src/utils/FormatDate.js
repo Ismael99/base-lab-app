@@ -12,7 +12,6 @@ const MESES = [
   'Nov',
   'Dic'
 ]
-const DIAS = ['Dom', 'Lu', 'Mar', 'Mi', 'Ju', 'Vi', 'Sá']
 
 const getHour = (hour, minutes) => {
   const format_minute = minutes < 10 ? `0${minutes}` : `${minutes}`
@@ -31,7 +30,6 @@ export const FormatDate = (date) => {
 }
 
 export const FormatDateTime = (date) => {
-  const day = DIAS[date.getDay()]
   const day_num = date.getDate()
   const month = MESES[date.getMonth()]
   const year = date.getFullYear()
