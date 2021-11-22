@@ -10,7 +10,7 @@ export const DashboardMenuItem = ({ title, path, links, icon }) => {
   return (
     <>
       <Link
-        className={`flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-200 dark:hover:bg-blue-600 ${openClasses}`}
+        className={`btn-animations flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-blue-200 dark:hover:bg-blue-600 ${openClasses}`}
         to={path}
       >
         <span className="flex flex-row hover:text-black">
@@ -42,7 +42,7 @@ export const DashboardMenuItem = ({ title, path, links, icon }) => {
             <Link
               key={index}
               to={link.path}
-              className="block px-2 py-1 text-sm text-gray-500 border-b-2 border-transparent transform hover:bg-gray-100 hover:border-gray-200 hover:shadow-lg hover:scale-105 duration-300 ease-in-out transition-colors rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
+              className="btn-animations block px-2 py-1 text-sm text-gray-500 border-b-2 border-transparent transform hover:bg-gray-100 hover:border-gray-200 hover:shadow-lg hover:scale-105 duration-300 ease-in-out transition-colors rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
             >
               {link.title}
             </Link>

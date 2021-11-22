@@ -20,7 +20,7 @@ export const Avatar = ({ setPath }) => {
   const location = useLocation()
 
   return (
-    <div className="relative ml-auto flex items-center">
+    <div className="relative flex items-center ml-auto">
       <button
         className="rounded-full transition-opacity duration-200 dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
         onClick={handleIsMenuOpen}
@@ -41,7 +41,7 @@ export const Avatar = ({ setPath }) => {
       >
         <span
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 cursor-default transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 cursor-default cursor-pointer transition-colors hover:bg-gray-200 dark:text-light dark:hover:bg-blue-600"
           onClick={(e) => {
             const path = location.pathname
             setPath(path)
@@ -53,7 +53,7 @@ export const Avatar = ({ setPath }) => {
         <span
           onClick={logout}
           role="menuitem"
-          className="block px-4 py-2 text-sm text-gray-700 cursor-default transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-blue-600"
+          className="block px-4 py-2 text-sm text-gray-700 cursor-default cursor-pointer hover:bg-gray-200 transition-colors dark:text-light dark:hover:bg-blue-600"
         >
           Logout
         </span>

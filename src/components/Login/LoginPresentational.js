@@ -5,6 +5,7 @@ import { Formik, Form } from 'formik'
 import { LoginSchema } from '../../schema'
 import { UserCircleIcon, LockClosedIcon } from '@heroicons/react/outline'
 import login_icon from '../../assets/login_icon3.png'
+import './index.css'
 
 export const LoginPresentational = ({ handledSubmit, loading, error }) => {
   return (
@@ -38,11 +39,11 @@ export const LoginPresentational = ({ handledSubmit, loading, error }) => {
                   placeholder="Password..."
                 />
               </div>
-              <div className="flex items-center justify-center -mt-3">
+              <div className="flex items-center justify-center -mt-3 btn-animations">
                 <button
                   disabled={loading}
                   type="submit"
-                  className="w-full px-8 py-2 font-semibold text-white bg-black md:w-1/2 rounded-md hover:border-transparent hover:bg-opacity-60 dark:hover:bg-gray-700 focus:outline-none focus:bg-gray-800 dark:focus:bg-gray-700"
+                  className="w-full px-8 py-2 font-semibold text-white bg-black btn-animations md:w-1/2 rounded-md hover:border-transparent hover:bg-opacity-60 focus:outline-none"
                 >
                   Iniciar Sesión
                 </button>

@@ -13,11 +13,6 @@ export const MobileSubMenu = ({ isSubMenuOpen }) => {
 
   const Buttons = () => (
     <>
-      <div className="space-x-2">
-        <Button Icon={BellIcon} sr="Notification" />
-        <Button Icon={SearchIcon} sr="Search" />
-        <Button Icon={CogIcon} sr="Settings" />
-      </div>
       <Avatar />
     </>
   )

@@ -18,6 +18,8 @@ import {
   PrinterIcon,
   ArrowLeftIcon
 } from '@heroicons/react/outline'
+import './index.css'
+
 export const ExamenesOrdenView = ({ id }) => {
   const componentToPrintRef = useRef()
   const dispatch = useDispatch()
@@ -139,7 +141,7 @@ export const ExamenesOrdenView = ({ id }) => {
           {showBtnPrint && (
             <button
               onClick={handlePrint}
-              className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 mr-3 text-xl text-white bg-green-600 border border-green-400 lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
+              className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 mr-3 text-xl text-white bg-green-600 border border-green-400 btn-animations lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
             >
               <span className="flex flex-row items-center">
                 <PrinterIcon className="w-5 h-5 mr-3" />
@@ -149,7 +151,7 @@ export const ExamenesOrdenView = ({ id }) => {
           )}
           <Link
             to="/dashboard/ordenes_examenes"
-            className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 text-xl text-white bg-red-600 border border-red-400 lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
+            className="flex flex-row items-center justify-center w-auto w-2/3 h-10 px-4 py-4 my-3 text-xl text-white bg-red-600 border border-red-400 btn-animations lg:w-auto rounded-md transform hover:scale-110 hover:bg-opacity-40"
           >
             <span className="flex flex-row">
               <ArrowLeftIcon className="w-5" />
