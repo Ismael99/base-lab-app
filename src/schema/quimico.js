@@ -3,6 +3,7 @@ export const quimico = (Yup) => ({
   validations: Yup.object({
     quimico_nombre: Yup.string()
       .min(3, 'Caracteres mínimos 3')
+      .max(30, 'Caracteres maximos 30')
       .required('Campo requerido')
   }),
   initialValues: {
