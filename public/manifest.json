@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "version": "1.0.0",
-  "short_name": "rt-dashboard",
-  "name": "Dashboard app build with React + Tailwindcss",
+  "short_name": "BioCare",
+  "name": "Gestion de Pacientes BioCare",
   "icons": [
     {
       "src": "favicon.ico",

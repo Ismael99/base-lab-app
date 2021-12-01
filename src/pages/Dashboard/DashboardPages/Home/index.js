@@ -11,38 +11,44 @@ export const Home = () => (
     <div className="flex flex-row flex-wrap items-center justify-center">
       <Card
         to="examenes"
-        border_color="gray"
+        border_color="border-gray-400"
+        bg_color="bg-gray-100"
+        text_color="text-gray-500"
         module_name="Examenes"
         img={examenes_icon}
-        text_color="gray"
       />
       <Card
         to="ordenes_examenes"
-        border_color="blue"
+        border_color="border-blue-400"
+        bg_color="bg-blue-100"
+        text_color="text-blue-500"
         module_name="Ordenes Examenes"
         img={orden_examen_icon}
-        text_color="blue"
       />
       <Card
         to="quimicos"
-        border_color="yellow"
+        border_color="border-yellow-400"
+        bg_color="bg-yellow-100"
+        text_color="text-yellow-500"
         module_name="Quimicos"
         img={quimico_icon}
-        text_color="yellow"
       />
       <Card
         to="pacientes"
-        border_color="green"
+        border_color="border-green-400"
+        bg_color="bg-green-100"
+        text_color="text-green-500"
         module_name="Pacientes"
         img={pacientes_icon}
-        text_color="green"
+        d
       />
       <Card
         to="logs"
-        border_color="red"
+        border_color="border-red-400"
+        bg_color="bg-red-100"
+        text_color="text-red-500"
         module_name="Logs"
         img={logs_icon}
-        text_color="red"
       />
     </div>
   </div>
