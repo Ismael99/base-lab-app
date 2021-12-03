@@ -12,10 +12,10 @@ export const paciente = (Yup) => ({
     paciente_apellido: Yup.string()
       .min(3, 'Caracteres mínimos 3')
       .required('Campo requerido'),
-    paciente_telefono: Yup.string()
-      .min(8, 'Caracteres mínimos 8')
-      .required('Campo requerido')
-      .matches(validationPhoneNumber, 'Número no válido'),
+    paciente_telefono: Yup.string().matches(
+      validationPhoneNumber,
+      'Número no válido'
+    ),
     paciente_direccion: Yup.string()
       .min(5, 'Caracteres mínimos 5')
       .max(40, 'Caracteres máximos 40')

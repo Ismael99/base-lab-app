@@ -5,9 +5,7 @@ import {
 } from '@heroicons/react/outline'
 export const ordenExamen = (Yup) => ({
   validations: Yup.object({
-    orden_exam_dr_responsable: Yup.string()
-      .min(3, 'Caracteres mínimos 3')
-      .required('Campo requerido'),
+    orden_exam_dr_responsable: Yup.string(),
     orden_exam_total_precio: Yup.number()
       .min(1, 'Dígitos mínimos 1')
       .positive('Precio no válido')
