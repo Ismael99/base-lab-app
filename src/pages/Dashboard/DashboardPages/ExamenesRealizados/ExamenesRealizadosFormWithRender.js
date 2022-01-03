@@ -41,11 +41,11 @@ export const ExamenesRealizadosFormWithRender = ({
     examenTemplete.examen_templete_campos
   ) {
     examenRealizadoCurrent.examen_realizado_resultados =
-      examenRealizadoCurrent?.examen_realizado_resultados[0].value !== ''
+      examenRealizadoCurrent?.examen_realizado_resultados[0]?.value !== ''
         ? examenRealizadoCurrent?.examen_realizado_resultados
         : examenTemplete.examen_templete_campos
     examenRealizadoCurrent.examen_realizado_quimico =
-      examenRealizadoCurrent?.examen_realizado_quimico[0].label !== ''
+      examenRealizadoCurrent?.examen_realizado_quimico[0]?.label !== ''
         ? examenRealizadoCurrent?.examen_realizado_quimico
         : examenTemplete.examen_templete_quimicos
   }
